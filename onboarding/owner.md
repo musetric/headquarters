@@ -42,7 +42,7 @@ Ask the owner, and repeat the answers in the final report:
 | Requirement | Profile | Version and details |
 | --- | --- | --- |
 | GitHub CLI | core | |
-| Node and Yarn | core | Node from musetric's `.node-version`, Yarn from `packageManager` through corepack; Node 25 and later ship without corepack |
+| Node and Yarn | core | Node from musetric's `.node-version`, Yarn from `packageManager` through corepack; Node 25 and later ship without corepack, which is installed at the version musetric's `.github/actions/setupYarn` installs |
 | Rust through rustup | core | each package's `rust-toolchain.toml` installs its toolchain on the first `cargo` command |
 | C and C++ build tools with CMake | core | the server compiles libopus; musetric's readme |
 | Chrome, Edge or Chromium | core | the server runs the models in it; musetric's readme |
