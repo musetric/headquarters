@@ -24,6 +24,16 @@ workspace root, next to this repository:
 Each repository has its own `AGENTS.md` with its rules. Read it before
 changing that repository; this file does not repeat it.
 
+## Practices
+
+The owner's rules for every repository live in [practices/](practices/readme.md).
+Read the page before the action it covers:
+
+- [practices/git.md](practices/git.md) before creating a branch, committing,
+  pushing, or opening or updating a pull request;
+- [practices/public-texts.md](practices/public-texts.md) before writing
+  anything that becomes public.
+
 ## Setting up a machine
 
 When asked to set up a machine for Musetric, follow
