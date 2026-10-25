@@ -30,7 +30,7 @@ Cloning needs no sign-in: every repository of the organization is public.
 Ask the owner, and repeat the answers in the final report:
 
 - the profiles of [workspace.json](../workspace.json): `core` always,
-  `toolkit` on a machine with an NVIDIA GPU, `android` to build the app for
+  `lab` on a machine with an NVIDIA GPU, `android` to build the app for
   the phones, `models` to publish model revisions;
 - the machine's name, used as the title of its key on GitHub and Hugging
   Face;
@@ -47,8 +47,8 @@ Ask the owner, and repeat the answers in the final report:
 | C and C++ build tools with CMake | core | the server compiles libopus; musetric's readme |
 | Chrome, Edge or Chromium | core | the server runs the models in it; musetric's readme |
 | jscpd and editorconfig-checker | core | standalone binaries on `PATH`, at the versions musetric's `.github/actions/baseQuality` installs |
-| uv | toolkit | musetric-toolkit's readme |
-| NVIDIA GPU with its driver | toolkit | **Owner** installs the driver if it is missing |
+| uv | lab | the version `required-version` pins in lab's `pyproject.toml`; uv brings the Python `requires-python` pins |
+| NVIDIA GPU with its driver | lab | **Owner** installs the driver if it is missing |
 | Android SDK, NDK, JDK 21, Ninja | android | `musetric/packages/app/readme.md` § Toolchain; **Owner** installs the SDK and the NDK if the agent cannot |
 | git LFS | models | |
 
@@ -89,7 +89,7 @@ package manager its lockfile belongs to.
 2. `musetric`: `yarn check:ts`, and `cargo build --locked --bin musetric-server`
    in `packages/server`.
 3. `landing`: `npm run build:project`.
-4. Profile `toolkit`: in `musetric-toolkit`,
+4. Profile `lab`: in `lab`,
    `uv run python -c "import torch; print(torch.cuda.is_available())"` prints
    `True`.
 5. `gh api user/ssh_signing_keys --jq '.[].title'` lists the machine's name:

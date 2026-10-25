@@ -2,7 +2,7 @@
 // writes the root's AGENTS.md. Safe to rerun: an existing clone is only checked,
 // and an HTTPS origin of the right repository is switched to the SSH URL.
 //
-//   node headquarters/scripts/clone.mjs [--profiles core,toolkit] [--root <dir>]
+//   node headquarters/scripts/clone.mjs [--profiles core,lab] [--root <dir>]
 
 import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
