@@ -4,9 +4,11 @@ Everything in the organization's repositories and trackers is public:
 commits, pull requests, issues and their comments, readmes, model cards.
 These rules apply to all of it.
 
-- **English only.** Russian stays in the conversation with the owner.
-  `git grep -nIP '[\x{0400}-\x{04FF}]'` finds Cyrillic before a commit.
-  *Not enforced yet.*
+- **English only, in every file.** No letter outside the English alphabet
+  appears anywhere in a repository, except in the values of its translation
+  files; other languages stay in the conversation. *Enforced* in
+  headquarters by `scripts/check.mjs`; *not enforced yet* in the other
+  repositories.
 - **Shown before it is published.** Before an issue or a comment is created,
   or a published text is edited, the owner sees the exact final text and
   approves it; a summary or a local draft is not enough. GitHub keeps the
