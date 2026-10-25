@@ -11,6 +11,15 @@ understanding of the organization: who we are, how work is done, and how the
 pieces of the product fit together. It holds lasting, general knowledge, and
 it stays true when a machine breaks, a phone updates or an issue closes.
 
+Where the source code exists, it is the truth about how the product behaves.
+But nobody looks for code they do not know exists, and much of what matters
+never was code: why something exists, the use cases, requirements and intent
+behind it, and the values it serves. Headquarters is the entry point that
+says what there is, where it is and why, so that everyone knows where to
+look. It does not document every issue or every file; the details are in the
+source and in the issues. The whole truth is all of it together: how a button
+behaves in the code is not understood until it is clear why it behaves so.
+
 It holds:
 
 - who the organization is and what it stands for: the [charter](charter.md);
@@ -49,6 +58,14 @@ does: the product stays free and open, no money comes with control over it,
 and members earn from their work, not from access to the product. It binds
 every member and every agent; a task that conflicts with it stops and goes to
 the owner.
+
+## The product
+
+Musetric is one application for every platform: Windows, macOS, Linux,
+Android and iOS. A Tauri shell runs the Rust host and shows the React
+interface in the platform's WebView, and the models run on WebGPU in a web
+page, the same way everywhere. How each part works is in the source and the
+readmes of musetric/musetric.
 
 ## Workspace
 
