@@ -1,0 +1,127 @@
+# The Musetric charter
+
+Who we are, what we will and will not do, and how the people who work on
+Musetric earn a living. The charter binds every member of the organization,
+its owner included, and anyone who speaks for the project. It changes only
+through a pull request to this file, merged by the owner, and the change says
+why.
+
+## Mission
+
+- Education in music and singing should be accessible first, professional,
+  and in step with its time, so that everyone can receive it, whatever their
+  circumstances.
+- The organization raises the accessibility of this education, and raises
+  its quality without trading accessibility away.
+- Every contribution is valuable. What people create together remains a
+  common good and serves people.
+
+## What we make
+
+Musetric makes free, professional tools for practising music and singing.
+The source code is open, under the MIT license.
+
+## On the user's own device
+
+Everything is computed on the user's own device; the app goes online for its
+models and its own updates. That is a choice, made for three reasons:
+
+- **Privacy.** Whoever wants full confidentiality has it: nothing of theirs
+  needs to leave the device.
+- **Free without a server bill.** No rented servers to pay for is the surest
+  way to keep the product free on little or no funding.
+- **Others can build on it.** Anyone can take the code and the experience
+  and try something of their own without depending on a Musetric server,
+  because nothing runs through one.
+
+It is not a vow to stay offline forever. Online services, free or paid, may
+come where a concrete case serves people, such as online singing lessons
+with a video call between a teacher and a student. They never move to the
+centre of the product or the organization: the mission holds with no funding
+or with little, depends on no exclusive arrangement, and never stops anyone
+outside the organization from building something of their own on this
+experience.
+
+## Quality and simplicity
+
+- **Quality comes first**: the best result and the best experience the
+  project can give, shared with the world.
+- **Simple, elegant, concise.** Quality and new capabilities do not arrive as
+  more and more settings. Rather than leaving every choice to the user, the
+  product looks for the solution that works for most people.
+- **Toward fewer, more general solutions.** The direction of change is
+  simplification: problems are folded into one more elegant, more unified
+  solution, compact enough to close many of them at once and clear enough
+  for many people to understand.
+- **Hard inside, simple outside.** The technical difficulty inside is ours to
+  carry; it is never a reason to settle for a more complicated result.
+
+## Free, forever
+
+- The app carries no money: what it does on the user's own device is free,
+  with no ads, no subscriptions, no paid features, no paid builds or paid
+  versions in the stores, and the app is not sold.
+- A future online service may have a price only as "On the user's own
+  device" allows, and never by taking away what the app gives for free.
+- The official signed builds and the store versions are free, like the code.
+- The name and the logo are reserved, as musetric's `trademark.md` sets out,
+  so that nobody can sell a paid or harmful copy under the project's name.
+  Forks are welcome under a name of their own.
+
+## Independent
+
+- No investors and no directors.
+- No money that comes with control over the product: no exclusive sponsorship
+  terms, no say over the roadmap in exchange for funding.
+- One product for everyone: no separate version for one customer or one
+  country. A customer's requirement becomes a setting or a profile in the
+  common product.
+- A feature is built because the people who learn need it, and it is given to
+  everyone.
+
+## How members earn
+
+Members earn from their own work and expertise, never from access to the
+product:
+
+- consulting and contracts in what the project made them good at, such as
+  correct and fast neural networks on ordinary devices, WebGPU and mobile
+  GPUs;
+- work that an organization commissions and pays for: a feature it needs,
+  support with a response time over a school year, compliance
+  (accessibility, protection of students' data, localization), deployment,
+  long-term support of a version, training for teachers. What is built this
+  way enters the free product for everyone; the payment buys work and
+  obligations, not access and not control;
+- grants from foundations for open software, culture and education;
+- sponsorship and donations, which never restrict any user and never come
+  with influence on the product; they pay for what the project needs to run,
+  such as signing certificates, domains and test devices;
+- content, talks and workshops.
+
+Paid work never crowds out the product.
+
+## The users' trust
+
+- No silent telemetry. Anything the app collects is opt-in, anonymous and
+  never contains the user's content.
+- No user's data and no track that is not openly licensed is ever published.
+  What may come out of them is only what serves others: findings and
+  anonymous statistics that share the project's experience and expertise
+  with other people and organizations, with nothing in them that identifies a
+  user or a track.
+
+## How we work
+
+- In the open: problems, decisions, plans and measurements live in public
+  repositories and issues, in English, so that anyone can see what is done
+  and why. Material that may not be published stays out of them.
+- [practices/](practices/readme.md) is how this charter is applied day to
+  day.
+
+## Talking to us
+
+Problems, questions and proposals go to the issues of
+[musetric/musetric](https://github.com/musetric/musetric/issues). Requests
+that cannot be public, paid work among them, go to the email the website
+names.
