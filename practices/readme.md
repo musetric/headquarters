@@ -11,6 +11,7 @@ rule marked *Not enforced yet* is a candidate for one.
 | [public-texts.md](public-texts.md) | writing anything that becomes public: a commit, a pull request, an issue or a comment, a readme, a model card |
 | [tracker.md](tracker.md) | creating or commenting on an issue, or measuring for one |
 | [working-with-the-owner.md](working-with-the-owner.md) | acting on a request: a question, a plan, a run |
+| [code.md](code.md) | writing code or tests, or adding or upgrading a dependency |
 | [models.md](models.md) | choosing, replacing, publishing or pinning a model |
 | [experiments.md](experiments.md) | proposing or starting research or a training |
 | [checks.md](checks.md) | adding a rule anywhere, or changing what CI checks |

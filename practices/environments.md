@@ -13,6 +13,10 @@ in another.
   is a standalone binary on a developer's machine too, not a package
   manager's look-alike; a tool that comes from the lockfile is used from the
   lockfile everywhere.
+- **A tool shared by repositories is written once.** It lives in musetric and
+  is published to npm as a `@musetric/` package; the other repositories take
+  it as a dependency at a pinned version. A script copied into a second
+  repository drifts from the first.
 - **Run the same way.** CI runs the repository's own scripts, or the exact
   commands they hold, so that a local run and a CI run are one command.
 - **Checked against the pins.** `scripts/doctor.mjs` of headquarters reads the
