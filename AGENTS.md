@@ -29,6 +29,8 @@ changing that repository; this file does not repeat it.
 The owner's rules for every repository live in [practices/](practices/readme.md).
 Read the page before the action it covers:
 
+- [practices/resources.md](practices/resources.md) before any task: what the
+  environment has, what the task needs, and how to share it with others;
 - [practices/git.md](practices/git.md) before creating a branch, committing,
   pushing, or opening or updating a pull request;
 - [practices/public-texts.md](practices/public-texts.md) before writing
@@ -36,7 +38,11 @@ Read the page before the action it covers:
 - [practices/tracker.md](practices/tracker.md) before creating or commenting
   on an issue, or measuring for one;
 - [practices/working-with-the-owner.md](practices/working-with-the-owner.md)
-  before acting on a request.
+  before acting on a request;
+- [practices/models.md](practices/models.md) before choosing, replacing,
+  publishing or pinning a model;
+- [practices/experiments.md](practices/experiments.md) before proposing or
+  starting research or a training.
 
 ## Setting up a machine
 
