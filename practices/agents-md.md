@@ -37,4 +37,5 @@ the map points to; it is not squeezed into denser lines.
 
 The test for a line: would nearly every task in this repository go wrong
 without it? If not, it belongs in the page for its area, and the map points
-there. A rule that must hold without exception becomes a check instead.
+there. A rule that a program can verify becomes a check instead, as
+[checks.md](checks.md) says.
