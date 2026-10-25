@@ -4,6 +4,14 @@ This repository is the entry point to the Musetric organization. It holds
 what no single repository of the product owns: how to set up a machine and
 the workspace, and, as it grows, the context the repositories share.
 
+## Charter
+
+[charter.md](charter.md) says who the organization is and what it never
+does: the product stays free and open, no money comes with control over it,
+and members earn from their work, not from access to the product. It binds
+every member and every agent; a task that conflicts with it stops and goes to
+the owner.
+
 ## Workspace
 
 Every repository of the organization is cloned into one folder, the
