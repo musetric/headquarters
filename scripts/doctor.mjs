@@ -1,6 +1,7 @@
 // Checks that this machine is ready to work on the repositories of the chosen
 // profiles. Versions come from the pins the repositories declare themselves
-// (.node-version, packageManager, rust-toolchain.toml), never from this file.
+// (.node-version, packageManager, rust-toolchain.toml, the versions their CI
+// installs), never from this file.
 // Exits with 1 when any check fails; a warning does not fail the run.
 //
 //   node headquarters/scripts/doctor.mjs [--profiles core,lab] [--root <dir>]
@@ -50,6 +51,7 @@ const readPin = (path, pattern) => {
 };
 
 const nodePin = readPin(join(product, '.node-version'), /^\s*v?(\S+)/);
+const corepackPin = readPin(join(product, '.github', 'actions', 'setupYarn', 'action.yml'), /corepack@(\S+)/);
 const yarnPin = readPin(join(product, 'package.json'), /"packageManager":\s*"yarn@([^"]+)"/);
 const rustPins = [
   ...new Set(
@@ -155,6 +157,22 @@ const checks = [
       return process.version === `v${nodePin}`
         ? pass(process.version)
         : fail(`active ${process.version}, musetric pins ${nodePin}`);
+    },
+  },
+  {
+    profile: 'core',
+    name: 'corepack',
+    check: () => {
+      if (corepackPin === undefined) {
+        return warn('musetric is not cloned, so the corepack its CI installs is unknown');
+      }
+      const result = run('corepack', ['--version']);
+      if (!result.ok) {
+        return fail(`corepack is not installed: Node 25 and later ship without it; musetric's CI installs ${corepackPin}`);
+      }
+      return result.firstLine === corepackPin
+        ? pass(result.firstLine)
+        : fail(`corepack ${result.firstLine}, musetric's CI installs ${corepackPin}`);
     },
   },
   {
@@ -273,7 +291,13 @@ const checks = [
         return fail(`not cloned into ${target}`);
       }
       const origin = run('git', ['remote', 'get-url', 'origin'], target).out;
-      return origin === repository.url ? pass('cloned') : warn(`origin is ${origin}, not ${repository.url}`);
+      if (origin !== repository.url) {
+        return warn(`origin is ${origin}, not ${repository.url}`);
+      }
+      const ownNodePin = readPin(join(target, '.node-version'), /^\s*v?(\S+)/);
+      return ownNodePin === undefined || nodePin === undefined || ownNodePin === nodePin
+        ? pass('cloned')
+        : warn(`.node-version pins ${ownNodePin}, musetric pins ${nodePin}: one Node everywhere`);
     },
   })),
 ];
