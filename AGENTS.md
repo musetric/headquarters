@@ -107,6 +107,12 @@ Read the page before the action it covers:
 - [practices/experiments.md](practices/experiments.md) before proposing or
   starting research or a training.
 
+## Environment
+
+[environment/](environment/readme.md) holds the general picture of where the
+models run and how test devices are worked with. Concrete problems are in the
+issues of musetric/musetric.
+
 ## Setting up a machine
 
 When asked to set up a machine for Musetric, follow
