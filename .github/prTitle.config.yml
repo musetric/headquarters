@@ -32,5 +32,8 @@ scopes:
   - onboarding # setting up a new member's machine and accounts
   - workspace # the repository manifest and the local layout of the organization
   - agent # agent guidance & config (AGENTS.md, CLAUDE.md, AI tooling)
+  - practices # how work is done: git, pull requests, public texts, the tracker
+  - environment # machines, devices, stands, accounts and other resources
+  - research # what experiments found, and what not to repeat
   - github # repo & GitHub Actions settings (workflows, templates)
   - license # license and third-party notices
