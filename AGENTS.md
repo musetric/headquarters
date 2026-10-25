@@ -47,4 +47,5 @@ repository has its own `AGENTS.md`; read it before changing that repository.
 - A version a repository pins is read from it, never copied here.
 
 Before finishing, run `node scripts/check.mjs`, the check CI runs on every
-pull request: file names, language, links, `workspace.json` and the scripts.
+pull request: file names, English letters only, links, `workspace.json` and
+the scripts.

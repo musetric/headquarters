@@ -1,7 +1,8 @@
 // Checks this repository the way CI does: every file name starts in lower
-// case (except the names agents look for), no text is in Cyrillic, every local
-// link of a page resolves, workspace.json is consistent, and every script
-// parses and imports Node's built-in modules only. Exits with 1 on a failure.
+// case (except the names agents look for), no letter is outside the English
+// alphabet, every local link of a page resolves, workspace.json is
+// consistent, and every script parses and imports Node's built-in modules
+// only. Exits with 1 on a failure.
 //
 //   node scripts/check.mjs
 
@@ -17,7 +18,7 @@ const files = spawnSync('git', ['ls-files'], { cwd: root, encoding: 'utf8' })
 
 const toolNames = ['AGENTS.md', 'CLAUDE.md'];
 const failures = [];
-const cyrillic = new RegExp(`[${String.fromCodePoint(0x400)}-${String.fromCodePoint(0x4ff)}]`);
+const foreignLetter = /(?=\p{L})\P{ASCII}/u;
 
 for (const file of files) {
   const name = basename(file);
@@ -27,8 +28,8 @@ for (const file of files) {
   readFileSync(join(root, file), 'utf8')
     .split('\n')
     .forEach((line, index) => {
-      if (cyrillic.test(line)) {
-        failures.push(`${file}:${index + 1}: Cyrillic text; this repository is in English`);
+      if (foreignLetter.test(line)) {
+        failures.push(`${file}:${index + 1}: a letter outside the English alphabet; this repository is in English`);
       }
     });
 }
