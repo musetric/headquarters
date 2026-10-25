@@ -123,6 +123,14 @@ Paid work never crowds out the product.
   member solves the problem, preferably with a simpler solution that closes
   more of them, instead of reacting to the text of an issue or to the code
   alone.
+- **A contradiction is resolved before the work goes on.** A member who meets
+  one, between headquarters and an issue, the source, a decision or reality,
+  or inside headquarters itself, finds out which side is true and resolves it
+  first: the outdated side is corrected, or the person who can decide is
+  asked. An issue, above all an old one or a request, may contradict
+  headquarters. Headquarters itself stays consistent, within itself and with
+  the whole organization on GitHub; whatever in it is outdated, wrong or
+  contradicts itself is fixed before the task continues.
 - [practices/](practices/readme.md) is how this charter is applied day to
   day.
 
