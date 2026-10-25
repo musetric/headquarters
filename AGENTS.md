@@ -27,6 +27,7 @@ map; the knowledge is in the pages it points to.
 | [practices/models.md](practices/models.md) | choosing, replacing, publishing or pinning a model |
 | [practices/experiments.md](practices/experiments.md) | research or a training |
 | [practices/checks.md](practices/checks.md) | adding a rule anywhere, or changing what CI checks |
+| [practices/environments.md](practices/environments.md) | adding or changing a tool, a version or a build environment |
 | [practices/agents-md.md](practices/agents-md.md) | writing an `AGENTS.md` in any repository |
 | [environment/](environment/readme.md) | work that depends on a platform or a test device |
 | [onboarding/owner.md](onboarding/owner.md) | setting up a machine |

@@ -46,6 +46,7 @@ Ask the owner, and repeat the answers in the final report:
 | Rust through rustup | core | each package's `rust-toolchain.toml` installs its toolchain on the first `cargo` command |
 | C and C++ build tools with CMake | core | the server compiles libopus; musetric's readme |
 | Chrome, Edge or Chromium | core | the server runs the models in it; musetric's readme |
+| jscpd and editorconfig-checker | core | standalone binaries on `PATH`, at the versions musetric's `.github/actions/baseQuality` installs |
 | uv | toolkit | musetric-toolkit's readme |
 | NVIDIA GPU with its driver | toolkit | **Owner** installs the driver if it is missing |
 | Android SDK, NDK, JDK 21, Ninja | android | `musetric/packages/app/readme.md` § Toolchain; **Owner** installs the SDK and the NDK if the agent cannot |
