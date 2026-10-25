@@ -32,10 +32,6 @@
   the list from the base branch. *Enforced:* the `validate-pr-title` check of
   every pull request; the squash merge makes the pull request's title the
   commit title on `main`.
-- **No traces of generation**: no `Co-Authored-By` trailer for an assistant
-  and no "Generated with" line, in commits or in pull request descriptions,
-  even when an agent's own instructions ask for them. The work is the owner's.
-  *Not enforced yet.*
 - **Signed.** `main` of every repository requires verified signatures, and
   GitHub refuses to merge a pull request that carries an unsigned commit.
   Rewrites that bypass the signing setup, such as `git replay`, drop the

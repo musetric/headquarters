@@ -59,6 +59,23 @@ const rustPins = [
   ),
 ];
 
+const baseQuality = join(product, '.github', 'actions', 'baseQuality', 'action.yml');
+
+// A standalone binary CI installs at a pinned version: the same binary at the
+// same version on PATH here.
+const binaryCheck = (command, variable) => () => {
+  const pin = readPin(baseQuality, new RegExp(`${variable}: *v?([^ ]+)$`, 'm'));
+  if (pin === undefined) {
+    return warn('musetric is not cloned, so the version its CI pins is unknown');
+  }
+  const result = run(command, ['--version']);
+  if (!result.ok) {
+    return fail(`${command} is not on PATH: install its standalone release ${pin}`);
+  }
+  const version = result.firstLine.split(' ').pop().replace(/^v/, '');
+  return version === pin ? pass(result.firstLine) : fail(`${command} ${version}, musetric's CI installs ${pin}`);
+};
+
 const commandCheck = (command, args) => () => {
   const result = run(command, args);
   return result.ok ? pass(result.firstLine) : fail(`${command} is not installed or not on PATH`);
@@ -201,6 +218,12 @@ const checks = [
       const found = (browserPaths[process.platform] ?? []).find((path) => existsSync(path));
       return found ? pass(found) : fail('no Chrome, Edge or Chromium for the server to run models in');
     },
+  },
+  { profile: 'core', name: 'jscpd', check: binaryCheck('jscpd', 'JSCPD_VERSION') },
+  {
+    profile: 'core',
+    name: 'editorconfig-checker',
+    check: binaryCheck('editorconfig-checker', 'EDITORCONFIG_CHECKER_VERSION'),
   },
   { profile: 'toolkit', name: 'uv', check: commandCheck('uv', ['--version']) },
   {
