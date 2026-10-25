@@ -5,10 +5,14 @@ commits, pull requests, issues and their comments, readmes, model cards.
 These rules apply to all of it.
 
 - **English only, in every file.** No letter outside the English alphabet
-  appears anywhere in a repository, except in the values of its translation
-  files; other languages stay in the conversation. *Enforced* in
-  headquarters by `scripts/check.mjs`; *not enforced yet* in the other
-  repositories.
+  appears anywhere in a repository; other languages stay in the
+  conversation. A name is written in English letters (Weiss, Gomez,
+  Mueller), and notation in words (delta, not the Greek letter). The
+  exceptions are files where another language is part of what they mean:
+  multilingual data and its tests, a copy of a license, third-party code,
+  translated values; each is listed in `checks.english.except` of the
+  repository's `package.json`. *Enforced* by `musetric-checks english` of
+  `@musetric/checks`.
 - **Shown before it is published.** Before an issue or a comment is created,
   or a published text is edited, the owner sees the exact final text and
   approves it; a summary or a local draft is not enough. GitHub keeps the

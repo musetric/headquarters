@@ -47,6 +47,7 @@ repository has its own `AGENTS.md`; read it before changing that repository.
 - Scripts follow the code style of musetric's `AGENTS.md`.
 - A version a repository pins is read from it, never copied here.
 
-Before finishing, run `node scripts/check.mjs`, the check CI runs on every
-pull request: file names, English letters only, links, `workspace.json` and
-the scripts.
+Before finishing, run `npm run check` after `npm ci`, the check CI runs on
+every pull request: English letters only and links through
+`@musetric/checks`, then file names, `workspace.json` and the scripts through
+`scripts/check.mjs`.
