@@ -1,0 +1,70 @@
+{
+  "profiles": {
+    "core": "build, run and change the product, the website and this repository on the desktop",
+    "toolkit": "the Python reference implementation, model export and training; needs an NVIDIA GPU",
+    "android": "build the app for Android and run it on the test phones",
+    "models": "publish model revisions to Hugging Face"
+  },
+  "repositories": [
+    {
+      "path": "headquarters",
+      "url": "git@github.com:musetric/headquarters.git",
+      "profile": "core",
+      "about": "this repository: onboarding, the workspace and the shared context"
+    },
+    {
+      "path": "musetric",
+      "url": "git@github.com:musetric/musetric.git",
+      "profile": "core",
+      "about": "the product: Yarn monorepo, Rust host, Tauri app"
+    },
+    {
+      "path": "landing",
+      "url": "git@github.com:musetric/landing.git",
+      "profile": "core",
+      "about": "the website"
+    },
+    {
+      "path": "musetric-toolkit",
+      "url": "git@github.com:musetric/musetric-toolkit.git",
+      "profile": "toolkit",
+      "about": "Python reference implementation of every step, model export and training"
+    },
+    {
+      "path": "models/aname-mel-band-roformer-duality-onnx",
+      "url": "git@hf.co:musetric/aname-mel-band-roformer-duality-onnx",
+      "profile": "models",
+      "about": "vocal separation model"
+    },
+    {
+      "path": "models/uvr-mdxnet-kara2-onnx",
+      "url": "git@hf.co:musetric/uvr-mdxnet-kara2-onnx",
+      "profile": "models",
+      "about": "lead and backing vocal separation model"
+    },
+    {
+      "path": "models/whisper-large-v3-turbo-onnx",
+      "url": "git@hf.co:musetric/whisper-large-v3-turbo-onnx",
+      "profile": "models",
+      "about": "transcription model"
+    },
+    {
+      "path": "models/beat-this-onnx",
+      "url": "git@hf.co:musetric/beat-this-onnx",
+      "profile": "models",
+      "about": "beat and downbeat model"
+    },
+    {
+      "path": "models/skey-onnx",
+      "url": "git@hf.co:musetric/skey-onnx",
+      "profile": "models",
+      "about": "musical key model"
+    },
+    {
+      "path": "models/chordmini-onnx",
+      "url": "git@hf.co:musetric/chordmini-onnx",
+      "profile": "models",
+      "about": "chord recognition model"
+    }
+  ]
+}
