@@ -1,7 +1,7 @@
 {
   "profiles": {
     "core": "build, run and change the product, the website and this repository on the desktop",
-    "toolkit": "the Python reference implementation, model export and training; needs an NVIDIA GPU",
+    "lab": "the reference of every processing step in torch, model export and training; needs an NVIDIA GPU",
     "android": "build the app for Android and run it on the test phones",
     "models": "publish model revisions to Hugging Face"
   },
@@ -25,10 +25,10 @@
       "about": "the website"
     },
     {
-      "path": "musetric-toolkit",
-      "url": "git@github.com:musetric/musetric-toolkit.git",
-      "profile": "toolkit",
-      "about": "Python reference implementation of every step, model export and training"
+      "path": "lab",
+      "url": "git@github.com:musetric/lab.git",
+      "profile": "lab",
+      "about": "the lab: the reference of every step in torch, model export and training"
     },
     {
       "path": "models/aname-mel-band-roformer-duality-onnx",

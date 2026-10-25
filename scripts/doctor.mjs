@@ -3,7 +3,7 @@
 // (.node-version, packageManager, rust-toolchain.toml), never from this file.
 // Exits with 1 when any check fails; a warning does not fail the run.
 //
-//   node headquarters/scripts/doctor.mjs [--profiles core,toolkit] [--root <dir>]
+//   node headquarters/scripts/doctor.mjs [--profiles core,lab] [--root <dir>]
 
 import { spawnSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
@@ -225,9 +225,24 @@ const checks = [
     name: 'editorconfig-checker',
     check: binaryCheck('editorconfig-checker', 'EDITORCONFIG_CHECKER_VERSION'),
   },
-  { profile: 'toolkit', name: 'uv', check: commandCheck('uv', ['--version']) },
   {
-    profile: 'toolkit',
+    profile: 'lab',
+    name: 'uv',
+    check: () => {
+      const pin = readPin(join(root, 'lab', 'pyproject.toml'), /required-version = "==([^"]+)"/);
+      const result = run('uv', ['--version']);
+      if (!result.ok) {
+        return fail('uv is not installed');
+      }
+      const version = result.firstLine.split(' ')[1];
+      if (pin === undefined) {
+        return warn(`${result.firstLine}; lab is not cloned, so its pin is unknown`);
+      }
+      return version === pin ? pass(result.firstLine) : fail(`uv ${version}, lab pins ${pin}`);
+    },
+  },
+  {
+    profile: 'lab',
     name: 'nvidia gpu',
     check: () => {
       const result = run('nvidia-smi', ['--query-gpu=name,driver_version', '--format=csv,noheader']);
