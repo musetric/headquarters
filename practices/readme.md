@@ -13,6 +13,7 @@ rule marked *Not enforced yet* is a candidate for one.
 | [working-with-the-owner.md](working-with-the-owner.md) | acting on a request: a question, a plan, a run |
 | [models.md](models.md) | choosing, replacing, publishing or pinning a model |
 | [experiments.md](experiments.md) | proposing or starting research or a training |
+| [agents-md.md](agents-md.md) | writing or changing an `AGENTS.md` in any repository |
 
 A page here holds what applies to every repository of the organization. A
 repository's own rules stay in its `AGENTS.md`.

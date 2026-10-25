@@ -6,7 +6,7 @@ workspace, and the context shared by every repository of the product.
 The product itself lives in [musetric/musetric](https://github.com/musetric/musetric).
 Who we are and what we will never do: [the charter](charter.md). What belongs
 in this repository, and what goes elsewhere:
-[AGENTS.md](AGENTS.md#why-it-exists-and-what-belongs-here).
+[about.md](about.md).
 
 ## Setting up a machine
 
