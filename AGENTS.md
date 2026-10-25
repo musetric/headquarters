@@ -32,7 +32,11 @@ Read the page before the action it covers:
 - [practices/git.md](practices/git.md) before creating a branch, committing,
   pushing, or opening or updating a pull request;
 - [practices/public-texts.md](practices/public-texts.md) before writing
-  anything that becomes public.
+  anything that becomes public;
+- [practices/tracker.md](practices/tracker.md) before creating or commenting
+  on an issue, or measuring for one;
+- [practices/working-with-the-owner.md](practices/working-with-the-owner.md)
+  before acting on a request.
 
 ## Setting up a machine
 
