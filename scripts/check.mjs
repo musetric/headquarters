@@ -1,13 +1,13 @@
-// Checks this repository the way CI does: every file name starts in lower
-// case (except the names agents look for), no letter is outside the English
-// alphabet, every local link of a page resolves, workspace.json is
-// consistent, and every script parses and imports Node's built-in modules
-// only. Exits with 1 on a failure.
+// Checks what only this repository has: every file name starts in lower case
+// (except the names agents look for), workspace.json is consistent, and every
+// script parses and imports Node's built-in modules only. English letters and
+// links are checked by @musetric/checks; `npm run check` runs both. Exits
+// with 1 on a failure.
 //
 //   node scripts/check.mjs
 
 import { spawnSync } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -18,32 +18,11 @@ const files = spawnSync('git', ['ls-files'], { cwd: root, encoding: 'utf8' })
 
 const toolNames = ['AGENTS.md', 'CLAUDE.md'];
 const failures = [];
-const foreignLetter = /(?=\p{L})\P{ASCII}/u;
 
 for (const file of files) {
   const name = basename(file);
   if (!toolNames.includes(name) && /^[A-Z]/.test(name)) {
     failures.push(`${file}: the file name starts with a capital letter`);
-  }
-  readFileSync(join(root, file), 'utf8')
-    .split('\n')
-    .forEach((line, index) => {
-      if (foreignLetter.test(line)) {
-        failures.push(`${file}:${index + 1}: a letter outside the English alphabet; this repository is in English`);
-      }
-    });
-}
-
-for (const file of files.filter((item) => item.endsWith('.md'))) {
-  const text = readFileSync(join(root, file), 'utf8');
-  for (const match of text.matchAll(/\]\(([^)\s]+)\)/g)) {
-    const target = match[1].split('#')[0];
-    if (target === '' || /^[a-z]+:/.test(target)) {
-      continue;
-    }
-    if (!existsSync(join(root, dirname(file), target))) {
-      failures.push(`${file}: the link to ${target} does not resolve`);
-    }
   }
 }
 
