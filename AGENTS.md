@@ -26,6 +26,7 @@ map; the knowledge is in the pages it points to.
 | [practices/working-with-the-owner.md](practices/working-with-the-owner.md) | acting on a request |
 | [practices/models.md](practices/models.md) | choosing, replacing, publishing or pinning a model |
 | [practices/experiments.md](practices/experiments.md) | research or a training |
+| [practices/checks.md](practices/checks.md) | adding a rule anywhere, or changing what CI checks |
 | [practices/agents-md.md](practices/agents-md.md) | writing an `AGENTS.md` in any repository |
 | [environment/](environment/readme.md) | work that depends on a platform or a test device |
 | [onboarding/owner.md](onboarding/owner.md) | setting up a machine |
@@ -42,9 +43,8 @@ repository has its own `AGENTS.md`; read it before changing that repository.
 
 - It is public: no secrets, and nothing that
   [public-texts.md](practices/public-texts.md) keeps out.
-- English, lowercase file names.
-- Changes reach `main` only through pull requests, titled by
-  [.github/prTitle.config.yml](.github/prTitle.config.yml).
-- Scripts use Node's built-in modules only, one file each, run with `node`,
-  in the code style of musetric's `AGENTS.md`.
+- Scripts follow the code style of musetric's `AGENTS.md`.
 - A version a repository pins is read from it, never copied here.
+
+Before finishing, run `node scripts/check.mjs`, the check CI runs on every
+pull request: file names, language, links, `workspace.json` and the scripts.
