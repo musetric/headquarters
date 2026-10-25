@@ -29,6 +29,7 @@ types:
 
 # Scope = which area the change belongs to.
 scopes:
+  - organization # who we are: the charter, the mission, the members
   - onboarding # setting up a new member's machine and accounts
   - workspace # the repository manifest and the local layout of the organization
   - agent # agent guidance & config (AGENTS.md, CLAUDE.md, AI tooling)
