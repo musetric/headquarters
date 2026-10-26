@@ -23,9 +23,11 @@ decision, not with the code.
 | --- | --- |
 | [R-3](r03-phones-process-on-screen.md) | Phones process only while the app is on screen |
 | [R-4](r04-executor-connects-itself.md) | The executor is a hidden page that connects to the host itself |
+| [R-6](r06-linux-not-supported-yet.md) | Linux is not supported yet |
 | [R-8](r08-models-run-in-the-page.md) | Models run in the web page, never natively |
 | [R-9](r09-no-cpu-fallback.md) | A GPU defect is fixed on the GPU, not by a CPU fallback |
 | [R-20](r20-one-inference-at-a-time.md) | One inference at a time |
+| [R-22](r22-wrong-result-first.md) | A wrong result goes first |
 | [R-24](r24-own-webgpu-device.md) | The product owns its WebGPU device and paces its queue |
 | [R-26](r26-whisper-on-transformers-js.md) | Transcription stays on transformers.js |
 
