@@ -16,7 +16,7 @@ const files = spawnSync('git', ['ls-files'], { cwd: root, encoding: 'utf8' })
   .stdout.split('\n')
   .filter((file) => file !== '');
 
-const toolNames = ['AGENTS.md', 'CLAUDE.md'];
+const toolNames = ['AGENTS.md', 'CLAUDE.md', 'SKILL.md'];
 const failures = [];
 
 for (const file of files) {

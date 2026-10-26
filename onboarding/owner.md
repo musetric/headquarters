@@ -73,7 +73,9 @@ Ask the owner, and repeat the answers in the final report:
 `node headquarters/scripts/clone.mjs --profiles <profiles>` clones every
 repository of the profiles next to `headquarters` and writes the root's
 `AGENTS.md`, which points every agent started in the root to
-[AGENTS.md](../AGENTS.md) of this repository. Model repositories are cloned
+[AGENTS.md](../AGENTS.md) of this repository, and the root's `.claude`: a copy
+of the settings of [agents/claude](../agents/claude) and a link to each of its
+skills. Agents are started in the root. Model repositories are cloned
 without their LFS files: publishing a revision needs only the pointers. The
 script also moves the first, HTTPS, clone of `headquarters` to SSH.
 

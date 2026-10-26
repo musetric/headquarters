@@ -7,7 +7,7 @@
 //   node headquarters/scripts/doctor.mjs [--profiles core,lab] [--root <dir>]
 
 import { spawnSync } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, realpathSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -282,6 +282,25 @@ const checks = [
   { profile: 'android', name: 'ninja', check: commandCheck('ninja', ['--version']) },
   { profile: 'models', name: 'git lfs', check: commandCheck('git', ['lfs', 'version']) },
   { profile: 'models', name: 'hugging face ssh', check: sshCheck('hf.co', 'welcome to Hugging Face') },
+  {
+    profile: 'core',
+    name: 'agent configuration',
+    check: () => {
+      const config = join(headquarters, 'agents', 'claude');
+      const settings = join(root, '.claude', 'settings.json');
+      if (!existsSync(settings) || readFileSync(settings, 'utf8') !== readFileSync(join(config, 'settings.json'), 'utf8')) {
+        return fail('.claude/settings.json of the root is missing or differs from headquarters: run clone.mjs');
+      }
+      const skills = readdirSync(join(config, 'skills'));
+      const unlinked = skills.filter((name) => {
+        const link = join(root, '.claude', 'skills', name);
+        return !existsSync(link) || realpathSync(link) !== realpathSync(join(config, 'skills', name));
+      });
+      return unlinked.length === 0
+        ? pass(`settings and ${skills.length} skills`)
+        : fail(`skills not linked to headquarters: ${unlinked.join(', ')}: run clone.mjs`);
+    },
+  },
   ...workspace.repositories.map((repository) => ({
     profile: repository.profile,
     name: repository.path,
