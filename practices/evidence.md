@@ -22,6 +22,20 @@ question.
   stopped can look like a success: a frozen page reports smooth frames, and a
   check that saw no error saw nothing. Before and after, show that the
   computation was running.
+- **A failed probe fails its run.** A probe whose model throws, or that never
+  reports done, exits with an error; otherwise the wrapper around it counts it
+  as a success.
+- **Repeatability is checked on full outputs**, over warm runs in one session
+  and over new sessions, not on a few numbers or on aggregates.
+- **Equal on the CPU is not equal on the GPU.** A graph rewrite that matches
+  the original on the CPU provider is checked again on each GPU provider and
+  shape it will run with.
+- **A minimal reproduction proves its kernel, not the model.** After a kernel
+  is fixed for one shape, every model that uses it is checked again, and one
+  defect found is not taken to explain every symptom seen at the same time.
+- **Time around a GPU call is not its GPU time.** A kernel's time comes from
+  GPU timestamps; the longest frame is not the longest submission, and a
+  stable heap or no long tasks do not rule out a blocked thread.
 - **A median does not cancel the tails.** A change that improves the median
   can still break a few cases badly; the worst cases are reported next to it.
 - **A difference smaller than the noise is no difference.** The noise of a

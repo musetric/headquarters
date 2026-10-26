@@ -13,3 +13,7 @@ What applies to the code of every repository.
   as the FFT, the spectrogram or a step of signal processing has unit tests
   and a benchmark. Code that moves fields from one shape to another, and what
   the type system already guarantees, has none.
+- **A mock does not test the boundary it replaces.** Where the code depends
+  on how a library constructs or owns an object, the test uses the real
+  library: a mock that returned its argument once hid a `Tensor` created
+  without `new`.

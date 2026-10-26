@@ -44,8 +44,9 @@ How the product's neural networks are chosen, replaced and published.
   not the commit Hugging Face generates.
 - **Published through git** from the clones in the workspace's `models/`:
   fetch, put the staged files in place, commit, push, then compare the
-  served size and hash of each file with the local ones. Only with the
-  owner's go.
+  served size and hash of each file with the local ones, hashing the
+  downloaded file: for a small file the etag Hugging Face serves is its git
+  blob hash, not its SHA-256. Only with the owner's go.
 
 ## Pins
 
