@@ -45,6 +45,7 @@ decision, not with the code.
 | [R-36](r36-loop-pass-by-pass.md) | A line is practised in a loop, and only the chosen try is kept |
 | [R-37](r37-octave-moves-the-picture.md) | The octave moves the picture, not the sound |
 | [R-38](r38-export-what-you-hear.md) | The export is the mix, key and tempo you hear |
+| [R-39](r39-browser-version-is-the-site.md) | The browser version is the site, built on Musetric's libraries |
 
 ## Decisions that became rules
 
