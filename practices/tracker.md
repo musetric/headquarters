@@ -17,10 +17,11 @@ comment before it is posted.
   Hypotheses, Improvement, Feature and Bug; one chosen change is an
   Improvement, several candidates are Hypotheses, and a problem with a method
   and a state but no proposal is Hypotheses too.
-- **A label is what the issue is about**: exactly one essence,
-  `correctness` or `performance`, and at most one area, such as
-  `separation`, `transcription`, `rhythm`, `chords`, `fft` or `spectrogram`.
-  An epic has the essence only. Areas follow the processing steps, not the
+- **A label is what the issue is about**: at most one essence,
+  `correctness` or `performance`, set only when the issue is about it, and at
+  most one area, such as `separation`, `transcription`, `rhythm`, `chords`,
+  `fft` or `spectrogram`. A feature that is about neither has no essence. An
+  epic has the essence only. Areas follow the processing steps, not the
   models, and are named like the commit scopes; a new area is created with its
   first issue. Platforms and GPUs are never labels.
 - **Titles.** An epic states its goal with "must". A bug or a set of
