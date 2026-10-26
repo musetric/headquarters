@@ -43,6 +43,12 @@ workspace root. The list is [workspace.json](workspace.json),
 [scripts/doctor.mjs](scripts/doctor.mjs) checks the machine against it. Each
 repository has its own `AGENTS.md`; read it before changing that repository.
 
+Sessions start in the workspace root: only there does the agents'
+configuration of [agents/claude](agents/claude) apply, which `clone.mjs`
+puts into the root's `.claude`. Its session-start hook reports how the
+repositories stand, and its skills `finish` and `learn` close a task and keep
+what it taught.
+
 ## Rules for this repository
 
 - It is public: no secrets, and nothing that

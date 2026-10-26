@@ -1,11 +1,14 @@
 // Clones the repositories of the chosen profiles into the workspace root and
-// writes the root's AGENTS.md. Safe to rerun: an existing clone is only checked,
-// and an HTTPS origin of the right repository is switched to the SSH URL.
+// writes the root's AGENTS.md and the agents' configuration of
+// agents/claude: a copy of its settings.json and a link to each of its skills
+// in the root's .claude. Safe to rerun: an existing clone is only checked,
+// an HTTPS origin of the right repository is switched to the SSH URL, and a
+// root file that differs from the generated one is reported, not overwritten.
 //
 //   node headquarters/scripts/clone.mjs [--profiles core,lab] [--root <dir>]
 
 import { spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, symlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -71,7 +74,37 @@ const writeRootInstructions = () => {
   return readFileSync(target, 'utf8') === rootInstructions ? 'present' : 'present, differs from the generated one';
 };
 
+const agentConfig = join(headquarters, 'agents', 'claude');
+
+const writeAgentSettings = () => {
+  const target = join(root, '.claude', 'settings.json');
+  const source = readFileSync(join(agentConfig, 'settings.json'), 'utf8');
+  if (!existsSync(target)) {
+    mkdirSync(dirname(target), { recursive: true });
+    writeFileSync(target, source);
+    return 'written';
+  }
+  return readFileSync(target, 'utf8') === source ? 'present' : 'present, differs from headquarters';
+};
+
+// A junction needs no rights on Windows; elsewhere the type is ignored and a
+// directory symlink is made.
+const linkSkill = (name) => {
+  const source = join(agentConfig, 'skills', name);
+  const target = join(root, '.claude', 'skills', name);
+  if (!existsSync(target)) {
+    mkdirSync(dirname(target), { recursive: true });
+    symlinkSync(source, target, 'junction');
+    return 'linked';
+  }
+  return realpathSync(target) === realpathSync(source) ? 'present' : 'present, but not a link to headquarters';
+};
+
 for (const repository of workspace.repositories.filter((item) => profiles.includes(item.profile))) {
   console.log(`${repository.path}: ${syncRepository(repository)}`);
 }
 console.log(`AGENTS.md: ${writeRootInstructions()}`);
+console.log(`.claude/settings.json: ${writeAgentSettings()}`);
+for (const name of readdirSync(join(agentConfig, 'skills'))) {
+  console.log(`.claude/skills/${name}: ${linkSkill(name)}`);
+}
