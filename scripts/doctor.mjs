@@ -313,6 +313,9 @@ const checks = [
       if (origin !== repository.url) {
         return warn(`origin is ${origin}, not ${repository.url}`);
       }
+      if (run('git', ['config', '--get', 'branch.autoSetupMerge'], target).out !== 'simple') {
+        return warn('branch.autoSetupMerge is not simple: run clone.mjs');
+      }
       const ownNodePin = readPin(join(target, '.node-version'), /^\s*v?(\S+)/);
       return ownNodePin === undefined || nodePin === undefined || ownNodePin === nodePin
         ? pass('cloned')

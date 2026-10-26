@@ -6,8 +6,9 @@
 
 Until the app has users, its database has one migration, `V001_INITIAL`. A
 change of the schema edits that migration in place: there is no second
-migration and no backfill of old rows, and a local database of an older
-schema is recreated. The decision is revisited before the first release
+migration and no backfill of old rows. The app does not migrate a local
+database of an older schema: whoever holds one deletes it, and the app
+creates a new one. The decision is revisited before the first release
 ([musetric/musetric#1099](https://github.com/musetric/musetric/issues/1099)).
 
 ## Why

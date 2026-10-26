@@ -10,10 +10,11 @@
   `main` only through pull requests.
 - **A branch `X` tracks `origin/X` or nothing.** A new branch has no upstream
   until its first push, `git push -u origin X:X`, and never tracks
-  `origin/main`. Every clone sets `git config branch.autoSetupMerge simple`, so
-  git links a branch only to its namesake. Before a push,
+  `origin/main`. `scripts/clone.mjs` sets `branch.autoSetupMerge simple` in
+  every clone, so git links a branch only to its namesake, and
+  `scripts/doctor.mjs` reports a clone without it. Before a push,
   `git for-each-ref --format='%(refname:short) -> %(upstream:short)' refs/heads`
-  shows no other pairing. *Not enforced yet.*
+  shows no other pairing.
 - **No worktrees unless the owner asks.** Switch branches in the repository's
   own checkout. When another session's branch is checked out there, ask that
   session before switching, switch back when done, and tell it what changed:
