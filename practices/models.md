@@ -8,10 +8,20 @@ How the product's neural networks are chosen, replaced and published.
   provenance is checked against candidate parents (per-tensor cosine of the
   weights), not taken from the label on its card: a permissive label on a
   fine-tune does not grant the rights of its parent.
+- **The licence of weights comes from what they were made of**: the weights
+  they start from and the data they learn from, not the code that trained
+  them. A student distilled from a model keeps that model's licence, learns
+  only from openly licensed audio, and lists the tracks it learned from.
+- **Shape first, training second.** A new model's shape is exported and
+  timed on the devices before it is trained; only a shape that fits the time
+  and the memory budget is trained.
 - **A replacement must not lose quality.** A faster model replaces the
   current one only when both checks pass: it is not worse by ear, and its
   accuracy against real references is close to the current one's. For vocal
-  separation that is the vocals SDR on the MUSDB18-HQ test set within 1 dB.
+  separation that is the vocals SDR on the MUSDB18-HQ test set within 1 dB;
+  for transcription, the word error rate and the share of lost lines on the
+  open set of songs with checked lyrics of
+  [musetric/musetric#1045](https://github.com/musetric/musetric/pull/1045).
   Speed targets are ideals, approached model by model with a measurement
   each; a faster but worse model is not shipped to release sooner.
 - **The owner's ear decides.** Metrics find the places to listen to; they

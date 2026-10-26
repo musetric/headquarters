@@ -42,6 +42,9 @@ updates the project does not control.
 - **A WebView is not the browser.** It lacks some features the browser has,
   its audio timing differs, and its version follows its own updates. A result
   in a desktop browser proves nothing about the app on a phone.
+- **A declared limit is not a proven one.** The limits an adapter reports,
+  such as the largest buffer it binds, are not proof that a buffer of that
+  size works on it; a model that needs one probes it on the device.
 - **WebGPU fails quietly.** A shader that does not compile gives an invalid
   pipeline whose dispatches do nothing, so the output stays zero instead of an
   error; limits differ by platform, and a model has to fit the lowest of them.

@@ -27,6 +27,7 @@ map; the knowledge is in the pages it points to.
 | [practices/working-with-the-owner.md](practices/working-with-the-owner.md) | acting on a request |
 | [practices/code.md](practices/code.md) | writing code or tests, or adding or upgrading a dependency |
 | [practices/models.md](practices/models.md) | choosing, replacing, publishing or pinning a model |
+| [practices/evidence.md](practices/evidence.md) | claiming anything as proven |
 | [practices/experiments.md](practices/experiments.md) | research or a training |
 | [practices/checks.md](practices/checks.md) | adding a rule anywhere, or changing what CI checks |
 | [practices/environments.md](practices/environments.md) | adding or changing a tool, a version or a build environment |

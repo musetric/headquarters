@@ -29,6 +29,15 @@ every resource is shared with other people and agents.
   minutes: memory, clocks, temperature and throttling are watched while it
   runs, and the run shrinks or stops before it overflows memory or throttles
   the device.
+- **Memory is the first thing to watch** on the machine where the work runs:
+  the RAM, the GPU memory, and on a phone the memory of the page's process.
+  Measure a task's peak in its first minutes, keep room for the system and for
+  the work of others, and shrink a run before it reaches the limit, not after
+  it fails.
+- **A shortfall of GPU memory must fail, not slow down.** Some drivers move
+  what does not fit into shared system memory without a word, and the run
+  goes on many times slower. Set the driver to fail instead, and treat a
+  sudden slowdown as a memory problem until it is shown to be something else.
 - **A phone runs one model inference at a time.** Mobile GPUs lose the device
   under two; this changes only if the product itself requires it.
 - **A measured device runs nothing else.** Timing runs of an old and a new

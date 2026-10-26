@@ -4,7 +4,7 @@ How research and training are run. What the environment allows is in
 [resources.md](resources.md).
 
 - **Nothing is tried a third time without a new reason.** Before proposing a
-  speed or quality idea, search the study's list of what was tried, the
+  speed or quality idea, search the epic's list of what was tried, the
   issues and the pull requests (`gh issue list --search`,
   `gh pr list --search`). An idea that already failed is proposed again only
   with what has changed since, named.
@@ -15,6 +15,10 @@ How research and training are run. What the environment allows is in
   hardware it will use: utilization and power near what the hardware can
   sustain, the time per step explained. Short configurations are benchmarked
   first; a run that underloads its hardware is stopped and fixed.
+- **A recipe stops at its plateau.** Once the learning rate has reached its
+  minimum and two consecutive snapshots score the same against true
+  references, more hours go into another recipe or another shape, not into
+  the same one.
 - **Listening verdicts are data.** Whenever the owner or another listener
   describes what is heard, record it at once and in full: the verbatim text
   and its fields (is there a voice, what leaks, who is better, the class), as
