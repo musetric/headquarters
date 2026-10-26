@@ -31,6 +31,9 @@ comment before it is posted.
 
 ## What goes where
 
+- **An epic gets a comment only for a major change**: the design of a
+  scenario, a key decision, or a sub-issue closed with what it reached and
+  why. Progress snapshots go to the sub-issues.
 - **The first measurement is in the body.** A History's Start and the
   Baseline of Hypotheses or of an Improvement are measured before the issue
   is created; nothing that belongs to an issue's creation is posted as a
