@@ -23,6 +23,8 @@ How research and training are run. What the environment allows is in
   describes what is heard, record it at once and in full: the verbatim text
   and its fields (is there a voice, what leaks, who is better, the class), as
   labels for the dataset.
-- **Experiments live in the lab**, outside the product repositories, and
-  every track or model there has its licence and source recorded; training
-  uses only openly licensed material.
+- **Experiments live outside the repositories**, in a private experiments
+  folder of the machine that runs them: their data, runs and models never go
+  into a repository, `musetric/lab` included, which keeps only the code an
+  experiment turns into. Every track or model there has its licence and source
+  recorded; training uses only openly licensed material.

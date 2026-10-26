@@ -33,6 +33,9 @@ const git = (args, env) =>
 
 const httpsUrl = (sshUrl) => sshUrl.replace(/^git@([^:]+):/, 'https://$1/').replace(/\.git$/, '');
 
+// A branch tracks only its namesake on origin (practices/git.md).
+const setUpstreamRule = (target) => git(['-C', target, 'config', 'branch.autoSetupMerge', 'simple']);
+
 const syncRepository = (repository) => {
   const target = join(root, repository.path);
   if (!existsSync(join(target, '.git'))) {
@@ -41,8 +44,13 @@ const syncRepository = (repository) => {
     // needs only the pointers, so the gigabytes stay on Hugging Face.
     const env = repository.profile === 'models' ? { GIT_LFS_SKIP_SMUDGE: '1' } : {};
     const result = git(['clone', repository.url, target], env);
-    return result.status === 0 ? 'cloned' : `clone failed: ${result.stderr.trim()}`;
+    if (result.status !== 0) {
+      return `clone failed: ${result.stderr.trim()}`;
+    }
+    setUpstreamRule(target);
+    return 'cloned';
   }
+  setUpstreamRule(target);
   const origin = git(['-C', target, 'remote', 'get-url', 'origin']).stdout.trim();
   if (origin === repository.url) {
     return 'present';
