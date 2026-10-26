@@ -37,7 +37,14 @@ decision, not with the code.
 | [R-25](r25-separation-in-one-graph.md) | The separation core runs as one graph, not in stages |
 | [R-26](r26-whisper-on-transformers-js.md) | Transcription stays on transformers.js |
 | [R-28](r28-vocal-model-duality.md) | The vocal model is Duality, with an 11-second window |
+| [R-31](r31-notes-in-cents.md) | Notes compares in cents with the singer's own line |
+| [R-32](r32-record-at-any-tempo-and-key.md) | Singing and recording work at any tempo and key |
 | [R-33](r33-one-migration-until-users.md) | One database migration until the app has users |
+| [R-34](r34-several-recordings.md) | A song keeps several recordings, one of them active |
+| [R-35](r35-trainer-teaches-through-spectrogram.md) | The trainer teaches through the spectrogram, not with a score |
+| [R-36](r36-loop-pass-by-pass.md) | A line is practised in a loop, and only the chosen try is kept |
+| [R-37](r37-octave-moves-the-picture.md) | The octave moves the picture, not the sound |
+| [R-38](r38-export-what-you-hear.md) | The export is the mix, key and tempo you hear |
 
 ## Decisions that became rules
 
