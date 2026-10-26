@@ -46,6 +46,7 @@ decision, not with the code.
 | [R-37](r37-octave-moves-the-picture.md) | The octave moves the picture, not the sound |
 | [R-38](r38-export-what-you-hear.md) | The export is the mix, key and tempo you hear |
 | [R-39](r39-browser-version-is-the-site.md) | The browser version is the site, built on Musetric's libraries |
+| [R-40](r40-apple-from-version-26.md) | Apple systems are supported from version 26 |
 
 ## Decisions that became rules
 
