@@ -29,7 +29,9 @@ updates the project does not control.
   generation to the next, and a browser update can break a device that worked
   the day before. A wrong result looks like a normal one. The defects found so
   far and their workarounds: [#975](https://github.com/musetric/musetric/issues/975).
-- **Apple systems** (macOS, iPadOS, iOS on Apple silicon) are where memory
+- **Apple systems** (macOS, iPadOS, iOS on Apple silicon, from version 26,
+  the first whose WKWebView has WebGPU:
+  [R-40](../decisions/r40-apple-from-version-26.md)) are where memory
   runs out. WebKit limits the memory of the process that holds the page, GPU
   memory included, and the limit is far stricter on an iPhone than on a Mac;
   GPU work stops when the app leaves the screen, and some WebGPU limits are
