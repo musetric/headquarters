@@ -9,6 +9,74 @@ readmes of [musetric/musetric](https://github.com/musetric/musetric); where the
 models run and what each platform does to them is in
 [environment/platforms.md](environment/platforms.md).
 
+## How it is built
+
+- **The app** (`packages/app`) is a Tauri shell, the same on every platform.
+  It runs the Rust host in its own process and shows the interface in the
+  platform's WebView.
+- **The host** (`packages/server`) owns the data and the processing: the
+  SQLite database, the files of the projects, decoding and encoding audio, the
+  processing queue, mixdown and export
+  ([R-10](decisions/r10-host-owns-processing.md),
+  [R-14](decisions/r14-media-without-ffmpeg.md)). It serves the interface and
+  its API on the device's loopback address.
+- **The interface** (`packages/frontend`, with `packages/engine` and
+  `packages/audio`) plays, draws and records in the WebView.
+- **The executor** is a hidden page of the app that runs the models
+  (`packages/ai`). It connects to the host by itself on a loopback port of its
+  own and takes one unit of work at a time
+  ([R-4](decisions/r04-executor-connects-itself.md),
+  [R-20](decisions/r20-one-inference-at-a-time.md)).
+
+## What happens to a song
+
+A song is processed by seven steps, each reading what an earlier step made:
+
+```mermaid
+flowchart LR
+  source --> separation
+  separation --> vocals
+  separation --> instrumental
+  vocals --> voices
+  voices --> lead
+  voices --> backing
+  lead --> transcription
+  lead --> range[voice range]
+  instrumental --> rhythm
+  instrumental --> key
+  instrumental --> chords
+```
+
+Separation splits the vocals from the instrumental, and voices splits the lead
+from the backing. Transcription writes the lyrics with the time of each word,
+voice range finds the range of the lead, rhythm finds the beats, the downbeats
+and the tempo, and key and chords read the instrumental. A step that is
+interrupted resumes from its last checkpoint.
+
+## What it keeps
+
+Everything stays on the device: the song, its stems and analyses, and the
+user's recordings. The stems and analyses can be computed again from the song;
+a recording cannot, so it is never treated as a cache. The models are
+downloaded once from Hugging Face, and the host checks each file against the
+size and SHA-256 it pins.
+
+## The models
+
+| Step | Model | Licence of the weights | Repository |
+| --- | --- | --- | --- |
+| Separation | Mel-Band RoFormer Duality by Aname ([R-28](decisions/r28-vocal-model-duality.md)) | Apache-2.0 | `musetric/aname-mel-band-roformer-duality-onnx` |
+| Voices | MDX-Net KARA2 of Ultimate Vocal Remover | MIT | `musetric/uvr-mdxnet-kara2-onnx` |
+| Transcription | Whisper large-v3 turbo by OpenAI ([R-26](decisions/r26-whisper-on-transformers-js.md)) | MIT | `musetric/whisper-large-v3-turbo-onnx` |
+| Rhythm | Beat This! by CPJKU | MIT | `musetric/beat-this-onnx` |
+| Key | S-KEY by Deezer | MIT | `musetric/skey-onnx` |
+| Chords | ChordNet of ChordMini | MIT | `musetric/chordmini-onnx` |
+| Voice range | no model: the pitch tracker of `@musetric/spectrogram` | | |
+
+The revision of each model is pinned in musetric's
+`packages/server/src/analysis/models.rs`, at the head of its repository's
+`main` ([practices/models.md](practices/models.md)).
+
 ## Where it stands
 
 Musetric is preparing its first release; nothing has been released yet. The
