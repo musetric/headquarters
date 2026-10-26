@@ -24,6 +24,21 @@ question.
   computation was running.
 - **A median does not cancel the tails.** A change that improves the median
   can still break a few cases badly; the worst cases are reported next to it.
+- **A difference smaller than the noise is no difference.** The noise of a
+  metric is measured, by a bootstrap over tracks or by varying the
+  normalization, and a difference below it is reported as none.
+- **A reference is checked before a score against it is chased.** Where
+  independent runs agree against the reference, the reference is wrong, and a
+  gain smaller than its own error rate may only fit its mistakes.
+- **A gap is judged against the margin it can change.** A numeric gap between
+  two implementations is compared with the margin of the decision it feeds,
+  such as the gap between a classifier's first and second choice, not with
+  zero.
+- **Rebuild before blaming a change.** Before concluding that a change breaks
+  the numbers, rebuild the unchanged artifact with the current toolchain: a
+  loss the rebuild shows as well belongs to the toolchain.
+- **Absence is a claim too.** A file, a script or a use said to be missing is
+  confirmed with `git ls-files` or `git grep`, not with one search tool.
 - **A partial gain is called partial.** A gain bought with quality,
   responsiveness or memory says what it cost.
 - **Lost artifacts make an experiment unrepeatable**, not confirmed: its
