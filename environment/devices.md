@@ -16,6 +16,21 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
 - **Heat changes timings.** Phones and fanless machines slow down as they
   warm; a timing run notes the temperature before and after, and old and new
   variants alternate within one session.
+- **An emulator or a simulator stands for no device.** Its GPU, WebView and
+  memory are not those of a phone; a result there checks the code, not the
+  device.
+- **WebGPU exists only in a secure context**: on `localhost` or over HTTPS. A
+  page served by address over the network has no WebGPU.
+- **One configuration, one browser process.** A session leaves GPU memory
+  behind it, so several configurations measured in one process disturb each
+  other; each starts in a fresh process.
+- **A measurement in the background is not valid.** The system throttles a
+  page's timers when it leaves the front and may end its process.
+- **No error does not mean an option applied.** onnxruntime-web ignores an
+  option it does not know without a word; an option is checked by what it
+  visibly changes, or by provoking it with a value it must refuse.
+- **A log line counts for a run only when it is tied to that run**, by the
+  run's own identifier: other pages and earlier runs write into the same log.
 
 ## Android phones
 
@@ -27,6 +42,11 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   a phone, leave it idle with the screen on.
 - Vendors' own system apps can come to the front over the browser and pause
   the page; check that the page is in front and visible before a series.
+- Some of the system's own reports do not see what matters under load: its
+  memory report misses the GPU memory of WebGPU, its thermal status can stay
+  at zero while the phone already slows down, and its frame histogram ends in
+  a bucket of frames whose length is unknown. Read the GPU memory, the clocks
+  and per-frame timestamps directly.
 
 ## Apple devices
 
