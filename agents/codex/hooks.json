@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node headquarters/scripts/session-start.mjs --instructions"
+          }
+        ]
+      }
+    ]
+  }
+}

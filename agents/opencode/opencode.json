@@ -1,0 +1,5 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["headquarters/AGENTS.md"],
+  "plugins": ["./headquarters/agents/opencode/session-start"]
+}

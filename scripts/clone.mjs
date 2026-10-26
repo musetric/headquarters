@@ -1,14 +1,16 @@
 // Clones the repositories of the chosen profiles into the workspace root and
-// writes the root's AGENTS.md and the agents' configuration of
-// agents/claude: a copy of its settings.json and a link to each of its skills
-// in the root's .claude. Safe to rerun: an existing clone is only checked,
-// an HTTPS origin of the right repository is switched to the SSH URL, and a
-// root file that differs from the generated one is reported, not overwritten.
+// writes the root's AGENTS.md and the agents' configuration that
+// agents/layout.json lays out: a copy of each configuration file of Claude
+// Code, Codex and OpenCode, and a link to each skill of agents/skills in every
+// skills folder the agents read. Safe to rerun: an existing clone is only
+// checked, an HTTPS origin of the right repository is switched to the SSH
+// URL, and a root file that differs from the generated one is reported, not
+// overwritten.
 //
 //   node headquarters/scripts/clone.mjs [--profiles core,lab] [--root <dir>]
 
 import { spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, symlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, realpathSync, symlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -82,11 +84,14 @@ const writeRootInstructions = () => {
   return readFileSync(target, 'utf8') === rootInstructions ? 'present' : 'present, differs from the generated one';
 };
 
-const agentConfig = join(headquarters, 'agents', 'claude');
+const agents = join(headquarters, 'agents');
+const layout = JSON.parse(readFileSync(join(agents, 'layout.json'), 'utf8'));
 
-const writeAgentSettings = () => {
-  const target = join(root, '.claude', 'settings.json');
-  const source = readFileSync(join(agentConfig, 'settings.json'), 'utf8');
+// A link to a file needs rights on Windows and a hard link breaks on
+// checkout, so configuration files are copied and reported when they drift.
+const copyAgentFile = ({ from, to }) => {
+  const target = join(root, to);
+  const source = readFileSync(join(agents, from), 'utf8');
   if (!existsSync(target)) {
     mkdirSync(dirname(target), { recursive: true });
     writeFileSync(target, source);
@@ -95,15 +100,27 @@ const writeAgentSettings = () => {
   return readFileSync(target, 'utf8') === source ? 'present' : 'present, differs from headquarters';
 };
 
+const isPresent = (path) => {
+  try {
+    lstatSync(path);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
 // A junction needs no rights on Windows; elsewhere the type is ignored and a
 // directory symlink is made.
-const linkSkill = (name) => {
-  const source = join(agentConfig, 'skills', name);
-  const target = join(root, '.claude', 'skills', name);
-  if (!existsSync(target)) {
+const linkSkill = (folder, name) => {
+  const source = join(agents, 'skills', name);
+  const target = join(root, folder, name);
+  if (!isPresent(target)) {
     mkdirSync(dirname(target), { recursive: true });
     symlinkSync(source, target, 'junction');
     return 'linked';
+  }
+  if (!existsSync(target)) {
+    return 'present, but a broken link: remove it and rerun';
   }
   return realpathSync(target) === realpathSync(source) ? 'present' : 'present, but not a link to headquarters';
 };
@@ -112,7 +129,11 @@ for (const repository of workspace.repositories.filter((item) => profiles.includ
   console.log(`${repository.path}: ${syncRepository(repository)}`);
 }
 console.log(`AGENTS.md: ${writeRootInstructions()}`);
-console.log(`.claude/settings.json: ${writeAgentSettings()}`);
-for (const name of readdirSync(join(agentConfig, 'skills'))) {
-  console.log(`.claude/skills/${name}: ${linkSkill(name)}`);
+for (const file of layout.files) {
+  console.log(`${file.to}: ${copyAgentFile(file)}`);
+}
+for (const folder of layout.skills) {
+  for (const name of readdirSync(join(agents, 'skills'))) {
+    console.log(`${folder}/${name}: ${linkSkill(folder, name)}`);
+  }
 }
