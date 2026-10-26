@@ -32,8 +32,10 @@ It holds:
 
 - who the organization is and what it stands for: the [charter](charter.md);
 - how work is done in every repository: the [practices](practices/readme.md);
-- the general picture of the product and where it runs: [product.md](product.md)
-  and [environment/](environment/readme.md);
+- the general picture of the product, where it runs and where it stands, in
+  general words linked to the issues: [product.md](product.md) and
+  [environment/](environment/readme.md);
+- the owner's decisions in force, each with its reason: [decisions/](decisions/readme.md);
 - how a machine and the workspace are set up: [onboarding](onboarding/owner.md),
   [workspace.json](workspace.json) and the [scripts](scripts/);
 - the agents' configuration shared by the organization.
@@ -44,7 +46,10 @@ It does not hold:
   learns them from the environment at hand, and a person's own instructions
   stay with that person;
 - concrete problems, defects, measurements, hypotheses, tasks and their
-  status: they are issues in the repository they concern;
+  status, a release plan among them: they are issues of
+  [musetric/musetric](https://github.com/musetric/musetric/issues), where the
+  organization keeps all its issues for now. A page here may state a fact in
+  general words and link to the issues that prove it;
 - what a repository owns: its code rules, its toolchain and the versions it
   pins stay in that repository, and this one only links to them or reads
   them;

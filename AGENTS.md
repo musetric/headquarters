@@ -19,11 +19,13 @@ map; the knowledge is in the pages it points to.
 | --- | --- |
 | [about.md](about.md) | adding anything to headquarters; it says why it exists and where the truth is |
 | [product.md](product.md) | any work on the product: what it is and where it runs |
+| [decisions/](decisions/readme.md) | changing how the product works: a decision in force may already rule on it |
 | [practices/resources.md](practices/resources.md) | any task: what the environment has, what the task needs, how to share it |
 | [practices/git.md](practices/git.md) | a branch, a commit, a push or a pull request |
 | [practices/public-texts.md](practices/public-texts.md) | anything that becomes public |
 | [practices/tracker.md](practices/tracker.md) | an issue, a comment on one, or a measurement for one |
 | [practices/working-with-the-owner.md](practices/working-with-the-owner.md) | acting on a request |
+| [practices/code.md](practices/code.md) | writing code or tests, or adding or upgrading a dependency |
 | [practices/models.md](practices/models.md) | choosing, replacing, publishing or pinning a model |
 | [practices/experiments.md](practices/experiments.md) | research or a training |
 | [practices/checks.md](practices/checks.md) | adding a rule anywhere, or changing what CI checks |
