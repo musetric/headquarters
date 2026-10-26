@@ -1,0 +1,22 @@
+# R-20. One inference at a time
+
+**Decided** 2026-09-14.
+
+## Decision
+
+Exactly one neural network runs at any moment. One project is processed, one
+step of it, one model of that step, and one run of that model at a time. Two
+networks never run together: not two models, not two runs of one model, not
+a run on the GPU next to one on the CPU.
+
+## Why
+
+Processing must not overload the user's hardware: the phone or the computer
+stays usable while it works.
+
+## Where it applies
+
+- One executor page holds the Web Lock `musetric-executor`
+  (`packages/ai/src/service/browserExecutor.ts`), so a second page cannot run
+  models next to it:
+  [musetric/musetric#872](https://github.com/musetric/musetric/pull/872).
