@@ -9,3 +9,4 @@ change only when the general picture does.
 | --- | --- |
 | [platforms.md](platforms.md) | where the models run, and what each kind of platform tends to do to them |
 | [devices.md](devices.md) | running pages, measurements and builds on test devices |
+| [stores.md](stores.md) | what the app stores ask of the app before it is published there |
