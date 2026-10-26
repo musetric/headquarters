@@ -34,4 +34,6 @@ and it waits on three things:
   yet ([#1100](https://github.com/musetric/musetric/issues/1100)), the macOS
   build is not signed
   ([#1101](https://github.com/musetric/musetric/issues/1101)), and the site
-  offers no download ([#1102](https://github.com/musetric/musetric/issues/1102)).
+  neither offers the app nor lets a visitor try it in the browser
+  ([#1115](https://github.com/musetric/musetric/issues/1115),
+  [R-39](decisions/r39-browser-version-is-the-site.md)).
