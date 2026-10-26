@@ -61,3 +61,10 @@ comment before it is posted.
   never mixed in one comparison.
 - **Every list of changes names the model each one affects**, and for shared
   code how it affects them.
+- **Memory is the peak next to the limit.** It is reported as the peak on
+  every device beside that device's limit, the headroom only as an extra
+  figure; a runtime mechanism such as the pacer or graph capture gets a
+  one-line plain explanation before its numbers.
+- **Polled times are quantized by the poll.** A time read from polled progress
+  is the span from the first to the last unit divided by their count minus
+  one, not a sum of polls.

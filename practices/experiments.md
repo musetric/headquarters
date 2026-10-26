@@ -15,6 +15,9 @@ How research and training are run. What the environment allows is in
   hardware it will use: utilization and power near what the hardware can
   sustain, the time per step explained. Short configurations are benchmarked
   first; a run that underloads its hardware is stopped and fixed.
+- **A training saves its weights every few minutes**, and a separate process
+  scores them, so a run stopped or starved of memory between two evaluations
+  loses nothing.
 - **A recipe stops at its plateau.** Once the learning rate has reached its
   minimum and two consecutive snapshots score the same against true
   references, more hours go into another recipe or another shape, not into
