@@ -2,9 +2,9 @@
   "name": "@musetric/headquarters",
   "private": true,
   "scripts": {
-    "check": "musetric-checks english && musetric-checks links && node scripts/check.mjs"
+    "check": "musetric-checks english && musetric-checks links && musetric-checks comments && node scripts/check.mjs"
   },
   "devDependencies": {
-    "@musetric/checks": "0.1.0"
+    "@musetric/checks": "0.2.0"
   }
 }

@@ -1,14 +1,3 @@
-// Clones the repositories of the chosen profiles into the workspace root and
-// writes the root's AGENTS.md and the agents' configuration that
-// agents/layout.json lays out: a copy of each configuration file of Claude
-// Code, Codex and OpenCode, and a link to each skill of agents/skills in every
-// skills folder the agents read. Safe to rerun: an existing clone is only
-// checked, an HTTPS origin of the right repository is switched to the SSH
-// URL, and a root file that differs from the generated one is reported, not
-// overwritten.
-//
-//   node headquarters/scripts/clone.mjs [--profiles core,lab] [--root <dir>]
-
 import { spawnSync } from 'node:child_process';
 import { existsSync, lstatSync, mkdirSync, readdirSync, readFileSync, realpathSync, symlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -35,15 +24,12 @@ const git = (args, env) =>
 
 const httpsUrl = (sshUrl) => sshUrl.replace(/^git@([^:]+):/, 'https://$1/').replace(/\.git$/, '');
 
-// A branch tracks only its namesake on origin (practices/git.md).
 const setUpstreamRule = (target) => git(['-C', target, 'config', 'branch.autoSetupMerge', 'simple']);
 
 const syncRepository = (repository) => {
   const target = join(root, repository.path);
   if (!existsSync(join(target, '.git'))) {
     mkdirSync(dirname(target), { recursive: true });
-    // Model repositories keep their weights in LFS; a clone for publishing
-    // needs only the pointers, so the gigabytes stay on Hugging Face.
     const env = repository.profile === 'models' ? { GIT_LFS_SKIP_SMUDGE: '1' } : {};
     const result = git(['clone', repository.url, target], env);
     if (result.status !== 0) {
@@ -87,8 +73,6 @@ const writeRootInstructions = () => {
 const agents = join(headquarters, 'agents');
 const layout = JSON.parse(readFileSync(join(agents, 'layout.json'), 'utf8'));
 
-// A link to a file needs rights on Windows and a hard link breaks on
-// checkout, so configuration files are copied and reported when they drift.
 const copyAgentFile = ({ from, to }) => {
   const target = join(root, to);
   const source = readFileSync(join(agents, from), 'utf8');
@@ -109,8 +93,6 @@ const isPresent = (path) => {
   }
 };
 
-// A junction needs no rights on Windows; elsewhere the type is ignored and a
-// directory symlink is made.
 const linkSkill = (folder, name) => {
   const source = join(agents, 'skills', name);
   const target = join(root, folder, name);

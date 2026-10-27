@@ -1,40 +1,22 @@
-# Allowed Conventional Commit types and scopes.
-#
-# Format: `type(scope): subject`  (scope is required)
-#   docs(onboarding): describe the owner's machine setup
-#   feat(workspace): clone every repository of the organization
-#   ci(github): cancel superseded prTitle runs
-#
-# The full line `type(scope): subject` must be 70 characters or less.
-#
-# Read by .github/workflows/prTitle.yml and enforced on every PR title.
-# Inline comments below document what each key means and when to use it.
-#
-# Adding a new scope: add it here and merge to main first — the linter reads
-#   this list from the base branch, so a PR cannot use a scope that is not yet on main.
-# Removing an area + its scope: do it in one PR (the scope still exists on the base branch).
-
-# Type = what kind of change it is.
 types:
-  - feat # new capability of the workspace or its scripts
-  - fix # bug fix in existing behavior
-  - perf # speed/memory optimization, behavior unchanged
-  - refactor # internal code rewritten, behavior unchanged
-  - revert # roll back a previously merged change
-  - docs # documentation, comments, readme only
-  - test # tests added/changed, no scripts touched
-  - build # build system & packaged artifacts
-  - ci # CI/CD pipelines (this workflow, etc.)
-  - chore # housekeeping that touches no scripts, build, or CI
+  feat: 'new capability of the workspace or its scripts'
+  fix: 'bug fix in existing behavior'
+  perf: 'speed/memory optimization, behavior unchanged'
+  refactor: 'internal code rewritten, behavior unchanged'
+  revert: 'roll back a previously merged change'
+  docs: 'documentation and readme only'
+  test: 'tests added/changed, no scripts touched'
+  build: 'build system & packaged artifacts'
+  ci: 'CI/CD pipelines'
+  chore: 'housekeeping that touches no scripts, build, or CI'
 
-# Scope = which area the change belongs to.
 scopes:
-  - organization # who we are: the charter, the mission, the members
-  - onboarding # setting up a new member's machine and accounts
-  - workspace # the repository manifest and the local layout of the organization
-  - agent # agent guidance & config (AGENTS.md, CLAUDE.md, AI tooling)
-  - practices # how work is done: git, pull requests, public texts, the tracker
-  - environment # machines, devices, stands, accounts and other resources
-  - research # what experiments found, and what not to repeat
-  - github # repo & GitHub Actions settings (workflows, templates)
-  - license # license and third-party notices
+  organization: 'who we are: the charter, the mission, the members'
+  onboarding: 'setting up a new member''s machine and accounts'
+  workspace: 'the repository manifest and the local layout of the organization'
+  agent: 'agent guidance & config (AGENTS.md, CLAUDE.md, AI tooling)'
+  practices: 'how work is done: git, pull requests, public texts, the tracker'
+  environment: 'machines, devices, stands, accounts and other resources'
+  research: 'what experiments found, and what not to repeat'
+  github: 'repo & GitHub Actions settings (workflows, templates)'
+  license: 'license and third-party notices'
