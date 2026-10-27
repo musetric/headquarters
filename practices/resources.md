@@ -67,6 +67,11 @@ every resource is shared with other people and agents.
   list is no proof, since launchers run the model in a child process. A long
   run confirms which execution provider actually came up, because a silent
   fallback to the CPU changes the whole memory picture.
+- **A stopped task may leave its processes running.** After a background
+  task is stopped, interrupted or refused while it drives a device or plays
+  sound, list the exact leaf processes it started and end those; never match
+  by a pattern that can also hit a wrapper's command line, which carries the
+  whole command of the task.
 
 ## Data on the devices
 

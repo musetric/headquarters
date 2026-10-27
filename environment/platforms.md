@@ -27,8 +27,10 @@ updates the project does not control.
   compilers and drivers of phone GPUs, Qualcomm's among them, can miscompile
   a kernel or drop its work without an error, differently from one GPU
   generation to the next, and a browser update can break a device that worked
-  the day before. A wrong result looks like a normal one. The defects found so
-  far and their workarounds: [#975](https://github.com/musetric/musetric/issues/975).
+  the day before. A wrong result looks like a normal one. They may read
+  float16 subnormals as zero, so a float16 graph goes wrong first on quiet
+  input. The defects found so far and their workarounds:
+  [#975](https://github.com/musetric/musetric/issues/975).
 - **Apple systems** (macOS, iPadOS, iOS on Apple silicon, from version 26,
   the first whose WKWebView has WebGPU:
   [R-40](../decisions/r40-apple-from-version-26.md)) are where memory
@@ -60,6 +62,14 @@ updates the project does not control.
 
 - The parity run compares every step from the original model to WebGPU on
   each kind of device: [#972](https://github.com/musetric/musetric/issues/972).
+  Its cases include quiet and lowered-level input.
+- A GPU defect is located against the same device's wasm provider on the
+  same bytes, narrowed by moving families of nodes off the GPU, worked
+  around by a graph rewrite in the lab, then pinned and confirmed by the
+  parity run.
+- A suspected driver defect is told apart from our own shader by running the
+  same WGSL through Dawn on desktop Vulkan and D3D12: exact there and wrong on
+  the phone points at the driver.
 - One model file serves every device; a platform's defect is worked around
   in that file or in the runtime, not with a second file for that platform.
 - A new problem gets its own issue, and a platform defect is added to #975;
