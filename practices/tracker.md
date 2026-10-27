@@ -4,8 +4,12 @@ How issues of `musetric/musetric` are kept. Every text here is public, so
 [public-texts.md](public-texts.md) applies, and the owner sees each issue and
 comment before it is posted.
 
-## Forms, types and labels
+## Forms, types, labels and fields
 
+- **Issues live only in `musetric/musetric`.** The other repositories of
+  the organization have issues turned off: a defect or a task of lab,
+  headquarters, landing or a model repository is an issue here, and a PR in
+  another repository closes it with `Fixes musetric/musetric#N`.
 - **Every issue uses a form** from `.github/ISSUE_TEMPLATE` of
   `musetric/musetric`: blank issues are disabled, and a workflow flags an
   issue without a type. Read the form on `origin/main` before writing; an
@@ -24,6 +28,12 @@ comment before it is posted.
   epic has the essence only. Areas follow the processing steps, not the
   models, and are named like the commit scopes; a new area is created with its
   first issue. Platforms and GPUs are never labels.
+- **The `Repositories` field names where the work of an issue lands:**
+  `musetric`, `lab`, `models` (the model repositories on Hugging Face),
+  `headquarters`, `landing`, as many as apply; an epic takes those of its
+  sub-issues. An agent that creates an issue sets the field right after; an
+  issue opened on the site gets it at triage. `no:field.repositories` lists
+  the issues still without it.
 - **Titles.** An epic states its goal with "must". A bug or a set of
   hypotheses states the symptom, not its cause. A History names what it
   tracks, without "history" in the title, since the type says it. A title
