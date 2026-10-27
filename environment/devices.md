@@ -42,6 +42,11 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   a phone, leave it idle with the screen on.
 - Vendors' own system apps can come to the front over the browser and pause
   the page; check that the page is in front and visible before a series.
+- A long run's output overruns logcat's default buffer of 256 KiB; enlarge
+  it before the run (`adb logcat -G 16M`).
+- An app's WebView renders in a separate sandboxed process that belongs to
+  the WebView package, not to the app: a process list filtered by the app's
+  package misses it, and the app's memory is the sum of both processes.
 - Some of the system's own reports do not see what matters under load: its
   memory report misses the GPU memory of WebGPU, its thermal status can stay
   at zero while the phone already slows down, and its frame histogram ends in
@@ -54,11 +59,20 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   or through a WebKit debug proxy. Only a debug build of the app lets its
   WebView be inspected.
 - Memory is the limit to watch: measure the process's footprint next to its
-  kill limit, and give each heavy measurement a fresh page process.
+  kill limit, and give each heavy measurement a fresh page process. WebKit's
+  memory categories are not the footprint the limit counts.
+- Never look for a page's headroom by filling memory until the system kills
+  it: that exhausts the system's compressed memory, and the system then ends
+  dozens of processes, the browser among them.
+- Safari's `error.stack` carries no message: the page hooks `uncapturederror`
+  and the errors of pipeline creation itself. A page opened over the LAN gets
+  WebGPU only over HTTPS; a self-signed certificate, accepted once, is enough.
 
 ## Desktop
 
 - On a laptop with two GPUs, check which one the browser engine actually
-  uses before a measurement.
+  uses before a measurement. Chromium picks one GPU for its whole GPU
+  process: `powerPreference` does not move WebGPU off the integrated GPU,
+  only the launch switch `--force_high_performance_gpu` does.
 - Several WebViews of one app that share a data folder must start with the
   same browser arguments, or the later ones fail to start.

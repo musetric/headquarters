@@ -19,3 +19,8 @@ How an agent takes the owner's requests.
   build, goes to the background; the agent says where it is (task N of M,
   what it does) and picks it up from the notification or when asked, instead
   of blocking for minutes.
+- **"Clean up" means tracked files.** Asked to clean up a repository or to
+  remove what is not needed, an agent removes only files the repository
+  tracks. Ignored folders, such as `tmp/`, a virtual environment, `build/` or
+  `node_modules`, may hold a person's own data and are left alone unless
+  named.

@@ -39,3 +39,9 @@ These rules apply to all of it.
   a correction.
 - **One home.** Once a text is published, the draft it came from is cut down
   to a link to it, so that no second copy drifts.
+- **Nobody's own machines, orders, prices or accounts.** A public text names
+  what the work needs, such as the hardware a training requires, never what
+  a person owns, buys or pays.
+- **A report to another project's tracker is a public text too**, such as
+  one to Chromium or onnxruntime: the owner approves and files it, and our
+  issue of the defect links it.
