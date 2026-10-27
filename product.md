@@ -1,7 +1,9 @@
 # The product
 
-Musetric is one application for Windows, macOS, Android and iOS; Linux is
-not supported yet ([R-6](decisions/r06-linux-not-supported-yet.md)). A Tauri
+Musetric is for singers and musicians, amateurs and teachers with their
+students: it takes a song apart and helps to learn it and to sing it. It is
+one application for Windows, macOS, Android and iOS; Linux is not supported
+yet ([R-6](decisions/r06-linux-not-supported-yet.md)). A Tauri
 shell runs the Rust host and shows the React
 interface in the platform's WebView, and the models run on WebGPU in a web
 page, the same way everywhere. How each part works is in the source and the
