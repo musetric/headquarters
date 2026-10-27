@@ -1,10 +1,13 @@
 // Tells an agent, at the start of a session in the workspace root, how the
 // workspace stands: whether headquarters is behind its origin, and the branch
 // and uncommitted files of every repository. Claude Code runs it as the
-// SessionStart hook of agents/claude/settings.json and adds what it prints to
-// the session's context.
+// SessionStart hook of agents/claude/settings.json, Codex as the hook of
+// agents/codex/hooks.json, and OpenCode through the plugin of
+// agents/opencode; each adds what it prints to the session's context.
+// Codex reads no imports in AGENTS.md, so its hook passes --instructions to
+// get the rules of headquarters/AGENTS.md after the state of the workspace.
 //
-//   node headquarters/scripts/session-start.mjs
+//   node headquarters/scripts/session-start.mjs [--instructions]
 
 import { spawnSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
@@ -47,4 +50,8 @@ const lines = [
     .map((repository) => `- ${describe(repository.path)}`),
   'Other sessions may work in these folders too: check before switching a branch or touching uncommitted files.',
 ];
+if (process.argv.includes('--instructions')) {
+  const instructions = join(headquarters, 'AGENTS.md');
+  lines.push('', `Instructions from ${instructions}:`, '', readFileSync(instructions, 'utf8').trim());
+}
 console.log(lines.join('\n'));

@@ -99,6 +99,13 @@ product:
   such as signing certificates, domains and test devices;
 - content, talks and workshops.
 
+A contract with an institution goes through a fiscal host or a partner
+company that takes the payment and answers for continuity, because an
+institution cannot depend on one person. Such a contract promises a response
+time, not a time to fix: a defect of a browser or a driver is worked around
+where possible, and its fix is not ours to promise. A regulator's requirement
+is met with settings of the one product, never with a fork for one country.
+
 Paid work never crowds out the product.
 
 ## The users' trust

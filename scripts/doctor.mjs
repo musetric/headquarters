@@ -286,18 +286,28 @@ const checks = [
     profile: 'core',
     name: 'agent configuration',
     check: () => {
-      const config = join(headquarters, 'agents', 'claude');
-      const settings = join(root, '.claude', 'settings.json');
-      if (!existsSync(settings) || readFileSync(settings, 'utf8') !== readFileSync(join(config, 'settings.json'), 'utf8')) {
-        return fail('.claude/settings.json of the root is missing or differs from headquarters: run clone.mjs');
+      const agents = join(headquarters, 'agents');
+      const layout = JSON.parse(readFileSync(join(agents, 'layout.json'), 'utf8'));
+      const drifted = layout.files
+        .filter(({ from, to }) => {
+          const target = join(root, to);
+          return !existsSync(target) || readFileSync(target, 'utf8') !== readFileSync(join(agents, from), 'utf8');
+        })
+        .map(({ to }) => to);
+      if (drifted.length > 0) {
+        return fail(`missing or differing from headquarters: ${drifted.join(', ')}: run clone.mjs`);
       }
-      const skills = readdirSync(join(config, 'skills'));
-      const unlinked = skills.filter((name) => {
-        const link = join(root, '.claude', 'skills', name);
-        return !existsSync(link) || realpathSync(link) !== realpathSync(join(config, 'skills', name));
-      });
+      const skills = readdirSync(join(agents, 'skills'));
+      const unlinked = layout.skills.flatMap((folder) =>
+        skills
+          .filter((name) => {
+            const link = join(root, folder, name);
+            return !existsSync(link) || realpathSync(link) !== realpathSync(join(agents, 'skills', name));
+          })
+          .map((name) => `${folder}/${name}`),
+      );
       return unlinked.length === 0
-        ? pass(`settings and ${skills.length} skills`)
+        ? pass(`${layout.files.length} configuration files and ${skills.length} skills in ${layout.skills.length} folders`)
         : fail(`skills not linked to headquarters: ${unlinked.join(', ')}: run clone.mjs`);
     },
   },
