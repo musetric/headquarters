@@ -39,6 +39,15 @@ These rules apply to all of it.
   a correction.
 - **One home.** Once a text is published, the draft it came from is cut down
   to a link to it, so that no second copy drifts.
+- **Not retold from the history.** What a commit, a pull request or an issue
+  already says, such as why a change was made, how a defect was found or what
+  a measurement showed, is not copied into a readme or another markdown file
+  of a repository: `git log -S` on the code finds the change that explains
+  it, and its description links the issues. Only two kinds of such text are
+  written again: the core of a readme, what a reader must know about the
+  product or the package before anything else, and the wider understanding
+  of the product that belongs to headquarters by [about.md](../about.md).
+  Before writing a text of either kind, search the history for it.
 - **Nobody's own machines, orders, prices or accounts.** A public text names
   what the work needs, such as the hardware a training requires, never what
   a person owns, buys or pays.
