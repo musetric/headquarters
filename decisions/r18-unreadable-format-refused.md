@@ -16,7 +16,5 @@ user must still understand why a file is refused.
 
 ## Where it applies
 
-- The import of `packages/server/src/routes/project.rs` refuses a file its
-  decoder (`packages/server/crates/media/src/decode.rs`) cannot read. Its
-  message calls the file invalid and appends the decoder's error; it does not
-  yet say that the format is not supported.
+- The import of `packages/server/src/routes/project.rs` and the decoder of
+  `packages/server/crates/media/src/decode.rs`.

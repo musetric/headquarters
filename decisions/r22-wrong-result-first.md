@@ -16,5 +16,4 @@ but not that it is wrong.
 
 - The issues labelled `correctness` in
   [musetric/musetric](https://github.com/musetric/musetric/issues?q=label%3Acorrectness).
-- The parity check, `measure:parity`, compares every step from the original
-  model to the product on each platform.
+- The parity check, musetric's `measure:parity`.

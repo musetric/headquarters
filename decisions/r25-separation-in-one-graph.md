@@ -4,16 +4,14 @@
 
 ## Decision
 
-The vocal separation core runs as one graph. The staged path, the core cut
-into many subgraphs so that the phone stays responsive between them, is not
-shipped.
+The vocal separation core runs as one graph. It is not cut into subgraphs
+that run in stages.
 
 ## Why
 
-Splitting the heavy projections into rows when the core is exported bought
-the responsiveness for about 2 percent of the time, with an output identical
-to the bit. The stages left tails of seconds that the phone still froze for,
-and they cost about 700 MB in the model's repository.
+The heavy projections split into rows when the core is exported keep the
+phone responsive with an identical output, and the stages did not
+([musetric/musetric#957](https://github.com/musetric/musetric/issues/957) H7).
 
 ## Where it applies
 

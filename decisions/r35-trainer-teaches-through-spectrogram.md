@@ -16,11 +16,11 @@ and an action, and it shows no hints or red verdicts while the student sings.
 
 ## Why
 
-An amateur cannot judge their own singing, even from a recording. A raw
-spectrogram without an explanation does not help them, while one explained
-goal on a short piece does, and a number does not say what to change. The
-student grows the way a professional does, by learning to read the sound.
+An amateur cannot judge their own singing, even from a recording, and neither
+a raw spectrogram nor a number says what to change, while one explained goal
+on a short piece does. The student grows the way a professional does, by
+learning to read the sound.
 
 ## Where it applies
 
-- Not built yet.
+- [musetric/musetric#1131](https://github.com/musetric/musetric/issues/1131).

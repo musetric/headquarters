@@ -1,7 +1,6 @@
 # R-12. The installed app is checked at a release, not on pull requests
 
-**Decided** 2026-08-05, confirmed 2026-09-07; restated 2026-10-26 to follow
-[practices/checks.md](../practices/checks.md).
+**Decided** 2026-08-05, confirmed 2026-09-07; restated 2026-10-26.
 
 ## Decision
 
@@ -20,5 +19,6 @@ release run and by the scripts run on the devices.
 
 ## Where it applies
 
-- `.github/workflows/appBuild.yml` runs only when dispatched by hand.
-- [practices/checks.md](../practices/checks.md).
+- `.github/workflows/appBuild.yml`.
+- [practices/checks.md](../practices/checks.md) and
+  [practices/release.md](../practices/release.md).

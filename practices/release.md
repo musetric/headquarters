@@ -16,7 +16,7 @@ follows this page, and the first is
   interface and heat.
 
 Passing one says nothing of the others. Small permanent checks guard one
-invariant each; a large comparison harness does not come back.
+invariant each, not one large comparison harness.
 
 ## The passport of a run
 

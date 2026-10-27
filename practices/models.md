@@ -66,5 +66,4 @@ How the product's neural networks are chosen, replaced and published.
 - **A pin in `packages/server/src/analysis/models.rs` is always the head of
   the model repository's `main`.** Any later commit, even a card-only fix,
   moves the pin too, so card fixes go into the model's commit before it is
-  pinned. A pin change of Whisper downloads all of it again, about 780 MB,
-  because its cache is kept per revision.
+  pinned ([musetric/musetric#1117](https://github.com/musetric/musetric/pull/1117)).
