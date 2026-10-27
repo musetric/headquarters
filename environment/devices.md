@@ -51,7 +51,14 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   memory report misses the GPU memory of WebGPU, its thermal status can stay
   at zero while the phone already slows down, and its frame histogram ends in
   a bucket of frames whose length is unknown. Read the GPU memory, the clocks
-  and per-frame timestamps directly.
+  and per-frame timestamps directly. framestats keeps only the latest frames:
+  once its ring is full, every statistic taken from it, the median included,
+  covers only the end of the run.
+- **The thermal gate of a run.** A run starts at thermal status 0 or 1, no
+  new run starts at 2, and a run stops at 3 or above to cool; a phone is never
+  driven to 4 for an experiment. Record the status before, during and after,
+  and whether it was read at all: a page outside the app has no thermal
+  bridge, and a missing status is not 0.
 
 ## Apple devices
 
