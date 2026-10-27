@@ -22,6 +22,12 @@ How research and training are run. What the environment allows is in
   minimum and two consecutive snapshots score the same against true
   references, more hours go into another recipe or another shape, not into
   the same one.
+- **Small models test ideas at equal compute.** An idea tried on small models
+  is compared at the same compute budget, not the same number of steps, on two
+  or three sizes; an advantage on every size likely holds at the full one.
+  The loss, the augmentations, the mix of data and the layout carry over
+  well; the best learning rate, which depends on the width, and anything
+  decided by capacity do not.
 - **Listening verdicts are data.** Whenever the owner or another listener
   describes what is heard, record it at once and in full: the verbatim text
   and its fields (is there a voice, what leaks, who is better, the class), as

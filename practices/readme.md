@@ -16,6 +16,7 @@ rule marked *Not enforced yet* is a candidate for one.
 | [evidence.md](evidence.md) | claiming anything as proven: in an issue, a pull request, a measurement or a decision |
 | [experiments.md](experiments.md) | proposing or starting research or a training |
 | [checks.md](checks.md) | adding a rule anywhere, or changing what CI checks |
+| [release.md](release.md) | running the checks of a release on the installed app |
 | [environments.md](environments.md) | adding or changing a tool, a version or a build environment |
 | [agents-md.md](agents-md.md) | writing or changing an `AGENTS.md` in any repository |
 
