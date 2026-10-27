@@ -4,9 +4,8 @@
 
 ## Decision
 
-The host decodes and encodes audio with Rust crates and its own code:
-Symphonia decodes, flacenc writes FLAC, rusty_aac writes AAC, and the product
-writes fragmented MP4 itself. ffmpeg is neither shipped nor called.
+The host decodes and encodes audio with Rust crates and its own code. ffmpeg
+is neither shipped nor called.
 
 ## Why
 

@@ -19,4 +19,3 @@ it sounds the most.
 ## Where it applies
 
 - The comparison in cents: `packages/spectrogram/src/comparison`.
-- Splitting the line into notes is not built yet.

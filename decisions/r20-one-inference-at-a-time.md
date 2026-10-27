@@ -20,7 +20,6 @@ stays usable while it works.
 
 ## Where it applies
 
-- One executor page holds the Web Lock `musetric-executor`
-  (`packages/ai/src/service/browserExecutor.ts`), so a second page cannot run
-  models next to it:
+- The Web Lock `musetric-executor` of
+  `packages/ai/src/service/browserExecutor.ts`:
   [musetric/musetric#872](https://github.com/musetric/musetric/pull/872).

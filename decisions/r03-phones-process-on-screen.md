@@ -10,14 +10,11 @@ processing: no foreground service, no background task.
 
 ## Why
 
-Android ended the app's process a few minutes after it left the screen, and
-iOS gives no background time for work of this kind. One behavior on both
-phones is simpler and more honest than two partial ones.
+Android may end an app that has left the screen, and iOS gives no background
+time for work of this kind; one behavior on both phones is simpler and more
+honest than two partial ones.
 
 ## Where it applies
 
-- The screen is kept on by the frontend's wake lock,
-  `packages/frontend/src/app/screenWakeLock.ts`.
-- Processing stops when the app leaves the screen since
-  [musetric/musetric#862](https://github.com/musetric/musetric/pull/862),
-  which also removed the Android foreground service.
+- `packages/frontend/src/app/screenWakeLock.ts`.
+- [musetric/musetric#862](https://github.com/musetric/musetric/pull/862).

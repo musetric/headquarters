@@ -13,12 +13,10 @@ TypeScript in the package.
 
 ## Why
 
-A visitor should be able to try Musetric before installing it. The core of
-the app is a Rust host that a browser cannot run; porting it to WebAssembly
-would give the host a second environment, and a server would send the
-visitor's song away. The analyses already run in a web page, so libraries
-can carry them, and every algorithm keeps one implementation for the app and
-the site.
+A visitor should be able to try Musetric before installing it, without a
+second environment for the Rust host and without a server that receives the
+song. The analyses already run in a web page, so libraries can carry them
+with one implementation for the app and the site.
 
 ## Where it applies
 

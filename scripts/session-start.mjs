@@ -4,8 +4,7 @@
 // SessionStart hook of agents/claude/settings.json, Codex as the hook of
 // agents/codex/hooks.json, and OpenCode through the plugin of
 // agents/opencode; each adds what it prints to the session's context.
-// Codex reads no imports in AGENTS.md, so its hook passes --instructions to
-// get the rules of headquarters/AGENTS.md after the state of the workspace.
+// --instructions appends headquarters/AGENTS.md to what it prints.
 //
 //   node headquarters/scripts/session-start.mjs [--instructions]
 
