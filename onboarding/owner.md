@@ -73,9 +73,14 @@ Ask the owner, and repeat the answers in the final report:
 `node headquarters/scripts/clone.mjs --profiles <profiles>` clones every
 repository of the profiles next to `headquarters` and writes the root's
 `AGENTS.md`, which points every agent started in the root to
-[AGENTS.md](../AGENTS.md) of this repository, and the root's `.claude`: a copy
-of the settings of [agents/claude](../agents/claude) and a link to each of its
-skills. Agents are started in the root. Model repositories are cloned
+[AGENTS.md](../AGENTS.md) of this repository, and the agents' configuration
+that [agents/layout.json](../agents/layout.json) lays out: a copy of the
+configuration files of Claude Code, Codex and OpenCode, and a link to each
+skill of [agents/skills](../agents/skills) in the skills folder of each.
+Agents are started in the root. Codex loads the root's configuration only
+when the root and its session-start hook are trusted: **Owner** accepts the
+trust prompt at the first start in the root and trusts the hook with
+`/hooks`, again after every change of `agents/codex/hooks.json`. Model repositories are cloned
 without their LFS files: publishing a revision needs only the pointers. The
 script also moves the first, HTTPS, clone of `headquarters` to SSH.
 
@@ -107,5 +112,4 @@ Report to the owner per profile: what passed, what failed and why, and which
 ## Not covered yet
 
 The test phones and their browsers, the measurement stands, the data of the
-model experiments, iOS builds, release signing for the stores, and Codex or
-OpenCode on the machine.
+model experiments, iOS builds, and release signing for the stores.

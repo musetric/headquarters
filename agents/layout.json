@@ -1,0 +1,8 @@
+{
+  "files": [
+    { "from": "claude/settings.json", "to": ".claude/settings.json" },
+    { "from": "codex/hooks.json", "to": ".codex/hooks.json" },
+    { "from": "opencode/opencode.json", "to": "opencode.json" }
+  ],
+  "skills": [".claude/skills", ".agents/skills"]
+}
