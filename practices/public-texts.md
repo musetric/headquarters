@@ -48,6 +48,12 @@ These rules apply to all of it.
   product or the package before anything else, and the wider understanding
   of the product that belongs to headquarters by [about.md](../about.md).
   Before writing a text of either kind, search the history for it.
+- **A readme is short.** It introduces its directory: what it is, how it is
+  run or used, and the few rules a change to it must keep, one line each,
+  with links. It is not a record of defects, measurements or the reasons for
+  a change, and neither is a code comment: those stay in the pull requests
+  and issues. A detail that has no home there yet, such as a comment that is
+  its only record, is posted on its pull request or issue before it is cut.
 - **Nobody's own machines, orders, prices or accounts.** A public text names
   what the work needs, such as the hardware a training requires, never what
   a person owns, buys or pays.
