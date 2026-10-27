@@ -8,6 +8,10 @@ What applies to the code of every repository.
   way out is code of our own around it, a fix proposed upstream, or a
   question to the owner. A patch found on an older branch is raised with the
   owner, not carried over. *Not enforced yet.*
+- **File names start in lower case** in every repository, such as
+  `readme.md` and `license.md`, except the names tools look for, such as
+  `AGENTS.md`, `CLAUDE.md` and `SKILL.md`. Headquarters checks it in
+  `scripts/check.mjs`; *not enforced yet* in the other repositories.
 - **Tests follow complexity and importance.** The effort put into tests
   matches how hard the code is and how much depends on it: an algorithm such
   as the FFT, the spectrogram or a step of signal processing has unit tests

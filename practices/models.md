@@ -31,6 +31,12 @@ How the product's neural networks are chosen, replaced and published.
   devices; a defect or a speed gap of one GPU is not solved with a second
   graph chosen by adapter. A device-specific runtime option in code is a
   separate question for the owner.
+- **Candidates are ranked on held-out data.** A score computed on training
+  tracks, such as a table scored on the train split of MUSDB18, ranks
+  nothing; candidates are compared on a held-out test set.
+- **The graph is the network only.** Signal processing the runtime already
+  has, such as the STFT, the CQT or a mel filterbank, runs in the runtime
+  from a shipped plan or filterbank and is not baked into the model's graph.
 
 ## Repositories on Hugging Face
 
@@ -42,6 +48,13 @@ How the product's neural networks are chosen, replaced and published.
   `duality_v1_core_t1100.onnx`; an upstream file name is quoted as it is.
 - **A new repository's history starts with the owner's single root commit**,
   not the commit Hugging Face generates.
+- **Text files are served with LF line endings**, so the pinned SHA-256 of a
+  JSON file is that of its LF form; a checkout that converts line endings
+  hashes another file.
+- **A published file can become undownloadable weeks later** when its LFS
+  blob was never moved to Xet storage: the revision looks alive, and the CDN
+  answers 403. The tree API of the revision shows it, since such a file has
+  no `xetHash`; uploading the file again fixes it and moves the pin.
 - **Published through git** from the clones in the workspace's `models/`:
   fetch, put the staged files in place, commit, push, then compare the
   served size and hash of each file with the local ones. Only with the
