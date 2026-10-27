@@ -1,13 +1,3 @@
-// Tells an agent, at the start of a session in the workspace root, how the
-// workspace stands: whether headquarters is behind its origin, and the branch
-// and uncommitted files of every repository. Claude Code runs it as the
-// SessionStart hook of agents/claude/settings.json, Codex as the hook of
-// agents/codex/hooks.json, and OpenCode through the plugin of
-// agents/opencode; each adds what it prints to the session's context.
-// --instructions appends headquarters/AGENTS.md to what it prints.
-//
-//   node headquarters/scripts/session-start.mjs [--instructions]
-
 import { spawnSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';

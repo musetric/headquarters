@@ -8,6 +8,11 @@ What applies to the code of every repository.
   way out is code of our own around it, a fix proposed upstream, or a
   question to the owner. A patch found on an older branch is raised with the
   owner, not carried over. *Not enforced yet.*
+- **No comments in code**, in any language: what code does is said by its
+  names and types, and why it is so by its pull request, its issue and the
+  commit message. Only a tool directive, such as `eslint-disable` or `noqa`,
+  and `@see`, `@todo` or `@fixme` in a script stay; third-party code keeps
+  its own. *Enforced* by `musetric-checks comments` of `@musetric/checks`.
 - **File names start in lower case** in every repository, such as
   `readme.md` and `license.md`, except the names tools look for, such as
   `AGENTS.md`, `CLAUDE.md` and `SKILL.md`. Headquarters checks it in

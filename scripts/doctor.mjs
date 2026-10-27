@@ -1,11 +1,3 @@
-// Checks that this machine is ready to work on the repositories of the chosen
-// profiles. Versions come from the pins the repositories declare themselves
-// (.node-version, packageManager, rust-toolchain.toml, the versions their CI
-// installs), never from this file.
-// Exits with 1 when any check fails; a warning does not fail the run.
-//
-//   node headquarters/scripts/doctor.mjs [--profiles core,lab] [--root <dir>]
-
 import { spawnSync } from 'node:child_process';
 import { existsSync, readdirSync, readFileSync, realpathSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -30,8 +22,6 @@ if (unknownProfiles.length > 0) {
 const isWindows = process.platform === 'win32';
 const product = join(root, 'musetric');
 
-// Commands go through the shell on Windows so that .cmd and .ps1 shims
-// (yarn, corepack) resolve; arguments must therefore contain no spaces.
 const run = (command, args, cwd) => {
   const result = spawnSync(command, args, { cwd, encoding: 'utf8', shell: isWindows });
   const out = `${result.stdout ?? ''}${result.stderr ?? ''}`.trim();
@@ -63,8 +53,6 @@ const rustPins = [
 
 const baseQuality = join(product, '.github', 'actions', 'baseQuality', 'action.yml');
 
-// A standalone binary CI installs at a pinned version: the same binary at the
-// same version on PATH here.
 const binaryCheck = (command, variable) => () => {
   const pin = readPin(baseQuality, new RegExp(`${variable}: *v?([^ ]+)$`, 'm'));
   if (pin === undefined) {

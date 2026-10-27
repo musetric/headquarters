@@ -1,11 +1,3 @@
-// Checks what only this repository has: every file name starts in lower case
-// (except the names agents look for), workspace.json is consistent, and every
-// script parses and imports Node's built-in modules only. English letters and
-// links are checked by @musetric/checks; `npm run check` runs both. Exits
-// with 1 on a failure.
-//
-//   node scripts/check.mjs
-
 import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
