@@ -2,6 +2,12 @@
 
 What applies to the code of every repository.
 
+- **One implementation of each job.** A decoder, an API client, a storage
+  layout or the geometry of a model is written once and has one owner. A
+  second copy, in the same language or in another, is a reason to stop and
+  ask why one cannot serve both: two copies drift apart without an error.
+  *Enforced in part*: the duplicate check of musetric finds copies that read
+  alike, not a copy in another language.
 - **A dependency is used as it is published.** No patch of a dependency: no
   Yarn `patch:` protocol, no edit in `node_modules` or `site-packages`, no edit
   of a built bundle. When a dependency lacks an option or has a defect, the
