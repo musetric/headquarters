@@ -73,6 +73,29 @@ every resource is shared with other people and agents.
   by a pattern that can also hit a wrapper's command line, which carries the
   whole command of the task.
 
+## Where the work writes
+
+- **What the work writes on a machine stays in the workspace.** Every file a
+  task creates or changes lives under the workspace root, the folder the
+  repositories are cloned into: in a repository when it belongs there, and
+  otherwise in a folder of its own in the workspace root that no repository
+  tracks, such as `tmp/<work>/`. That covers drafts, plans, notes and
+  journals, experiment data, labels and runs, downloaded datasets and models,
+  and the scripts and logs of a run. Nothing of the work goes to the root of a
+  drive, the home folder or another place of the machine, where nobody looks
+  for it. A session's own scratch space dies with the session, so what the
+  work will need again goes into the workspace.
+- **The environment is not the work.** Toolchains and runtimes such as
+  Python, uv, Node.js and Yarn, package caches such as those of npm and pip,
+  drivers, and the settings of the system and of the agents live wherever the
+  machine's setup puts them; headquarters does not regulate them.
+- **The rule is about files, not about where work happens.** A tool or a
+  service is used the way it is meant to be: a design in Claude Design, a run
+  on a rented machine, a model on Hugging Face and an issue on GitHub stay
+  where they belong, and a tool's own cache or temporary files are the tool's
+  business. Only when the work itself writes a file to the machine does that
+  file go into the workspace.
+
 ## Data on the devices
 
 - **A probe never writes into a user's data.** A probe that records on a
