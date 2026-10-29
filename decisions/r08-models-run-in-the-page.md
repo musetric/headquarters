@@ -10,8 +10,7 @@ Core ML, XNNPACK, QNN or native onnxruntime in the app's process.
 
 ## Why
 
-A native path is a second implementation of the same math, with defects and a
-parity of its own to keep.
+It applies [One way, the same everywhere](../principles.md) to inference.
 
 ## Where it applies
 

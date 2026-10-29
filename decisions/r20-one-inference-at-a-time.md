@@ -15,8 +15,7 @@ computing only when that run has ended.
 
 ## Why
 
-Processing must not overload the user's hardware: the phone or the computer
-stays usable while it works.
+It applies [The device stays the user's](../principles.md) to inference.
 
 ## Where it applies
 

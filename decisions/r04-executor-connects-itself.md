@@ -12,7 +12,8 @@ on its own opens it in a headless browser.
 ## Why
 
 A reload of the interface must not drop the running step or load its model
-again, and one kind of executor on every platform leaves one behavior to test.
+again. It applies [Nothing of the user's is lost](../principles.md) and
+[One way, the same everywhere](../principles.md).
 
 ## Where it applies
 

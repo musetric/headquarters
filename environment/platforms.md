@@ -10,10 +10,9 @@ Every model runs in a web page, through onnxruntime-web and the product's own
 WGSL, with the same code and the same model file on every platform, and none
 runs natively ([R-8](../decisions/r08-models-run-in-the-page.md)). All of them
 run on WebGPU but S-KEY, the small key model, which runs on wasm in the same
-page ([R-9](../decisions/r09-no-cpu-fallback.md)). The page is the executor:
-inside the app it is a WebView (Android
-System WebView, WKWebView on Apple systems, WebView2 on Windows), and the
-desktop server can also start a headless browser for it. The Rust host
+page on every platform. The page is the executor: inside the app it is a
+WebView (Android System WebView, WKWebView on Apple systems, WebView2 on
+Windows), and the desktop server can also start a headless browser for it. The Rust host
 decodes the audio, drives the processing queue and hands the executor one
 model run at a time.
 

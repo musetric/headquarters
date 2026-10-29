@@ -4,15 +4,15 @@
 
 ## Decision
 
-A user can sing and record at any tempo and in any key of the song. Nothing
-that was sung is lost, and what a change of tempo or key does to a take is
-clear without an explanation. A take sung in another key always sounds in the
-song's current key.
+A user can sing and record at any tempo and in any key of the song. A take
+sung in another key always sounds in the song's current key.
 
 ## Why
 
 Slowing down, singing and speeding up again is the core of practice, and
-hardly any singing app records at a slowed-down tempo.
+hardly any singing app records at a slowed-down tempo. It applies
+[Nothing of the user's is lost](../principles.md) and
+[Clear without explanation](../principles.md) to practice.
 
 ## Where it applies
 

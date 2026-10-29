@@ -14,14 +14,12 @@ TypeScript in the package.
 ## Why
 
 A visitor should be able to try Musetric before installing it, without a
-second environment for the Rust host and without a server that receives the
-song. The analyses already run in a web page, so libraries can carry them
-with one implementation for the app and the site.
+server that receives the song. The analyses already run in a web page, so
+libraries carry them to the site as well
+([One way, the same everywhere](../principles.md)).
 
 ## Where it applies
 
 - [musetric/musetric#1115](https://github.com/musetric/musetric/issues/1115),
   under the release epic
   [#1099](https://github.com/musetric/musetric/issues/1099).
-- A tool shared by repositories is written once:
-  [practices/environments.md](../practices/environments.md).

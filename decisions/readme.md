@@ -3,7 +3,8 @@
 The decisions of the owner that are in force: what was decided, when and why,
 and where it applies. A decision is a requirement, not a description of the
 code. The code follows it, and a change that would break it starts with a new
-decision, not with the code.
+decision, not with the code. The [principles](../principles.md) hold above
+the decisions: a decision applies them to one question.
 
 ## How a record is kept
 
@@ -26,11 +27,9 @@ decision, not with the code.
 | [R-4](r04-executor-connects-itself.md) | The executor is a hidden page that connects to the host itself |
 | [R-6](r06-linux-not-supported-yet.md) | Linux is not supported yet |
 | [R-8](r08-models-run-in-the-page.md) | Models run in the web page, never natively |
-| [R-9](r09-no-cpu-fallback.md) | A GPU defect is fixed on the GPU, not by a CPU fallback |
 | [R-10](r10-host-owns-processing.md) | The host owns the processing |
 | [R-12](r12-app-checked-at-release.md) | The installed app is checked at a release, not on pull requests |
 | [R-14](r14-media-without-ffmpeg.md) | Audio is decoded and encoded without ffmpeg |
-| [R-18](r18-unreadable-format-refused.md) | A format the decoder cannot read is refused with a clear message |
 | [R-20](r20-one-inference-at-a-time.md) | One inference at a time |
 | [R-24](r24-own-webgpu-device.md) | The product owns its WebGPU device and paces its queue |
 | [R-25](r25-separation-in-one-graph.md) | The separation core runs as one graph, not in stages |
@@ -51,8 +50,10 @@ decision, not with the code.
 
 | Decision | Where it lives |
 | --- | --- |
+| R-9: a GPU defect is fixed on the GPU, not by a CPU fallback | [principles.md](../principles.md): One way, the same everywhere |
 | R-15: no compatibility kept for an internal protocol before the release | musetric's `AGENTS.md` § Contracts |
 | R-17: a silent stem goes to the absolute gate of BS.1770 instead of failing | the test `puts_silence_on_the_absolute_gate_instead_of_failing` of musetric's `packages/server/crates/media/src/loudness.rs` |
+| R-18: a format the decoder cannot read is refused with a clear message | [principles.md](../principles.md): One way, the same everywhere; Honest with the user |
 | R-19: no patch of a dependency | [practices/code.md](../practices/code.md) |
 | R-22: a wrong result goes first | [practices/design.md](../practices/design.md) § Weighing a request |
 | R-23: no real material in the implementation | [practices/public-texts.md](../practices/public-texts.md), musetric's `AGENTS.md` § Test Material |

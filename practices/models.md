@@ -27,10 +27,6 @@ How the product's neural networks are chosen, replaced and published.
 - **The owner's ear decides.** Metrics find the places to listen to; they
   are not the verdict. Differences are shown as A/B excerpts with timestamps,
   and fullness of the vocals weighs heavily.
-- **One graph for every device.** A model ships as exactly one file for all
-  devices; a defect or a speed gap of one GPU is not solved with a second
-  graph chosen by adapter. A device-specific runtime option in code is a
-  separate question for the owner.
 - **Candidates are ranked on held-out data.** A score computed on training
   tracks, such as a table scored on the train split of MUSDB18, ranks
   nothing; candidates are compared on a held-out test set.

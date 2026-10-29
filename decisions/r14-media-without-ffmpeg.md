@@ -9,8 +9,7 @@ is neither shipped nor called.
 
 ## Why
 
-One implementation of the media code on every platform, without an external
-program to find, ship or keep compatible per platform.
+It applies [One way, the same everywhere](../principles.md) to media.
 
 ## Where it applies
 

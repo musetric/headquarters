@@ -11,8 +11,8 @@ install on an older system.
 
 The models run on WebGPU in the app's WebView
 ([R-8](r08-models-run-in-the-page.md)), and WKWebView has WebGPU from
-version 26. On an older system the app would install and then fail to
-process a song.
+version 26; refusing an older system at installation applies
+[Honest with the user](../principles.md).
 
 ## Where it applies
 

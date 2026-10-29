@@ -4,15 +4,15 @@
 
 ## Decision
 
-An exported file carries everything the user hears: the mix, the key and the
-tempo, which can be changed in the export the same way as in the player. The
-host stretches the audio with its own Rust port of Signalsmith Stretch, not
-with the C++ library through a binding.
+An exported file carries the mix, the key and the tempo, which can be
+changed in the export the same way as in the player. The host stretches the
+audio with its own Rust port of Signalsmith Stretch, not with the C++
+library through a binding.
 
 ## Why
 
-A file must sound like the session it comes from. The port keeps the host
-free of unsafe code and of a C++ toolchain on every target.
+It applies [Honest with the user](../principles.md) to the export. The port
+keeps the host free of unsafe code and of a C++ toolchain on every target.
 
 ## Where it applies
 

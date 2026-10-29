@@ -11,8 +11,8 @@ processing: no foreground service, no background task.
 ## Why
 
 Android may end an app that has left the screen, and iOS gives no background
-time for work of this kind; one behavior on both phones is simpler and more
-honest than two partial ones.
+time for work of this kind, so processing on screen is the one behavior both
+phones allow ([One way, the same everywhere](../principles.md)).
 
 ## Where it applies
 

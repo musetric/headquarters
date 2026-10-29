@@ -40,6 +40,7 @@ It holds:
 - the general picture of the product, where it runs and where it stands, in
   general words linked to the issues: [product.md](product.md) and
   [environment/](environment/readme.md);
+- the principles that hold for the whole product: [principles.md](principles.md);
 - the owner's decisions in force, each with its reason: [decisions/](decisions/readme.md);
 - how a machine and the workspace are set up: [onboarding](onboarding/owner.md),
   [workspace.json](workspace.json) and the [scripts](scripts/);

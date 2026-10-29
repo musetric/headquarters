@@ -12,7 +12,7 @@ and how close it is to what the product is for, taking a song apart,
 learning it and singing it ([product.md](../product.md)). When two goods
 compete, the earlier one wins:
 
-1. **The users' trust**: their privacy, and nothing they made is lost.
+1. **The users' trust**: their privacy and what they made.
 2. **A correct result.** A wrong result is worse than a slow one: the user
    sees that a result is slow, but not that it is wrong.
 3. **A device that stays usable** while the product works on it.
