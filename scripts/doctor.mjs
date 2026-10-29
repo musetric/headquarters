@@ -130,9 +130,16 @@ const checks = [
       const sign = run('git', ['config', '--get', 'commit.gpgsign'], headquarters).out;
       const key = run('git', ['config', '--get', 'user.signingkey'], headquarters).out;
       const format = run('git', ['config', '--get', 'gpg.format'], headquarters).out || 'openpgp';
-      return sign === 'true' && key !== ''
-        ? pass(`${format} key ${key.split(/[\\/]/).pop()}`)
-        : fail('commits are not signed in the workspace: main requires verified signatures');
+      if (sign !== 'true' || key === '') {
+        return fail('commits are not signed in the workspace: main requires verified signatures');
+      }
+      if (format !== 'openpgp') {
+        return fail(`gpg.format is ${format}: Hugging Face verifies GPG signatures only`);
+      }
+      const gpg = run('git', ['config', '--get', 'gpg.program'], headquarters).out || 'gpg';
+      return spawnSync(gpg, ['--list-secret-keys', key]).status === 0
+        ? pass(`gpg key ${key}`)
+        : fail(`the signing key ${key} is not among the secret keys of ${gpg}`);
     },
   },
   {
