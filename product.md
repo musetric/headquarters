@@ -77,16 +77,14 @@ code ([design.md](practices/design.md#domain-driven-design)).
 
 ## What happens to a song
 
-A song is processed by seven steps, each reading what an earlier step made:
+A song is processed by six steps, each reading what an earlier step made:
 
 ```mermaid
 flowchart LR
   source --> separation
-  separation --> vocals
   separation --> instrumental
-  vocals --> voices
-  voices --> lead
-  voices --> backing
+  separation --> lead
+  separation --> backing
   lead --> transcription
   lead --> range[voice range]
   instrumental --> rhythm
@@ -94,8 +92,9 @@ flowchart LR
   instrumental --> chords
 ```
 
-Separation splits the vocals from the instrumental, and voices splits the lead
-from the backing; the vocals between them stay internal. Transcription writes
+Separation splits the song into the instrumental, the lead and the backing in
+one pass of one model; the vocals, the lead and the backing together, stay
+internal. Transcription writes
 the lyrics with the time of each word, voice range finds the range of the
 lead, rhythm finds the beats, the downbeats and the tempo, and key and chords
 read the instrumental.
@@ -112,8 +111,7 @@ size and SHA-256 it pins.
 
 | Step | Model | Licence of the weights | Repository |
 | --- | --- | --- | --- |
-| Separation | Mel-Band RoFormer Duality by Aname | Apache-2.0 | `musetric/aname-mel-band-roformer-duality-onnx` |
-| Voices | MDX-Net KARA2 of Ultimate Vocal Remover | MIT | `musetric/uvr-mdxnet-kara2-onnx` |
+| Separation | Mel-Band RoFormer student of Duality by Aname and of KARA 2 of Ultimate Vocal Remover | Apache-2.0 | `musetric/mel-band-roformer-duality-kara2-student-onnx` |
 | Transcription | Whisper large-v3 turbo by OpenAI | MIT | `musetric/whisper-large-v3-turbo-onnx` |
 | Rhythm | Beat This! by CPJKU | MIT | `musetric/beat-this-onnx` |
 | Key | S-KEY by Deezer | MIT | `musetric/skey-onnx` |
