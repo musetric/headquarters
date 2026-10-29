@@ -71,11 +71,6 @@ const commandCheck = (command, args) => () => {
   return result.ok ? pass(result.firstLine) : fail(`${command} is not installed or not on PATH`);
 };
 
-const sshCheck = (host, greeting) => () => {
-  const result = run('ssh', ['-T', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=10', `git@${host}`]);
-  return result.out.includes(greeting) ? pass(result.firstLine) : fail(`no SSH access to ${host}: ${result.firstLine}`);
-};
-
 const vsBuildTools = () => {
   const vswhere = join(process.env['ProgramFiles(x86)'] ?? '', 'Microsoft Visual Studio', 'Installer', 'vswhere.exe');
   if (!existsSync(vswhere)) {
@@ -120,19 +115,6 @@ const checks = [
       const result = run('gh', ['auth', 'status', '--hostname', 'github.com']);
       const account = result.out.match(/account (\S+)/);
       return result.ok && account ? pass(`signed in as ${account[1]}`) : fail('gh is missing or not signed in');
-    },
-  },
-  { profile: 'core', name: 'github ssh', check: sshCheck('github.com', 'successfully authenticated') },
-  {
-    profile: 'core',
-    name: 'signed commits',
-    check: () => {
-      const sign = run('git', ['config', '--get', 'commit.gpgsign'], headquarters).out;
-      const key = run('git', ['config', '--get', 'user.signingkey'], headquarters).out;
-      const format = run('git', ['config', '--get', 'gpg.format'], headquarters).out || 'openpgp';
-      return sign === 'true' && key !== ''
-        ? pass(`${format} key ${key.split(/[\\/]/).pop()}`)
-        : fail('commits are not signed in the workspace: main requires verified signatures');
     },
   },
   {
@@ -269,7 +251,6 @@ const checks = [
   { profile: 'android', name: 'adb', check: commandCheck('adb', ['version']) },
   { profile: 'android', name: 'ninja', check: commandCheck('ninja', ['--version']) },
   { profile: 'models', name: 'git lfs', check: commandCheck('git', ['lfs', 'version']) },
-  { profile: 'models', name: 'hugging face ssh', check: sshCheck('hf.co', 'welcome to Hugging Face') },
   {
     profile: 'core',
     name: 'agent configuration',

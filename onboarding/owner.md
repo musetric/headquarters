@@ -43,6 +43,7 @@ Ask the owner, and repeat the answers in the final report:
 | Requirement | Profile | Version and details |
 | --- | --- | --- |
 | GitHub CLI | core | |
+| GnuPG | core | signs the commits |
 | Node and Yarn | core | Node from musetric's `.node-version`, Yarn from `packageManager` through corepack; Node 25 and later ship without corepack, which is installed at the version musetric's `.github/actions/setupYarn` installs |
 | Rust through rustup | core | each package's `rust-toolchain.toml` installs its toolchain on the first `cargo` command |
 | C and C++ build tools with CMake | core | the server compiles libopus; musetric's readme |
@@ -55,18 +56,22 @@ Ask the owner, and repeat the answers in the final report:
 
 ## 3. Accounts and keys
 
-- One SSH key per machine, titled with the machine's name, signs in to GitHub
-  and Hugging Face and signs commits. A lost machine then costs one key,
-  revoked on both sites.
+- Each machine has two keys, both titled with the machine's name: an SSH key
+  signs in to GitHub and Hugging Face, a GPG key signs commits. Hugging Face
+  verifies GPG signatures only, so one GPG key serves both sites; its user id
+  carries the email verified on both accounts. A lost machine then costs its
+  two keys, revoked on both sites.
 - **Owner** signs the GitHub CLI in to github.com with the SSH protocol,
-  through the browser, and grants it the `admin:ssh_signing_key` scope. The
-  key is registered on GitHub for authentication and for signing.
+  through the browser, and grants it the `admin:gpg_key` scope. The SSH key
+  is registered on GitHub for authentication, the GPG key with
+  `gh gpg-key add --title <machine>`.
 - Commits are signed in the workspace and only there: the user's global git
   config includes, for the workspace root only, a local file that sets
-  `user.name`, `user.email`, `user.signingkey` to the key, `gpg.format = ssh`
-  and `commit.gpgsign = true`. That file lives outside every repository and is
-  never taken from one: a git config can run programs.
-- **Owner**, profile `models`: adds the public key at
+  `user.name`, `user.email`, `user.signingkey` to the GPG key's fingerprint,
+  `gpg.format = openpgp` and `commit.gpgsign = true`. That file lives outside
+  every repository and is never taken from one: a git config can run
+  programs.
+- **Owner**, profile `models`: adds the SSH key and the GPG key at
   <https://huggingface.co/settings/keys>.
 
 ## 4. Clone the workspace
@@ -100,7 +105,7 @@ package manager its lockfile belongs to.
 4. Profile `lab`: in `lab`,
    `uv run python -c "import torch; print(torch.cuda.is_available())"` prints
    `True`.
-5. `gh api user/ssh_signing_keys --jq '.[].title'` lists the machine's name:
+5. `gh api user/gpg_keys --jq '.[].name'` lists the machine's name:
    without the key there, GitHub refuses to merge the pull requests made on
    this machine, because `main` of every repository requires verified
    signatures.
