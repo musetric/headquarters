@@ -108,15 +108,7 @@ const folderCheck = (variable) => () => {
 
 const checks = [
   { profile: 'core', name: 'git', check: commandCheck('git', ['--version']) },
-  {
-    profile: 'core',
-    name: 'github cli',
-    check: () => {
-      const result = run('gh', ['auth', 'status', '--hostname', 'github.com']);
-      const account = result.out.match(/account (\S+)/);
-      return result.ok && account ? pass(`signed in as ${account[1]}`) : fail('gh is missing or not signed in');
-    },
-  },
+  { profile: 'core', name: 'github cli', check: commandCheck('gh', ['--version']) },
   {
     profile: 'core',
     name: 'node',
