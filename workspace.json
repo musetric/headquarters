@@ -1,7 +1,7 @@
 {
   "profiles": {
     "core": "build, run and change the product, the website and this repository on the desktop",
-    "lab": "the reference of every processing step in torch, model export and training; needs an NVIDIA GPU",
+    "lab": "run the lab: the reference of every processing step in torch, model export and training; needs an NVIDIA GPU",
     "android": "build the app for Android and run it on the test phones",
     "models": "publish model revisions to Hugging Face"
   },
@@ -27,7 +27,7 @@
     {
       "path": "lab",
       "url": "git@github.com:musetric/lab.git",
-      "profile": "lab",
+      "profile": "core",
       "about": "the lab: the reference of every step in torch, model export and training"
     },
     {

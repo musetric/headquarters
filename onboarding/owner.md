@@ -29,8 +29,9 @@ Cloning needs no sign-in: every repository of the organization is public.
 
 Ask the owner, and repeat the answers in the final report:
 
-- the profiles of [workspace.json](../workspace.json): `core` always,
-  `lab` on a machine with an NVIDIA GPU, `android` to build the app for
+- the profiles of [workspace.json](../workspace.json): `core` always, and
+  it clones every repository but the models, the lab included; `lab` to run
+  the lab on a machine with an NVIDIA GPU, `android` to build the app for
   the phones, `models` to publish model revisions;
 - the machine's name, used as the title of its key on GitHub and Hugging
   Face;
