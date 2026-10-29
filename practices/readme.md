@@ -2,24 +2,8 @@
 
 How work on Musetric is done, by people and by agents: the rules the owner
 set, with their reasons. Where a check enforces a rule, the rule names it; a
-rule marked *Not enforced yet* is a candidate for one.
-
-| Page | Read it before |
-| --- | --- |
-| [resources.md](resources.md) | any task: what the environment has, what the task needs, how to share it with others, and where its files go |
-| [git.md](git.md) | creating a branch, committing, pushing, opening or updating a pull request |
-| [public-texts.md](public-texts.md) | writing anything that becomes public: a commit, a pull request, an issue or a comment, a readme, a model card |
-| [tracker.md](tracker.md) | creating or commenting on an issue, or measuring for one |
-| [working-with-the-owner.md](working-with-the-owner.md) | acting on a request: a question, a plan, a run |
-| [code.md](code.md) | writing code or tests, or adding or upgrading a dependency |
-| [design.md](design.md) | solving a problem: a request, a concept, a name or the structure of code |
-| [models.md](models.md) | choosing, replacing, publishing or pinning a model |
-| [evidence.md](evidence.md) | claiming anything as proven: in an issue, a pull request, a measurement or a decision |
-| [experiments.md](experiments.md) | proposing or starting research or a training |
-| [checks.md](checks.md) | adding a rule anywhere, or changing what CI checks |
-| [release.md](release.md) | running the checks of a release on the installed app |
-| [environments.md](environments.md) | adding or changing a tool, a version or a build environment |
-| [agents-md.md](agents-md.md) | writing or changing an `AGENTS.md` in any repository |
+rule marked *Not enforced yet* is a candidate for one. Which page to read
+before which work is the [map](../AGENTS.md#map) of headquarters.
 
 A page here holds what applies to every repository of the organization. A
 repository's own rules stay in its `AGENTS.md`.

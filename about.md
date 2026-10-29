@@ -22,15 +22,20 @@ source and in the issues. The whole truth is all of it together: how a button
 behaves in the code is not understood until it is clear why it behaves so.
 
 Headquarters must stay consistent, within itself and with the rest of the
-organization. A contradiction found in it, or between it and an issue, the
-source or reality, is resolved before the task goes on, as the
-[charter](charter.md) requires.
+organization on GitHub. A contradiction found in it, or between it and an
+issue, the source, a decision or reality, is resolved before the task goes
+on, as the [charter](charter.md) requires: whoever meets it finds out which
+side is true, and the outdated side is corrected or the person who can
+decide is asked. An issue, above all an old one or a request, may be the
+outdated side.
 
 ## What belongs here
 
 It holds:
 
-- who the organization is and what it stands for: the [charter](charter.md);
+- who the organization is and what it stands for: the [charter](charter.md),
+  which changes only through a pull request merged by the owner that says
+  why;
 - how work is done in every repository: the [practices](practices/readme.md);
 - the general picture of the product, where it runs and where it stands, in
   general words linked to the issues: [product.md](product.md) and

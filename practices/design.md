@@ -1,17 +1,35 @@
 # Design
 
-How a problem becomes a solution. The [charter](../charter.md) sets the
-values, simplicity of the whole product and what matters most among them;
-this page is how they are applied when a request or a principle of design
-pulls the other way.
+How a request is weighed, how a problem becomes a concept, and how the
+solution is shaped: the values of the [charter](../charter.md) applied when
+a request or a principle of design pulls the other way.
+
+## Weighing a request
+
+A request, a problem or a task weighs as much as it serves the mission: how
+much it helps people learn music and singing, how many of them it serves,
+and how close it is to what the product is for, taking a song apart,
+learning it and singing it ([product.md](../product.md)). When two goods
+compete, the earlier one wins:
+
+1. **The users' trust**: their privacy, and nothing they made is lost.
+2. **A correct result.** A wrong result is worse than a slow one: the user
+   sees that a result is slow, but not that it is wrong.
+3. **A device that stays usable** while the product works on it.
+4. **Speed and new capabilities.**
+
+When headquarters does not make the weight of a request clear, those who
+decide for the product, the owner first, are asked rather than guessed for.
+The answer goes into headquarters, as a decision or as a principle, so that
+the next request of its kind is weighed without asking.
 
 ## A concept, not a case
 
 - **Understanding ends in a concept.** The charter asks every member to
-  understand the whole scope of a problem before changing anything. The
-  facts are gathered and analysed, and the whole is summed up in a concept;
-  the solution follows from the concept, not from the shortest way to close
-  the request as it was written.
+  understand why a thing is as it is, whom it serves and what for, before
+  changing it. The facts are gathered and analysed, and the whole is summed
+  up in a concept; the solution follows from the concept, not from the
+  shortest way to close the request as it was written.
 - **What repeats asks for a concept.** When the same problem, the same
   entity or the same kind of request comes back in several places, the
   answer is not one more branch, exception or copy. The cases are understood

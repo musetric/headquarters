@@ -54,7 +54,7 @@ decision, not with the code.
 | R-15: no compatibility kept for an internal protocol before the release | musetric's `AGENTS.md` § Contracts |
 | R-17: a silent stem goes to the absolute gate of BS.1770 instead of failing | the test `puts_silence_on_the_absolute_gate_instead_of_failing` of musetric's `packages/server/crates/media/src/loudness.rs` |
 | R-19: no patch of a dependency | [practices/code.md](../practices/code.md) |
-| R-22: a wrong result goes first | [charter.md](../charter.md) § What matters most |
+| R-22: a wrong result goes first | [practices/design.md](../practices/design.md) § Weighing a request |
 | R-23: no real material in the implementation | [practices/public-texts.md](../practices/public-texts.md), musetric's `AGENTS.md` § Test Material |
 | R-29: model repositories are named by source and architecture | [practices/models.md](../practices/models.md) |
 | R-30: the product is free forever, and its members earn by their expertise | [charter.md](../charter.md) |
