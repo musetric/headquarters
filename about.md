@@ -59,8 +59,8 @@ It does not hold:
   left to whoever sets the machine up;
 - material that may not be published, such as real users' data or tracks
   without an open licence;
-- raw experiments, their data and their models: they stay in the private
-  experiments folder of the machine that runs them, outside every repository.
+- raw experiments, their data and their models: they stay on the machine that
+  runs them, in the workspace and outside every repository.
 
 The test for a new text: if it would have to change because one machine
 changed, one device updated or one issue moved, it belongs somewhere else.
