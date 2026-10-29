@@ -12,7 +12,7 @@ and how close it is to what the product is for, taking a song apart,
 learning it and singing it ([product.md](../product.md)). When two goods
 compete, the earlier one wins:
 
-1. **The users' trust**: their privacy, and nothing they made is lost.
+1. **The users' trust**: their privacy and what they made.
 2. **A correct result.** A wrong result is worse than a slow one: the user
    sees that a result is slow, but not that it is wrong.
 3. **A device that stays usable** while the product works on it.
@@ -20,8 +20,8 @@ compete, the earlier one wins:
 
 When headquarters does not make the weight of a request clear, those who
 decide for the product, the owner first, are asked rather than guessed for.
-The answer goes into headquarters, as a decision or as a principle, so that
-the next request of its kind is weighed without asking.
+The answer goes into headquarters, into the principles or the picture of the
+product, so that the next request of its kind is weighed without asking.
 
 ## A concept, not a case
 

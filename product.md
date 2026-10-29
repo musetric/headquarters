@@ -1,34 +1,79 @@
 # The product
 
 Musetric is for singers and musicians, amateurs and teachers with their
-students: it takes a song apart and helps to learn it and to sing it. It is
-one application for Windows, macOS, Android and iOS; Linux is not supported
-yet ([R-6](decisions/r06-linux-not-supported-yet.md)). A Tauri
-shell runs the Rust host and shows the React
-interface in the platform's WebView, and the models run on WebGPU in a web
-page, the same way everywhere. How each part works is in the source and the
-readmes of [musetric/musetric](https://github.com/musetric/musetric); where the
-models run and what each platform does to them is in
-[environment/platforms.md](environment/platforms.md).
+students: it takes a song apart and helps to learn it and to sing it. It
+follows the [principles](principles.md) in every part. This page is the
+product's model: its concepts and their names, how it is built, where it runs,
+where it stands and where it goes. What it states is required of the code;
+how each part works is in the source and the readmes of
+[musetric/musetric](https://github.com/musetric/musetric).
+
+## Concepts
+
+The words of the product, the same in the interface, the documents and the
+code ([design.md](practices/design.md#domain-driven-design)).
+
+- **Song**: the audio a user brings; everything else is made from it.
+- **Stems**: the song taken apart, the vocals and the instrumental, and the
+  vocals further into the lead and the backing.
+- **Steps**: the processing that makes the stems and the analyses of a song,
+  in [What happens to a song](#what-happens-to-a-song).
+- **Lyrics and lines**: transcription writes the lyrics with the time of each
+  word; a line of the lyrics is what a user practises.
+- **Take**: what the user sings in one pass of recording. A user sings and
+  records at any tempo and in any key of the song, since slowing down,
+  singing and speeding up again is the core of practice; a take sung in
+  another key sounds in the song's current key.
+- **Recording**: the user's singing over the song, built from takes, a newer
+  take over an older one, with its own undo and redo. A song keeps several
+  named recordings, so that parts, tempos and tries are practised without one
+  overwriting another. Exactly one is active: it plays, it is shown, and new
+  takes go into it. The last one is never deleted.
+- **Loop and tries**: a line plays again and again, and each pass records a
+  try. The tries are compared, and leaving the loop puts the chosen try into
+  the recording or drops them all, so that practice on one phrase feeds the
+  recording without its weaker tries. Playing a range of the song, once or in
+  a cycle, belongs to the player and serves more than the loop.
+- **Key, tempo and octave**: the key moves by semitones, up to six up or
+  down, and by an octave up or down. The octave does not shift the sound,
+  since every way tried to shift a whole mix by an octave distorted it: it
+  moves the singer's line in the picture and in the comparison, so that a
+  user can sing an octave away and still see whether they hit the notes. Only
+  the lead voice is concerned; the backing and the instrumental never move by
+  an octave.
+- **Notes**: the view that compares a take with the singer's real pitch line
+  in cents, not rounded to the semitone. The line is split into notes, so
+  that the gestures at their edges, such as a scoop, an overshoot, a fall or
+  the onset of vibrato, belong to their note, and no written score is needed:
+  rounding would hide what makes a student's singing differ from the
+  singer's.
+- **Export**: a file of the mix, the key and the tempo the user hears, which
+  can be changed in the export the same way as in the player.
 
 ## How it is built
 
 - **The app** (`packages/app`) is a Tauri shell, the same on every platform.
   It runs the Rust host in its own process and shows the interface in the
   platform's WebView.
-- **The host** (`packages/server`) owns the data and the processing: the
-  SQLite database, the files of the projects, decoding and encoding audio, the
-  processing queue, mixdown and export
-  ([R-10](decisions/r10-host-owns-processing.md),
-  [R-14](decisions/r14-media-without-ffmpeg.md)). It serves the interface and
-  its API on the device's loopback address.
+- **The host** (`packages/server`) owns the data and the processing, being
+  the one part that outlives a reload, a crash or a closed app: the SQLite
+  database, the files of the songs, decoding and encoding audio with its own
+  code and no external program, the processing queue, mixdown and export. It
+  plans the units of a step, hands the executor one unit at a time, keeps a
+  checkpoint every few units and resumes from it. It serves the interface on
+  the device's loopback address; data moves over HTTP, commands and progress
+  over a WebSocket.
 - **The interface** (`packages/frontend`, with `packages/engine` and
   `packages/audio`) plays, draws and records in the WebView.
-- **The executor** is a hidden page of the app that runs the models
-  (`packages/ai`). It connects to the host by itself on a loopback port of its
-  own and takes one unit of work at a time
-  ([R-4](decisions/r04-executor-connects-itself.md),
-  [R-20](decisions/r20-one-inference-at-a-time.md)).
+- **The executor** (`packages/ai`) is a hidden page of the app that connects
+  to the host by itself, so that a reload of the interface neither drops the
+  running step nor loads its model again. Every model runs in it, through
+  onnxruntime-web and the product's own shaders, never natively, and exactly
+  one neural network runs at any moment; the next model may load while
+  another computes.
+- **On a phone** processing runs only while the app is on screen, with the
+  screen kept on: Android may end an app that has left the screen, and iOS
+  gives no background time for such work.
 
 ## What happens to a song
 
@@ -50,10 +95,10 @@ flowchart LR
 ```
 
 Separation splits the vocals from the instrumental, and voices splits the lead
-from the backing. Transcription writes the lyrics with the time of each word,
-voice range finds the range of the lead, rhythm finds the beats, the downbeats
-and the tempo, and key and chords read the instrumental. A step that is
-interrupted resumes from its last checkpoint.
+from the backing; the vocals between them stay internal. Transcription writes
+the lyrics with the time of each word, voice range finds the range of the
+lead, rhythm finds the beats, the downbeats and the tempo, and key and chords
+read the instrumental.
 
 ## What it keeps
 
@@ -67,17 +112,25 @@ size and SHA-256 it pins.
 
 | Step | Model | Licence of the weights | Repository |
 | --- | --- | --- | --- |
-| Separation | Mel-Band RoFormer Duality by Aname ([R-28](decisions/r28-vocal-model-duality.md)) | Apache-2.0 | `musetric/aname-mel-band-roformer-duality-onnx` |
+| Separation | Mel-Band RoFormer Duality by Aname | Apache-2.0 | `musetric/aname-mel-band-roformer-duality-onnx` |
 | Voices | MDX-Net KARA2 of Ultimate Vocal Remover | MIT | `musetric/uvr-mdxnet-kara2-onnx` |
-| Transcription | Whisper large-v3 turbo by OpenAI ([R-26](decisions/r26-whisper-on-transformers-js.md)) | MIT | `musetric/whisper-large-v3-turbo-onnx` |
+| Transcription | Whisper large-v3 turbo by OpenAI | MIT | `musetric/whisper-large-v3-turbo-onnx` |
 | Rhythm | Beat This! by CPJKU | MIT | `musetric/beat-this-onnx` |
 | Key | S-KEY by Deezer | MIT | `musetric/skey-onnx` |
 | Chords | ChordNet of ChordMini | MIT | `musetric/chordmini-onnx` |
 | Voice range | no model: the pitch tracker of `@musetric/spectrogram` | | |
 
-The revision of each model is pinned in musetric's
-`packages/server/src/analysis/models.rs`, at the head of its repository's
-`main` ([practices/models.md](practices/models.md)).
+How a model is chosen, replaced, published and pinned is in
+[practices/models.md](practices/models.md).
+
+## Where it runs
+
+Windows, macOS, Android and iOS. Apple systems are supported from version 26,
+the first whose WebView has WebGPU, and the app refuses to install on an
+older one. Linux is built but not supported until its executor can run the
+models, since its WebView has no WebGPU the product can rely on. What each
+kind of platform does to the models is in
+[environment/platforms.md](environment/platforms.md).
 
 ## Where it stands
 
@@ -105,5 +158,25 @@ and it waits on three things:
   build is not signed
   ([#1101](https://github.com/musetric/musetric/issues/1101)), and the site
   neither offers the app nor lets a visitor try it in the browser
-  ([#1115](https://github.com/musetric/musetric/issues/1115),
-  [R-39](decisions/r39-browser-version-is-the-site.md)).
+  ([#1115](https://github.com/musetric/musetric/issues/1115)).
+
+## Where it goes
+
+- **The trainer** leads an amateur the way a teacher does, through the
+  spectrogram ([#1131](https://github.com/musetric/musetric/issues/1131)). It
+  finds the hard phrases of a song, shows the one place where the student
+  sang differently from the singer, the two side by side, lets the student
+  hear it, and has them sing exactly that phrase again. A concept of the
+  picture, such as pitch, timing, breath, gestures or vibrato, is explained
+  the first time it appears in the student's singing. It never gives a score,
+  a percentage or a similarity in place of the picture and an action, and
+  shows no hints or verdicts while the student sings: an amateur cannot judge
+  their own singing, and neither a raw picture nor a number says what to
+  change, while one explained goal on a short piece does.
+- **The browser version is the site**
+  ([#1115](https://github.com/musetric/musetric/issues/1115)): a visitor tries
+  Musetric with nothing installed and no server that receives the song.
+  Musetric's packages are published to npm as libraries of algorithms and
+  inference, without the DOM, and the site builds its own pages on them. No
+  Rust runs in the browser, so what the host does for a step and the site
+  needs is done in TypeScript in the package.

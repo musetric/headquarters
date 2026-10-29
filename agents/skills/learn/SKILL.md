@@ -12,7 +12,7 @@ machine. Find its home in headquarters' `about.md` and write it there.
 | --- | --- |
 | How work is done in every repository | `headquarters/practices/` |
 | What a platform or a kind of device does | `headquarters/environment/` |
-| A decision of the owner | `headquarters/decisions/` |
+| A decision of the owner about the product | `headquarters/product.md`, or `headquarters/principles.md` when it holds for every part |
 | A rule or a fact of one repository | that repository's `AGENTS.md` or readme |
 | A concrete problem, a measurement, a status | an issue of `musetric/musetric` |
 | One person's machine, accounts, purchases or own instructions | that person's own notes, never a public text |

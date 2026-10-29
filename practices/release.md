@@ -1,9 +1,10 @@
 # The release run
 
-How a release of the app is checked before it is published. The installed
-app is checked at a release, not on pull requests
-([R-12](../decisions/r12-app-checked-at-release.md)); the run of every release
-follows this page, and the first is
+How a release of the app is checked before it is published. Pull requests
+do not build or install the app, and CI carries neither an acceptance
+harness nor a corpus of music: building and installing every platform on
+every pull request costs more than it finds. The installed app is checked
+at a release instead, by a run that follows this page; the first is
 [musetric/musetric#1100](https://github.com/musetric/musetric/issues/1100).
 
 ## Four checks, none replacing another

@@ -18,8 +18,8 @@ map; the knowledge is in the pages it points to.
 | Read | Before |
 | --- | --- |
 | [about.md](about.md) | adding anything to headquarters; it says why it exists and where the truth is |
-| [product.md](product.md) | any work on the product: what it is and where it runs |
-| [decisions/](decisions/readme.md) | changing how the product works: a decision in force may already rule on it |
+| [principles.md](principles.md) | changing how the product behaves: what holds for every part of it |
+| [product.md](product.md) | any work on the product: its concepts and their names, how it is built, where it runs, where it stands and where it goes |
 | [practices/resources.md](practices/resources.md) | any task: what the environment has, what the task needs, how to share it, where its files go |
 | [practices/git.md](practices/git.md) | a branch, a commit, a push or a pull request |
 | [practices/public-texts.md](practices/public-texts.md) | anything that becomes public |
