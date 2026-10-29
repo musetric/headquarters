@@ -12,6 +12,7 @@ rule marked *Not enforced yet* is a candidate for one.
 | [tracker.md](tracker.md) | creating or commenting on an issue, or measuring for one |
 | [working-with-the-owner.md](working-with-the-owner.md) | acting on a request: a question, a plan, a run |
 | [code.md](code.md) | writing code or tests, or adding or upgrading a dependency |
+| [domain.md](domain.md) | naming a concept of the product, or changing where one lives in the code |
 | [models.md](models.md) | choosing, replacing, publishing or pinning a model |
 | [evidence.md](evidence.md) | claiming anything as proven: in an issue, a pull request, a measurement or a decision |
 | [experiments.md](experiments.md) | proposing or starting research or a training |
