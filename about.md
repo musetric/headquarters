@@ -5,10 +5,11 @@ what belongs here.
 
 ## Why it exists
 
-Headquarters gives every person and every agent, on any machine, the same
-understanding of the organization: who we are, how work is done, and how the
-pieces of the product fit together. It holds lasting, general knowledge, and
-it stays true when a machine breaks, a phone updates or an issue closes.
+Headquarters gathers in one place what every person and every agent, on any
+machine, needs to understand the organization and its product: why it
+exists, its goals, values and principles, what the product is and where it
+goes, and how work is done. It holds lasting, general knowledge, and it
+stays true when a machine breaks, a phone updates or an issue closes.
 
 ## Where the truth is
 
@@ -21,13 +22,16 @@ look. It does not document every issue or every file; the details are in the
 source and in the issues. The whole truth is all of it together: how a button
 behaves in the code is not understood until it is clear why it behaves so.
 
+What headquarters says of the product is a requirement, not a description of
+the code: the code follows it, and a change that would break it starts in
+headquarters, through a pull request the owner merges, not in the code.
+
 Headquarters must stay consistent, within itself and with the rest of the
 organization on GitHub. A contradiction found in it, or between it and an
-issue, the source, a decision or reality, is resolved before the task goes
-on, as the [charter](charter.md) requires: whoever meets it finds out which
-side is true, and the outdated side is corrected or the person who can
-decide is asked. An issue, above all an old one or a request, may be the
-outdated side.
+issue, the source or reality, is resolved before the task goes on, as the
+[charter](charter.md) requires: whoever meets it finds out which side is
+true, and the outdated side is corrected or the person who can decide is
+asked. An issue, above all an old one or a request, may be the outdated side.
 
 ## What belongs here
 
@@ -36,12 +40,13 @@ It holds:
 - who the organization is and what it stands for: the [charter](charter.md),
   which changes only through a pull request merged by the owner that says
   why;
-- how work is done in every repository: the [practices](practices/readme.md);
-- the general picture of the product, where it runs and where it stands, in
-  general words linked to the issues: [product.md](product.md) and
-  [environment/](environment/readme.md);
 - the principles that hold for the whole product: [principles.md](principles.md);
-- the owner's decisions in force, each with its reason: [decisions/](decisions/readme.md);
+- the product's model, with its concepts and their names, how it is built,
+  where it runs, where it stands and where it goes, in general words linked
+  to the issues: [product.md](product.md) and
+  [environment/](environment/readme.md);
+- how work is done, with every rule that holds for more than one
+  repository: the [practices](practices/readme.md);
 - how a machine and the workspace are set up: [onboarding](onboarding/owner.md),
   [workspace.json](workspace.json) and the [scripts](scripts/);
 - the agents' configuration shared by the organization.
@@ -52,13 +57,13 @@ It does not hold:
   learns them from the environment at hand, and a person's own instructions
   stay with that person;
 - concrete problems, defects, measurements, hypotheses, tasks and their
-  status, a release plan among them: they are issues of
+  status: they are issues of
   [musetric/musetric](https://github.com/musetric/musetric/issues), where the
-  organization keeps all its issues for now. A page here may state a fact in
-  general words and link to the issues that prove it;
-- what a repository owns: its code rules, its toolchain and the versions it
-  pins stay in that repository, and this one only links to them or reads
-  them;
+  organization keeps all its issues for now. A page here may state a fact or
+  a direction in general words and link to the issues that hold it;
+- what one repository owns: its own code rules, its scripts, its toolchain
+  and the versions it pins stay in that repository. A rule it shares with
+  another repository lives here, and both link to it;
 - the details of one device, one GPU or one browser version: they belong to
   the issue of that problem;
 - how to install a tool: the requirement is stated, and the way to meet it is
@@ -75,6 +80,6 @@ changed, one device updated or one issue moved, it belongs somewhere else.
 
 Headquarters holds itself to the [design](practices/design.md) it asks of
 the product. It states principles; a case appears only to show one or to
-link to the issue that holds it. When cases pile up, in the pages or in the
-decisions, they are understood together and folded into a principle, and the
-texts they came from shrink to it.
+link to the issue that holds it. When cases pile up in its pages, they are
+understood together and folded into a principle, and the texts they came
+from shrink to it.

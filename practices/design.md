@@ -20,8 +20,8 @@ compete, the earlier one wins:
 
 When headquarters does not make the weight of a request clear, those who
 decide for the product, the owner first, are asked rather than guessed for.
-The answer goes into headquarters, as a decision or as a principle, so that
-the next request of its kind is weighed without asking.
+The answer goes into headquarters, into the principles or the picture of the
+product, so that the next request of its kind is weighed without asking.
 
 ## A concept, not a case
 

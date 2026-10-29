@@ -1,7 +1,17 @@
 # Code
 
-What applies to the code of every repository.
+What applies to the code of every repository. A repository's own rules,
+such as the style of its language and its scripts, stay in its `AGENTS.md`.
 
+- **A file holds one domain.** Files are domain-specific and self-contained:
+  no catch-all files such as `types` or `utils`; an entity's types and
+  functions stay together, and a broadly reusable sub-entity gets a domain
+  file of its own. Several small entities in one file are not interleaved:
+  each stays grouped, the more foundational one first.
+- **An invalid value is never coerced into a valid default**, such as a
+  count clamped to zero or a fallback for a required value.
+- **A changed contract changes everywhere at once**, without fallbacks kept
+  for compatibility.
 - **A dependency is used as it is published.** No patch of a dependency: no
   Yarn `patch:` protocol, no edit in `node_modules` or `site-packages`, no edit
   of a built bundle. When a dependency lacks an option or has a defect, the

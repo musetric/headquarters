@@ -22,10 +22,7 @@ These rules apply to all of it.
   precision (what was measured, on which device, at which version), and every
   input for privacy. What the check found is reported, even when the verdict
   does not change.
-- **No real material.** musetric's `AGENTS.md` § Test Material is the rule:
-  synthetic signals and openly licensed tracks may be named and quoted;
-  nothing about other audio, not even a detail nobody can check, such as its
-  duration.
+- **No real material**, as [Material](#material) says.
 - **Commit hashes, not branch names.** A measurement or a check names the
   commit it was taken on: "on main" stops being reproducible within a week. A
   pull request does not name the hash of its own branch.
@@ -60,3 +57,31 @@ These rules apply to all of it.
 - **A report to another project's tracker is a public text too**, such as
   one to Chromium or onnxruntime: the owner approves and files it, and our
   issue of the defect links it.
+
+## Material
+
+What may be said about audio in anything published from any repository:
+code, tests, comments, commits, pull requests, issues, documentation and
+model cards.
+
+- **Material anyone can obtain comes first**: synthetic signals, public
+  domain audio, and tracks under an open license such as CC0, CC BY or
+  CC BY-SA, including tracks from public datasets.
+- **An openly licensed track is named** by artist, title, source link and
+  license, with the attribution its license requires. Its lyrics, excerpt
+  positions, durations and results may be quoted.
+- **A track under a non-commercial or no-derivatives license** (NC, ND) may
+  be used for measurements and named with its license, but its audio, stems,
+  excerpts and lyrics are not published.
+- **Any other audio is never mentioned or described**: no titles, artists,
+  albums, lyrics, quoted transcriptions or file names, no hashed or otherwise
+  encoded forms of them, and no duration, tempo, key, excerpt position or
+  similar detail of an unnamed track.
+- **A property of such input is named only when it is the subject of the
+  problem**, and abstractly: "fails on tracks shorter than one chord window",
+  "runs out of GPU memory on tracks longer than about 4 minutes". Otherwise
+  the observation is reported without the input: "the step fails on Android;
+  the cause is under investigation".
+- **Checkable evidence** uses synthetic signals, openly licensed tracks or
+  inputs committed with the change. A run on any other material is reported
+  only as its outcome, such as "matches desktop" or "still differs".

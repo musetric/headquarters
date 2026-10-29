@@ -1,10 +1,10 @@
 # Principles
 
 What holds for the whole product, whatever the platform, the feature or the
-part. The principles follow from the [charter](charter.md), and the
-[decisions](decisions/readme.md) apply them to one question each. A change
-that would break a principle starts by revisiting the principle, never by an
-exception to it.
+part. The principles follow from the [charter](charter.md), and
+[product.md](product.md) applies them to every concept and part of the
+product. A change that would break a principle starts by revisiting the
+principle, never by an exception to it.
 
 - **One way, the same everywhere.** Each job is done by one implementation,
   and it behaves the same on every platform, on every device and in every

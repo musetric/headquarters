@@ -10,8 +10,8 @@ Go through every step; say in the report which ones did not apply.
 1. **Checks.** Run the checks of every repository the task changed, as its
    `AGENTS.md` names them under "Before finishing". A check that fails is
    fixed, or reported with its output; it is never skipped in silence.
-2. **Headquarters.** Did the task change anything headquarters states: a
-   decision in force (`headquarters/decisions/`), the picture of the product
+2. **Headquarters.** Did the task change anything headquarters states: the
+   principles (`headquarters/principles.md`), the picture of the product
    (`headquarters/product.md`), a practice, the environment? If it did,
    headquarters changes in the same task, through a pull request. A
    contradiction between headquarters and the code or an issue is fixed
