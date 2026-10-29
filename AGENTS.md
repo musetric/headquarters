@@ -26,7 +26,7 @@ map; the knowledge is in the pages it points to.
 | [practices/tracker.md](practices/tracker.md) | an issue, a comment on one, or a measurement for one |
 | [practices/working-with-the-owner.md](practices/working-with-the-owner.md) | acting on a request |
 | [practices/code.md](practices/code.md) | writing code or tests, or adding or upgrading a dependency |
-| [practices/design.md](practices/design.md) | solving a problem: a request, a concept, a name or the structure of code |
+| [practices/design.md](practices/design.md) | solving a problem: weighing a request, finding a concept, naming it, shaping the code |
 | [practices/models.md](practices/models.md) | choosing, replacing, publishing or pinning a model |
 | [practices/evidence.md](practices/evidence.md) | claiming anything as proven |
 | [practices/experiments.md](practices/experiments.md) | research or a training |
@@ -34,6 +34,7 @@ map; the knowledge is in the pages it points to.
 | [practices/release.md](practices/release.md) | the checks of a release on the installed app |
 | [practices/environments.md](practices/environments.md) | adding or changing a tool, a version or a build environment |
 | [practices/agents-md.md](practices/agents-md.md) | writing an `AGENTS.md` in any repository |
+| [practices/paid-work.md](practices/paid-work.md) | taking paid work: a contract, a commission, a sponsorship |
 | [environment/](environment/readme.md) | work that depends on a platform or a test device |
 | [onboarding/owner.md](onboarding/owner.md) | setting up a machine |
 
