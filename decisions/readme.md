@@ -32,7 +32,6 @@ decision, not with the code.
 | [R-14](r14-media-without-ffmpeg.md) | Audio is decoded and encoded without ffmpeg |
 | [R-18](r18-unreadable-format-refused.md) | A format the decoder cannot read is refused with a clear message |
 | [R-20](r20-one-inference-at-a-time.md) | One inference at a time |
-| [R-22](r22-wrong-result-first.md) | A wrong result goes first |
 | [R-24](r24-own-webgpu-device.md) | The product owns its WebGPU device and paces its queue |
 | [R-25](r25-separation-in-one-graph.md) | The separation core runs as one graph, not in stages |
 | [R-26](r26-whisper-on-transformers-js.md) | Transcription stays on transformers.js |
@@ -55,6 +54,7 @@ decision, not with the code.
 | R-15: no compatibility kept for an internal protocol before the release | musetric's `AGENTS.md` § Contracts |
 | R-17: a silent stem goes to the absolute gate of BS.1770 instead of failing | the test `puts_silence_on_the_absolute_gate_instead_of_failing` of musetric's `packages/server/crates/media/src/loudness.rs` |
 | R-19: no patch of a dependency | [practices/code.md](../practices/code.md) |
+| R-22: a wrong result goes first | [charter.md](../charter.md) § What matters most |
 | R-23: no real material in the implementation | [practices/public-texts.md](../practices/public-texts.md), musetric's `AGENTS.md` § Test Material |
 | R-29: model repositories are named by source and architecture | [practices/models.md](../practices/models.md) |
 | R-30: the product is free forever, and its members earn by their expertise | [charter.md](../charter.md) |

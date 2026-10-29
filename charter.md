@@ -46,15 +46,40 @@ experience.
 
 - **Quality comes first**: the best result and the best experience the
   project can give, shared with the world.
-- **Simple, elegant, concise.** Quality and new capabilities do not arrive as
-  more and more settings. Rather than leaving every choice to the user, the
-  product looks for the solution that works for most people.
+- **Simple, elegant, concise, as a whole.** Simplicity is that of the whole
+  product, for those who use it and those who build it, not that of one
+  change. Quality and new capabilities do not arrive as more and more
+  settings. Rather than leaving every choice to the user, the product looks
+  for the solution that works for most people.
 - **Toward fewer, more general solutions.** The direction of change is
-  simplification: problems are folded into one more elegant, more unified
-  solution, compact enough to close many of them at once and clear enough
-  for many people to understand.
-- **Hard inside, simple outside.** The technical difficulty inside is ours to
-  carry; it is never a reason to settle for a more complicated result.
+  simplification: problems that share a grain are folded into one concept,
+  compact enough to close many of them at once and clear enough for many
+  people to understand. A branch, an exception or a copy that closes one
+  case makes the whole more complicated instead.
+- **Hard inside, simple outside.** A concept may be deep and hard to build;
+  that difficulty is ours to carry, and it is never a reason to settle for a
+  more complicated result. Simple parts that add up to a complicated product
+  are a sign that a concept is missing. How such a concept is found is in
+  [practices/design.md](practices/design.md).
+
+## What matters most
+
+A request, a problem or a task weighs as much as it serves the mission: how
+much it helps people learn music and singing, how many of them it serves,
+and how close it is to what the product is for, taking a song apart,
+learning it and singing it ([product.md](product.md)). When two goods
+compete, the earlier one wins:
+
+1. **The users' trust**: their privacy, and nothing they made is lost.
+2. **A correct result.** A wrong result is worse than a slow one: the user
+   sees that a result is slow, but not that it is wrong.
+3. **A device that stays usable** while the product works on it.
+4. **Speed and new capabilities.**
+
+When headquarters does not make the weight of a request clear, those who
+decide for the product, the owner first, are asked rather than guessed for.
+The answer goes into headquarters, as a decision or as a principle, so that
+the next request of its kind is weighed without asking.
 
 ## Free, forever
 

@@ -26,6 +26,7 @@ map; the knowledge is in the pages it points to.
 | [practices/tracker.md](practices/tracker.md) | an issue, a comment on one, or a measurement for one |
 | [practices/working-with-the-owner.md](practices/working-with-the-owner.md) | acting on a request |
 | [practices/code.md](practices/code.md) | writing code or tests, or adding or upgrading a dependency |
+| [practices/design.md](practices/design.md) | solving a problem: a request, a concept, a name or the structure of code |
 | [practices/models.md](practices/models.md) | choosing, replacing, publishing or pinning a model |
 | [practices/evidence.md](practices/evidence.md) | claiming anything as proven |
 | [practices/experiments.md](practices/experiments.md) | research or a training |

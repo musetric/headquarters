@@ -64,3 +64,11 @@ It does not hold:
 
 The test for a new text: if it would have to change because one machine
 changed, one device updated or one issue moved, it belongs somewhere else.
+
+## How it stays clear
+
+Headquarters holds itself to the [design](practices/design.md) it asks of
+the product. It states principles; a case appears only to show one or to
+link to the issue that holds it. When cases pile up, in the pages or in the
+decisions, they are understood together and folded into a principle, and the
+texts they came from shrink to it.
