@@ -39,3 +39,8 @@ How research and training are run. What the environment allows is in
   keeps only the code an experiment turns into. Every track or model there
   has its licence and source recorded; training uses only openly licensed
   material.
+- **A study that will be repeated becomes a tool.** Once a measurement or an
+  analysis is run a second time, it is built as a command of a maintained
+  tool in a repository, such as a subcommand of `musetric/lab` or a script of
+  a package of `musetric/musetric`, with its flags in its help; scripts in the
+  experiments folder stay one-off, and nothing is built on top of them.
