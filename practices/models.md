@@ -34,6 +34,15 @@ How the product's neural networks are chosen, replaced and published.
   has, such as the STFT, the CQT or a mel filterbank, runs in the runtime
   from a shipped plan or filterbank and is not baked into the model's graph.
 
+## The lab and the app
+
+- **The lab holds a twin of every product step.** What a step does around the
+  model, such as its windows, repairs, filters and line cuts, is the same logic
+  in `musetric/lab` and in the app, with the same decoding options, so that torch
+  and onnxruntime-web can be compared as one system. A change to it lands in both
+  repositories as one piece of work. Only the runtime differs. *Not enforced
+  yet*: the parity run compares a step's tokens, not its final result.
+
 ## Repositories on Hugging Face
 
 - **Named by source and architecture, not by purpose**:
