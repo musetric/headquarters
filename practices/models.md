@@ -40,8 +40,10 @@ How the product's neural networks are chosen, replaced and published.
   model, such as its windows, repairs, filters and line cuts, is the same logic
   in `musetric/lab` and in the app, with the same decoding options, so that torch
   and onnxruntime-web can be compared as one system. A change to it lands in both
-  repositories as one piece of work. Only the runtime differs. *Not enforced
-  yet*: the parity run compares a step's tokens, not its final result.
+  repositories as one piece of work. Only the runtime differs, and the weights
+  where the app ships a lighter export, as with Whisper's q4 encoder, which
+  moves the words. The parity run checks it by hand, the transcription step by
+  its final words and line breaks on one voice.
 
 ## Repositories on Hugging Face
 
