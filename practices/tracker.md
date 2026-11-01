@@ -65,6 +65,14 @@ comment before it is posted.
 
 ## Measurements
 
+- **A model is measured as the product runs it**: from its files on the
+  device, with the app's options, in the page and on the device as the
+  project's earlier steps leave them. A number taken another way describes a
+  program nobody runs: Whisper loaded into a fresh page, as no project loads
+  it, held less GPU memory and RAM
+  ([musetric/musetric#949](https://github.com/musetric/musetric/issues/949)).
+  Where a bench cannot do the same, it stands in as closely as it can, and
+  the issue says how.
 - **The realtime factor is the first row** of every measurement table, per
   track, with the overlap counted; every text states the window, the step and
   the overlap.
