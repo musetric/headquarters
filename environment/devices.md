@@ -66,8 +66,11 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   or through a WebKit debug proxy. Only a debug build of the app lets its
   WebView be inspected.
 - Memory is the limit to watch: measure the process's footprint next to its
-  kill limit, and give each heavy measurement a fresh page process. WebKit's
-  memory categories are not the footprint the limit counts.
+  kill limit, and give each heavy measurement a page process of its own, so
+  that nothing of an earlier measurement stays in it; what the project's
+  earlier steps leave there is set up as
+  [tracker.md](../practices/tracker.md#measurements) says. WebKit's memory
+  categories are not the footprint the limit counts.
 - Never look for a page's headroom by filling memory until the system kills
   it: that exhausts the system's compressed memory, and the system then ends
   dozens of processes, the browser among them.
