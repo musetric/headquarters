@@ -124,8 +124,9 @@ How a model is chosen, replaced, published and pinned is in
 ## Where it runs
 
 Windows, macOS, Android and iOS. Apple systems are supported from version 26,
-the first whose WebView has WebGPU, and the app refuses to install on an
-older one. Linux is built but not supported until its executor can run the
+the first whose WebView has WebGPU, and Android from version 12, the first
+where Chromium turns WebGPU on; the app refuses to install on an older one.
+Linux is built but not supported until its executor can run the
 models, since its WebView has no WebGPU the product can rely on. What each
 kind of platform does to the models is in
 [environment/platforms.md](environment/platforms.md).
