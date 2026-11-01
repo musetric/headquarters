@@ -141,10 +141,7 @@ and it waits on three things:
   one by one ([#975](https://github.com/musetric/musetric/issues/975)), and
   no check yet follows a step from the original model to the result on a
   phone ([#972](https://github.com/musetric/musetric/issues/972)).
-- **Processing that fits the device.** On the iPhone the models do not fit
-  in the memory the page may use
-  ([#1088](https://github.com/musetric/musetric/issues/1088)), macOS restarts
-  processing in a loop
+- **Processing that fits the device.** macOS restarts processing in a loop
   ([#1052](https://github.com/musetric/musetric/issues/1052)), and processing
   must become several times faster without losing quality
   ([#1080](https://github.com/musetric/musetric/issues/1080)) while the phone

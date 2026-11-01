@@ -20,8 +20,8 @@ How the product's neural networks are chosen, replaced and published.
   accuracy against real references is close to the current one's. For vocal
   separation that is the vocals SDR on the MUSDB18-HQ test set within 1 dB;
   for transcription, the word error rate and the share of lost lines on the
-  open set of songs with checked lyrics of
-  [musetric/musetric#1045](https://github.com/musetric/musetric/pull/1045).
+  open corpus of songs of
+  [musetric/musetric#1129](https://github.com/musetric/musetric/issues/1129).
   Speed targets are ideals, approached model by model with a measurement
   each; a faster but worse model is not shipped to release sooner.
 - **The owner's ear decides.** Metrics find the places to listen to; they
