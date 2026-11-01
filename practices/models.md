@@ -49,8 +49,9 @@ How the product's neural networks are chosen, replaced and published.
 
 - **Named by source and architecture, not by purpose**:
   `musetric/<author>-<architecture>-<model>-onnx`, with the author whenever
-  another model shares the name. One model per repository; a different model
-  goes to a new repository, and the old one stays for the builds that pin it.
+  another model shares the name. A model that replaces the one before it in
+  the same role, with the same input and output, is a new commit on `main` of
+  its repository; older builds keep their pins to older revisions.
 - **No version number in our file names**: `duality_core_t1100.onnx`, not
   `duality_v1_core_t1100.onnx`; an upstream file name is quoted as it is.
 - **A new repository's history starts with the owner's single root commit**,
