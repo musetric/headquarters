@@ -34,13 +34,37 @@
       "path": "models/aname-mel-band-roformer-duality-onnx",
       "url": "git@hf.co:musetric/aname-mel-band-roformer-duality-onnx",
       "profile": "models",
-      "about": "vocal separation model"
+      "about": "the core of Duality, the teacher of the separation model; the product no longer runs it"
+    },
+    {
+      "path": "models/mel-band-roformer-duality-student",
+      "url": "git@hf.co:musetric/mel-band-roformer-duality-student",
+      "profile": "models",
+      "about": "the weights of the vocals student; the product no longer runs it"
+    },
+    {
+      "path": "models/mel-band-roformer-duality-student-onnx",
+      "url": "git@hf.co:musetric/mel-band-roformer-duality-student-onnx",
+      "profile": "models",
+      "about": "the core of the vocals student; the product no longer runs it"
+    },
+    {
+      "path": "models/mel-band-roformer-duality-kara2-student",
+      "url": "git@hf.co:musetric/mel-band-roformer-duality-kara2-student",
+      "profile": "models",
+      "about": "the weights of the separation model"
+    },
+    {
+      "path": "models/mel-band-roformer-duality-kara2-student-onnx",
+      "url": "git@hf.co:musetric/mel-band-roformer-duality-kara2-student-onnx",
+      "profile": "models",
+      "about": "separation model"
     },
     {
       "path": "models/uvr-mdxnet-kara2-onnx",
       "url": "git@hf.co:musetric/uvr-mdxnet-kara2-onnx",
       "profile": "models",
-      "about": "lead and backing vocal separation model"
+      "about": "the core of KARA 2, the teacher of the separation model's split; the product no longer runs it"
     },
     {
       "path": "models/whisper-large-v3-turbo-onnx",
