@@ -40,15 +40,18 @@ How the product's neural networks are chosen, replaced and published.
   model, such as its windows, repairs, filters and line cuts, is the same logic
   in `musetric/lab` and in the app, with the same decoding options, so that torch
   and onnxruntime-web can be compared as one system. A change to it lands in both
-  repositories as one piece of work. Only the runtime differs. *Not enforced
-  yet*: the parity run compares a step's tokens, not its final result.
+  repositories as one piece of work. Only the runtime differs, and the weights
+  where the app ships a lighter export, as with Whisper's q4 encoder, which
+  moves the words. The parity run checks it by hand, the transcription step by
+  its final words and line breaks on one voice.
 
 ## Repositories on Hugging Face
 
 - **Named by source and architecture, not by purpose**:
   `musetric/<author>-<architecture>-<model>-onnx`, with the author whenever
-  another model shares the name. One model per repository; a different model
-  goes to a new repository, and the old one stays for the builds that pin it.
+  another model shares the name. A model that replaces the one before it in
+  the same role, with the same input and output, is a new commit on `main` of
+  its repository; older builds keep their pins to older revisions.
 - **No version number in our file names**: `duality_core_t1100.onnx`, not
   `duality_v1_core_t1100.onnx`; an upstream file name is quoted as it is.
 - **A new repository's history starts with the owner's single root commit**,
