@@ -54,6 +54,15 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   and per-frame timestamps directly. framestats keeps only the latest frames:
   once its ring is full, every statistic taken from it, the median included,
   covers only the end of the run.
+- **The system takes a swipe that starts near the edge.** In gesture navigation
+  a swipe inward from the side is Back, and the page sees it cancelled; a
+  press held before it moves stays with the page. Whatever a finger drags keeps
+  out of these zones, about 32 px on either side of a Galaxy S24; they vary with
+  the phone and its settings, so they are measured on it, by the touches the
+  page receives. `setSystemGestureExclusionRects` is no way out for long: it
+  honors 200 dp per side, counted from the bottom, and does not reach a vendor's
+  own window over the app, such as the Edge Panels handle of a Samsung phone:
+  [#1196](https://github.com/musetric/musetric/pull/1196).
 - **The thermal gate of a run.** A run starts at thermal status 0 or 1, no
   new run starts at 2, and a run stops at 3 or above to cool; a phone is never
   driven to 4 for an experiment. Record the status before, during and after,
