@@ -45,6 +45,13 @@ updates the project does not control.
 - **A WebView is not the browser.** It lacks some features the browser has,
   its audio timing differs, and its version follows its own updates. A result
   in a desktop browser proves nothing about the app on a phone.
+- **A touch stays with the element it started on.** Replace or remove that
+  element while the finger is down, as re-rendering a line in another component
+  does, and its `touchmove` no longer reaches the page: nothing can call
+  `preventDefault`, so the browser takes the gesture for scrolling and sends
+  `pointercancel`. An element under a finger keeps its place in the DOM for the
+  whole gesture; only its look may change:
+  [#1196](https://github.com/musetric/musetric/pull/1196).
 - **A declared limit is not a proven one.** The limits an adapter reports,
   such as the largest buffer it binds, are not proof that a buffer of that
   size works on it; a model that needs one probes it on the device.
