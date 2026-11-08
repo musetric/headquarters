@@ -29,6 +29,14 @@ every resource is shared with other people and agents.
   minutes: memory, clocks, temperature and throttling are watched while it
   runs, and the run shrinks or stops before it overflows memory or throttles
   the device.
+- **Nothing runs on an integrated GPU** of a machine that has a discrete
+  one: no test, bench, measurement or model. It shares the system's memory,
+  it is several times slower, and it miscompiles now and then
+  ([platforms.md](../environment/platforms.md)), so a run there proves
+  nothing about the GPU the work was given. The GPU a run came up on is
+  checked before it computes, as [devices.md](../environment/devices.md#desktop)
+  says for a browser engine, and a run that came up on the integrated one is
+  stopped.
 - **Memory is the first thing to watch** on the machine where the work runs:
   the RAM, the GPU memory, and on a phone the memory of the page's process.
   Measure a task's peak in its first minutes, keep room for the system and for

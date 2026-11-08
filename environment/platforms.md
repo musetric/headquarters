@@ -40,7 +40,7 @@ updates the project does not control.
   [#1052](https://github.com/musetric/musetric/issues/1052),
   [#1088](https://github.com/musetric/musetric/issues/1088).
 - **Desktop GPUs** are mostly stable. Integrated GPUs occasionally miscompile
-  as phones do, and on a laptop with two GPUs the browser engine may pick the
+  as phones do, and on a machine with two GPUs the browser engine may pick the
   integrated one unless told otherwise.
 - **A WebView is not the browser.** It lacks some features the browser has,
   its audio timing differs, and its version follows its own updates. A result
