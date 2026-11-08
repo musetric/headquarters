@@ -85,6 +85,16 @@ every resource is shared with other people and agents.
   drive, the home folder or another place of the machine, where nobody looks
   for it. A session's own scratch space dies with the session, so what the
   work will need again goes into the workspace.
+- **Another project's repository goes to `deps/`.** A repository of another
+  project, such as a dependency, a tool or the reference code of a model,
+  cloned to read, run or understand it, lives in
+  `deps/<owner>/<repository>` of the workspace root, the path of its URL, and
+  nowhere else: not in `tmp/`, not in a task's folder. Before cloning, look
+  there; a clone that exists is updated with `git pull` and used, so one
+  project is downloaded once. It stays a clean clone of its project, with no
+  changes or commits of ours ([code.md](code.md) says when another project is
+  changed at all), so the next task can use it as it is. `deps/` shows at a
+  glance which other projects the work leans on.
 - **The environment is not the work.** Toolchains and runtimes such as
   Python, uv, Node.js and Yarn, package caches such as those of npm and pip,
   drivers, and the settings of the system and of the agents live wherever the

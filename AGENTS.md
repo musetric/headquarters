@@ -45,6 +45,8 @@ workspace root. The list is [workspace.json](workspace.json),
 [scripts/clone.mjs](scripts/clone.mjs) clones it, and
 [scripts/doctor.mjs](scripts/doctor.mjs) checks the machine against it. Each
 repository has its own `AGENTS.md`; read it before changing that repository.
+Repositories of other projects that the work clones go to `deps/` of the
+workspace root, as [resources.md](practices/resources.md) says.
 
 Sessions start in the workspace root: only there does the agents'
 configuration of [agents](agents) apply, which `clone.mjs` puts into the root
