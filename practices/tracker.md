@@ -41,6 +41,11 @@ comment before it is posted.
 
 ## What goes where
 
+- **A data file is an issue artifact**, as [experiments.md](experiments.md)
+  asks: `gh issue artifact create <n> <file>` attaches a CSV or JSON to the
+  issue and keeps its versions, and `gh issue artifact download` returns the
+  same bytes; `--attach` takes only images and video. It needs gh 2.103 or
+  newer, where issue artifacts are a preview.
 - **An epic gets a comment only for a major change**: the design of a
   scenario, a key decision, or a sub-issue closed with what it reached and
   why. Progress snapshots go to the sub-issues. An epic with no sub-issues
