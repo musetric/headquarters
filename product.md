@@ -155,7 +155,9 @@ and it waits on three things:
 - **The release itself.** No build has been published, installed and updated
   yet ([#1100](https://github.com/musetric/musetric/issues/1100)), the macOS
   build is not signed
-  ([#1101](https://github.com/musetric/musetric/issues/1101)), and the site
+  ([#1101](https://github.com/musetric/musetric/issues/1101)), no store
+  offers a closed test of the app yet
+  ([#1208](https://github.com/musetric/musetric/issues/1208)), and the site
   neither offers the app nor lets a visitor try it in the browser
   ([#1115](https://github.com/musetric/musetric/issues/1115)).
 
