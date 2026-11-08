@@ -163,8 +163,8 @@ and it waits on three things:
   ([#1101](https://github.com/musetric/musetric/issues/1101)), no store
   offers a closed test of the app yet
   ([#1208](https://github.com/musetric/musetric/issues/1208)), and the site
-  neither offers the app nor lets a visitor try it in the browser
-  ([#1115](https://github.com/musetric/musetric/issues/1115)).
+  neither says what Musetric is, nor offers the app, nor lets a visitor try it
+  in the browser ([#1235](https://github.com/musetric/musetric/issues/1235)).
 
 ## Where it goes
 
