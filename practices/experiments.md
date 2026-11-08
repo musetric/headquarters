@@ -39,6 +39,11 @@ How research and training are run. What the environment allows is in
   keeps only the code an experiment turns into. Every track or model there
   has its licence and source recorded; training uses only openly licensed
   material.
+- **A data file the work must keep lives on the tracker.** A repository holds
+  only code, so a list that has to outlive a run, such as the tracks taken out
+  of the data for good, is attached to the work's issue as a file, following
+  [public-texts.md](public-texts.md#material). A command takes such a file as
+  a path, and its readme links to the issue.
 - **A study that will be repeated becomes a tool.** Once a measurement or an
   analysis is run a second time, it is built as a command of a maintained
   tool in a repository, such as a subcommand of `musetric/lab` or a script of
