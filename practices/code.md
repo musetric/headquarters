@@ -23,7 +23,8 @@ such as the style of its language and its scripts, stay in its `AGENTS.md`.
   solve it, the owner is asked whether to patch the dependency in our
   repository or to contribute a fix to its project, and neither starts before
   the answer. Cloning, reading and running another project's code to
-  understand the defect needs no answer. *Not enforced yet.*
+  understand the defect needs no answer; the clone goes to `deps/`
+  ([resources.md](resources.md)). *Not enforced yet.*
 - **No comments in code**, in any language: what code does is said by its
   names and types, and why it is so by its pull request, its issue and the
   commit message. Only a tool directive, such as `eslint-disable` or `noqa`,
