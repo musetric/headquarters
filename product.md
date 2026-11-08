@@ -148,6 +148,11 @@ version above. What each kind of platform does to the models is in
   where whoever looks for it finds it.
 - **It is dark, as the app is**: dark alone, or a light theme beside a dark
   default, so that the site and the app look like one product.
+- **Its first button installs the app on the visitor's device.** The other
+  platforms are one link away, not a list the visitor has to search.
+- **It never calls Musetric free.** Nothing in it is paid, and the word would
+  only suggest that something might be. It says what the visitor gets
+  instead: every feature, with nothing to buy and nothing to subscribe to.
 
 ## Where it stands
 
