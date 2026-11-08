@@ -139,6 +139,21 @@ The app refuses to install on a macOS, an iOS or an Android older than its
 version above. What each kind of platform does to the models is in
 [environment/platforms.md](environment/platforms.md).
 
+## The site
+
+- **It speaks first to people who want to learn to sing, then to their
+  teachers.** It says in their words what Musetric gives them, so that a
+  visitor sees at once what it does for their singing. How it works inside,
+  such as the models, their licences or the GPU, stays in the repositories,
+  where whoever looks for it finds it.
+- **It is dark, as the app is**: dark alone, or a light theme beside a dark
+  default, so that the site and the app look like one product.
+- **Its first button installs the app on the visitor's device.** The other
+  platforms are one link away, not a list the visitor has to search.
+- **It never calls Musetric free.** Nothing in it is paid, and the word would
+  only suggest that something might be. It says what the visitor gets
+  instead: every feature, with nothing to buy and nothing to subscribe to.
+
 ## Where it stands
 
 Musetric is preparing its first release; nothing has been released yet. The
@@ -163,8 +178,8 @@ and it waits on three things:
   ([#1101](https://github.com/musetric/musetric/issues/1101)), no store
   offers a closed test of the app yet
   ([#1208](https://github.com/musetric/musetric/issues/1208)), and the site
-  neither offers the app nor lets a visitor try it in the browser
-  ([#1115](https://github.com/musetric/musetric/issues/1115)).
+  neither says what Musetric is, nor offers the app, nor lets a visitor try it
+  in the browser ([#1235](https://github.com/musetric/musetric/issues/1235)).
 
 ## Where it goes
 
