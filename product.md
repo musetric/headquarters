@@ -127,8 +127,10 @@ How a model is chosen, replaced, published and pinned is in
 ## Where it runs
 
 Windows, macOS, Android and iOS. Apple systems are supported from version 26,
-the first whose WebView has WebGPU, and Android from version 12, the first
-where Chromium turns WebGPU on; the app refuses to install on an older one.
+the first whose WebView has WebGPU, and on Apple silicon alone: macOS 27 runs
+on nothing else, and only four Intel models of 2019 and 2020 reached macOS 26.
+Android is supported from version 12, the first where Chromium turns WebGPU
+on; the app refuses to install on an older one.
 Linux is built but not supported until its executor can run the
 models, since its WebView has no WebGPU the product can rely on. What each
 kind of platform does to the models is in
