@@ -15,7 +15,10 @@ code ([design.md](practices/design.md#domain-driven-design)).
 
 - **Song**: the audio a user brings; everything else is made from it.
 - **Stems**: the song taken apart, the vocals and the instrumental, and the
-  vocals further into the lead and the backing.
+  vocals further into the lead and the backing. The lead is meant to be the
+  part a user sings, so the echo of a voice and, as a rule, a double of the
+  lead belong to the backing; two equal voices with no main one are both the
+  lead, which is much rarer.
 - **Steps**: the processing that makes the stems and the analyses of a song,
   in [What happens to a song](#what-happens-to-a-song).
 - **Lyrics and lines**: transcription writes the lyrics with the time of each
@@ -152,7 +155,9 @@ and it waits on three things:
 - **The release itself.** No build has been published, installed and updated
   yet ([#1100](https://github.com/musetric/musetric/issues/1100)), the macOS
   build is not signed
-  ([#1101](https://github.com/musetric/musetric/issues/1101)), and the site
+  ([#1101](https://github.com/musetric/musetric/issues/1101)), no store
+  offers a closed test of the app yet
+  ([#1208](https://github.com/musetric/musetric/issues/1208)), and the site
   neither offers the app nor lets a visitor try it in the browser
   ([#1115](https://github.com/musetric/musetric/issues/1115)).
 

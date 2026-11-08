@@ -55,8 +55,9 @@ These rules apply to all of it.
   what the work needs, such as the hardware a training requires, never what
   a person owns, buys or pays.
 - **A report to another project's tracker is a public text too**, such as
-  one to Chromium or onnxruntime: the owner approves and files it, and our
-  issue of the defect links it.
+  one to Chromium or onnxruntime: it is written only when the owner asks for
+  it ([code.md](code.md)), the owner approves and files it, and our issue of
+  the defect links it.
 
 ## Material
 

@@ -14,10 +14,16 @@ such as the style of its language and its scripts, stay in its `AGENTS.md`.
   for compatibility.
 - **A dependency is used as it is published.** No patch of a dependency: no
   Yarn `patch:` protocol, no edit in `node_modules` or `site-packages`, no edit
-  of a built bundle. When a dependency lacks an option or has a defect, the
-  way out is code of our own around it, a fix proposed upstream, or a
-  question to the owner. A patch found on an older branch is raised with the
+  of a built bundle. A patch found on an older branch is raised with the
   owner, not carried over. *Not enforced yet.*
+- **A defect of a dependency or a tool is solved in our repository first.**
+  A released version that already fixes it is taken; otherwise code of our
+  own goes around it, and such a workaround gets an issue of technical debt,
+  so that it is removed once the defect is gone. When our repository cannot
+  solve it, the owner is asked whether to patch the dependency in our
+  repository or to contribute a fix to its project, and neither starts before
+  the answer. Cloning, reading and running another project's code to
+  understand the defect needs no answer. *Not enforced yet.*
 - **No comments in code**, in any language: what code does is said by its
   names and types, and why it is so by its pull request, its issue and the
   commit message. Only a tool directive, such as `eslint-disable` or `noqa`,
