@@ -38,6 +38,13 @@ question.
   stable heap or no long tasks do not rule out a blocked thread.
 - **A median does not cancel the tails.** A change that improves the median
   can still break a few cases badly; the worst cases are reported next to it.
+- **A statistic of quantized values keeps the quantum.** Beats on a grid of
+  50 frames per second are whole frames apart, so the median of their
+  intervals can only be 3000/k BPM, a few BPM apart
+  ([musetric/musetric#1109](https://github.com/musetric/musetric/issues/1109)),
+  however many beats there are. A rate is taken from the span of many events,
+  as [polled times](tracker.md#measurements) are, or from the mean of the
+  values near the median, and is compared within its quantum.
 - **A difference smaller than the noise is no difference.** The noise of a
   metric is measured, by a bootstrap over tracks or by varying the
   normalization, and a difference below it is reported as none.

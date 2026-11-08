@@ -57,6 +57,12 @@ every resource is shared with other people and agents.
   preempt a process this agent did not start. When the resources are not
   enough or are taken, return to the person directing the work with what
   occupies them, and wait.
+- **A shared environment is not rebuilt under its users.** A virtual
+  environment, a cache or a build folder that another session runs from is
+  part of its work, like its processes: a command that may rebuild or sync it
+  waits until nothing runs from it, and a one-off script runs in an
+  environment of its own. A sync of lab's `.venv` once removed the packages of
+  a review server running from it.
 - **Do not hold more than the task needs, or longer.** One GPU must not block
   every other agent: release models and memory as soon as a run ends, keep
   runs bounded, and do not keep a device occupied while idle. A run that
