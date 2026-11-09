@@ -80,6 +80,41 @@ design.
 - **What is compact, clear and works stays as it is.** It is not split up or
   rebuilt to satisfy a method.
 
+## One essence in one place
+
+Every piece of work reduces fragmentation. When one essence of the product is
+scattered over files, folders or repositories, nobody sees where it begins and
+ends, every change to it has to find all its pieces, and a piece that is
+missed drifts away from the rest. Bringing the pieces together is worth an
+effort of its own, in the code and in these texts.
+
+- **A module is concrete and local.** It holds one essence whole and only it,
+  so that its reach is clear from where it lies: whoever looks for everything
+  about a thing finds it in one place, and a change to the thing touches that
+  place.
+- **Group by essence, not by kind.** A module that gathers everything of one
+  kind, such as the pins of all models or the types of all steps, is a god
+  object: it serves every case and belongs to none, and it tears apart each
+  essence it touches. The pins of all of Musetric's models, with the values
+  of their graphs, once lived in one file of the Rust host, away from the
+  inference of each model in `@musetric/ai`; now each model's `pin.json` lies
+  next to its runtime in `packages/ai/src/runtime`, and every runtime reads it
+  from there
+  ([musetric/musetric#1263](https://github.com/musetric/musetric/pull/1263)).
+- **A large module can still be one essence.** `@musetric/eslint-config`
+  holds the lint rules of the organization's TypeScript in one place, and
+  every repository with such code takes them from it. How the code is written
+  is one responsibility, so its rules stay together however many projects use
+  them; spread over those projects, they would fragment. Neither its size nor
+  its number of users makes a module a god object; answering more than one
+  question does.
+- **What changes together lives together.** That is the test for a boundary:
+  pieces that change for one reason and are understood together stay in one
+  module, and pieces that change for different reasons stay apart, however
+  alike their shape. An essence is not cut into small files for the sake of a
+  method either, as [simplicity over structure](#simplicity-over-structure)
+  says.
+
 ## Domain-driven design
 
 The product takes from domain-driven design what clearly helps it and
