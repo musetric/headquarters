@@ -89,9 +89,13 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
 
 ## Desktop
 
-- On a laptop with two GPUs, check which one the browser engine actually
-  uses before a measurement. Chromium picks one GPU for its whole GPU
-  process: `powerPreference` does not move WebGPU off the integrated GPU,
-  only the launch switch `--force_high_performance_gpu` does.
+- On a machine with two GPUs, a browser engine may come up on the
+  integrated one, where the work never runs
+  ([resources.md](../practices/resources.md#use-what-is-there-in-proportion)).
+  Chromium picks one GPU for its whole GPU process: `powerPreference` does
+  not move WebGPU off the integrated GPU, only the launch switch
+  `--force_high_performance_gpu` does. Every launch of Chromium for the work
+  passes it, tests and benches included, and the vendor and architecture of
+  `adapter.info` show which GPU a page got before it computes.
 - Several WebViews of one app that share a data folder must start with the
   same browser arguments, or the later ones fail to start.
