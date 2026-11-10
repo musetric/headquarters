@@ -62,8 +62,12 @@ code ([design.md](practices/design.md#domain-driven-design)).
   the one part that outlives a reload, a crash or a closed app: the SQLite
   database, the files of the songs, decoding and encoding audio with its own
   code and no external program, the processing queue, mixdown and export. It
-  plans the units of a step, hands the executor one unit at a time, keeps a
-  checkpoint every few units and resumes from it. It serves the interface on
+  keeps the checkpoint of a step and resumes from it: it plans the units of
+  transcription and hands the executor one at a time, while separation plans
+  and folds its units in the executor, which sends the host each unit's
+  finished audio and state to keep
+  ([musetric/musetric#1265](https://github.com/musetric/musetric/issues/1265)).
+  It serves the interface on
   the device's loopback address; data moves over HTTP, commands and progress
   over a WebSocket.
 - **The interface** (`packages/frontend`, with `packages/engine` and
