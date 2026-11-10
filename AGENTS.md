@@ -12,6 +12,8 @@ map; the knowledge is in the pages it points to.
   source or reality, is resolved before the task goes on.
 - Before adding to headquarters, read [about.md](about.md): what belongs here
   and what goes elsewhere.
+- Every piece of work reduces fragmentation: one essence lives whole in one
+  place ([design](practices/design.md#one-essence-in-one-place)).
 
 ## Map
 

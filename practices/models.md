@@ -71,7 +71,11 @@ How the product's neural networks are chosen, replaced and published.
 
 ## Pins
 
-- **A pin in `packages/server/src/analysis/models.rs` is always the head of
-  the model repository's `main`.** Any later commit, even a card-only fix,
-  moves the pin too, so card fixes go into the model's commit before it is
-  pinned ([musetric/musetric#1117](https://github.com/musetric/musetric/pull/1117)).
+- **Pins are kept once, as values every runtime reads**: each model's pin is
+  the `pin.json` next to its runtime in `packages/ai/src/runtime` of
+  `musetric/musetric`, which the Rust host embeds and `@musetric/ai` imports,
+  so no runtime keeps a copy of its own.
+- **A pin is always the head of the model repository's `main`.** Any later
+  commit, even a card-only fix, moves the pin too, so card fixes go into the
+  model's commit before it is pinned
+  ([musetric/musetric#1117](https://github.com/musetric/musetric/pull/1117)).
