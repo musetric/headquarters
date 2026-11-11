@@ -15,9 +15,9 @@ such as the style of its language and its scripts, stay in its `AGENTS.md`.
 - **A changed contract changes everywhere at once**, without fallbacks kept
   for compatibility.
 - **A dependency is used as it is published.** No patch of a dependency: no
-  Yarn `patch:` protocol, no edit in `node_modules` or `site-packages`, no edit
-  of a built bundle. A patch found on an older branch is raised with the
-  owner, not carried over. *Not enforced yet.*
+  `pnpm patch` or `patchedDependencies`, no edit in `node_modules` or
+  `site-packages`, no edit of a built bundle. A patch found on an older branch
+  is raised with the owner, not carried over. *Not enforced yet.*
 - **A defect of a dependency or a tool is solved in our repository first.**
   A released version that already fixes it is taken; otherwise code of our
   own goes around it, and such a workaround gets an issue of technical debt,

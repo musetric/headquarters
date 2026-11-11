@@ -40,7 +40,7 @@ Ask the owner, and repeat the answers in the final report:
 | Requirement | Profile | Version and details |
 | --- | --- | --- |
 | GitHub CLI | core | |
-| Node and Yarn | core | Node from musetric's `.node-version`, Yarn from `packageManager` through corepack; Node 25 and later ship without corepack, which is installed at the version musetric's `.github/actions/setupYarn` installs |
+| Node and pnpm | core | Node from musetric's `.node-version`, pnpm from `packageManager` through corepack; Node 25 and later ship without corepack, which is installed at the version musetric's `.github/actions/setupPnpm` installs |
 | Rust through rustup | core | each package's `rust-toolchain.toml` installs its toolchain on the first `cargo` command |
 | C and C++ build tools with CMake | core | the server compiles libopus; musetric's readme |
 | Chrome, Edge or Chromium | core | the server runs the models in it; musetric's readme |
@@ -74,7 +74,7 @@ package manager its lockfile belongs to.
 
 1. `node headquarters/scripts/doctor.mjs --profiles <profiles>` reports no
    failures.
-2. `musetric`: `yarn check:ts`, and `cargo build --locked --bin musetric-server`
+2. `musetric`: `pnpm check:ts`, and `cargo build --locked --bin musetric-server`
    in `packages/server`.
 3. `landing`: `npm run build:project`.
 4. Profile `lab`: in `lab`,

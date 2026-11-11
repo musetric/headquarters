@@ -110,7 +110,7 @@ every resource is shared with other people and agents.
   changed at all), so the next task can use it as it is. `deps/` shows at a
   glance which other projects the work leans on.
 - **The environment is not the work.** Toolchains and runtimes such as
-  Python, uv, Node.js and Yarn, package caches such as those of npm and pip,
+  Python, uv, Node.js and pnpm, package caches such as those of npm and pip,
   drivers, and the settings of the system and of the agents live wherever the
   machine's setup puts them; headquarters does not regulate them.
 - **The rule is about files, not about where work happens.** A tool or a
