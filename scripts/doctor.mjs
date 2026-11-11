@@ -41,8 +41,8 @@ const readPin = (path, pattern) => {
 };
 
 const nodePin = readPin(join(product, '.node-version'), /^\s*v?(\S+)/);
-const corepackPin = readPin(join(product, '.github', 'actions', 'setupYarn', 'action.yml'), /corepack@(\S+)/);
-const yarnPin = readPin(join(product, 'package.json'), /"packageManager":\s*"yarn@([^"]+)"/);
+const corepackPin = readPin(join(product, '.github', 'actions', 'setupPnpm', 'action.yml'), /corepack@(\S+)/);
+const pnpmPin = readPin(join(product, 'package.json'), /"packageManager":\s*"pnpm@([^"]+)"/);
 const rustPins = [
   ...new Set(
     ['packages/server', 'packages/app']
@@ -139,16 +139,16 @@ const checks = [
   },
   {
     profile: 'core',
-    name: 'yarn',
+    name: 'pnpm',
     check: () => {
-      if (yarnPin === undefined) {
-        return warn('musetric is not cloned, so its Yarn pin is unknown');
+      if (pnpmPin === undefined) {
+        return warn('musetric is not cloned, so its pnpm pin is unknown');
       }
-      const result = run('yarn', ['--version'], product);
+      const result = run('pnpm', ['--version'], product);
       if (!result.ok) {
-        return fail('yarn does not run in musetric: install corepack and run corepack enable');
+        return fail('pnpm does not run in musetric: install corepack and run corepack enable');
       }
-      return result.firstLine === yarnPin ? pass(result.firstLine) : fail(`yarn ${result.firstLine}, musetric pins ${yarnPin}`);
+      return result.firstLine === pnpmPin ? pass(result.firstLine) : fail(`pnpm ${result.firstLine}, musetric pins ${pnpmPin}`);
     },
   },
   {

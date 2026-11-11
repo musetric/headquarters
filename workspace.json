@@ -16,7 +16,7 @@
       "path": "musetric",
       "url": "git@github.com:musetric/musetric.git",
       "profile": "core",
-      "about": "the product: Yarn monorepo, Rust host, Tauri app"
+      "about": "the product: pnpm monorepo, Rust host, Tauri app"
     },
     {
       "path": "landing",
