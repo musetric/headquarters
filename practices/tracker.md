@@ -79,6 +79,14 @@ comment before it is posted.
   ([musetric/musetric#949](https://github.com/musetric/musetric/issues/949)).
   Where a bench cannot do the same, it stands in as closely as it can, and
   the issue says how.
+- **A session fits 20 minutes on the slowest device.** The whole measurement
+  of a change, every run and pause included, takes no longer than 20 minutes
+  on the slowest device it runs on, and every device runs the same session,
+  so that their columns compare and no change waits hours for its slowest
+  device. Where the slowest device would run over, the session measures less
+  on every device: fewer runs, a shorter track, or only the steps the change
+  touches. A longer session is an exception the owner approves, for a
+  question 20 minutes cannot answer.
 - **The realtime factor is the first row** of every measurement table, per
   track, with the overlap counted; every text states the window, the step and
   the overlap.
