@@ -205,6 +205,7 @@ const checks = [
     name: 'editorconfig-checker',
     check: binaryCheck('editorconfig-checker', 'EDITORCONFIG_CHECKER_VERSION'),
   },
+  { profile: 'core', name: 'osv-scanner', check: binaryCheck('osv-scanner', 'OSV_SCANNER_VERSION') },
   {
     profile: 'lab',
     name: 'uv',
