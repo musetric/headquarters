@@ -64,6 +64,6 @@ its skills `finish` and `learn` close a task and keep what it taught.
 - A version a repository pins is read from it, never copied here.
 
 Before finishing, run `npm run check` after `npm ci`, the check CI runs on
-every pull request: English letters only and links through
-`@musetric/checks`, then file names, `workspace.json` and the scripts through
-`scripts/check.mjs`.
+every pull request: English letters only, links, comments and the dependencies
+of `package.json` through `@musetric/checks`, then file names, `workspace.json`
+and the scripts through `scripts/check.mjs`.
