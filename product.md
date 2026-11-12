@@ -153,7 +153,15 @@ version above. What each kind of platform does to the models is in
 - **It is dark, as the app is**: dark alone, or a light theme beside a dark
   default, so that the site and the app look like one product.
 - **Its first button installs the app on the visitor's device.** The other
-  platforms are one link away, not a list the visitor has to search.
+  platforms are one link away, not a list the visitor has to search. Until
+  the release, the button says only that the download is coming soon.
+- **A song comes apart on the home page**, under the first screen: the
+  visitor chooses a song of any length and hears it at once, and each piece
+  taken apart plays through a mixer of the lead vocal, the backing vocals and
+  the music. Only its first 5 minutes come apart in the browser; the rest
+  plays as it is, and the page says that the app takes the whole song. The
+  song never leaves the device, and the browser keeps the last one until the
+  visitor chooses another or deletes it.
 - **It never calls Musetric free.** Nothing in it is paid, and the word would
   only suggest that something might be. It says what the visitor gets
   instead: every feature, with nothing to buy and nothing to subscribe to.
@@ -182,8 +190,8 @@ and it waits on three things:
   ([#1101](https://github.com/musetric/musetric/issues/1101)), no store
   offers a closed test of the app yet
   ([#1208](https://github.com/musetric/musetric/issues/1208)), and the site
-  neither says what Musetric is, nor offers the app, nor lets a visitor try it
-  in the browser ([#1235](https://github.com/musetric/musetric/issues/1235)).
+  does not offer the app yet
+  ([#1235](https://github.com/musetric/musetric/issues/1235)).
 
 ## Where it goes
 
@@ -202,6 +210,8 @@ and it waits on three things:
   ([#1115](https://github.com/musetric/musetric/issues/1115)): a visitor tries
   Musetric with nothing installed and no server that receives the song.
   Musetric's packages are published to npm as libraries of algorithms and
-  inference, without the DOM, and the site builds its own pages on them. No
+  inference, without the DOM, and the site builds its own pages on them; the
+  first is `@musetric/ai`, which carries the code of the packages it runs on,
+  so that they are not published one by one. No
   Rust runs in the browser, so what the host does for a step and the site
   needs is done in TypeScript in the package.
