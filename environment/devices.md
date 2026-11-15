@@ -98,6 +98,42 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
 - Safari's `error.stack` carries no message: the page hooks `uncapturederror`
   and the errors of pipeline creation itself. A page opened over the LAN gets
   WebGPU only over HTTPS; a self-signed certificate, accepted once, is enough.
+- **A USB iPhone reaches the Mac as `localhost`** through an XCUITest runner
+  that pairs every connection of the phone's pages with one the Mac opens over
+  usbmux, as `adb reverse` does on Android: a page on `localhost` is a secure
+  context, so it needs neither a certificate nor the local network permission
+  ([the apple stand](https://github.com/musetric/lab/blob/ae99a9f/musetric_toolkit/engine_bench/apple/readme.md)).
+  The same runner taps for a page that waits for a gesture and sends the app
+  to the background.
+- **iOS asks for the passcode to enable UI automation** after every restart
+  and every lock, and the prompt expires in about a minute, so a phone driven
+  by XCUITest stays unlocked for the whole session.
+- **A WebContent process answers to launchd on iOS** (its responsible process
+  is 1), so the page's process is found by the coalition of the app or Safari
+  that hosts it. On a Mac it answers to the app, or to the app that started
+  it when a script did; Chromium's renderers are the browser's children.
+- **Safari starts an `AudioContext` only after a user gesture**; the app's
+  WKWebView starts it without one. A driver gives Safari the gesture: a
+  WebDriver click on a Mac, an XCUITest tap on an iPhone.
+- **Safari outlives a WebDriver session** and reuses its WebContent processes
+  in the next one, so a measurement that needs a fresh process quits Safari
+  between configurations.
+- **WebKit counts no underruns.** It has no `AudioContext.playbackStats`, and
+  iOS logs no missed audio cycle, not even for a worklet stalled 1.5 s;
+  coreaudiod on a Mac logs each IO overload with its client. In WebKit the
+  worklet's own pauses between calls, against its callback period, stand in.
+- **A covered window of the Mac app slows its WKWebView**: timers fall to
+  about one a second and the audio clock loses time, so a measurement in the
+  app brings its window to the front. The app's first window can be its
+  hidden executor; a driver finds the main window by its title.
+- **Safari on iOS may drop a page after a minute in the background** and load
+  it anew on the return
+  ([musetric/musetric#1278](https://github.com/musetric/musetric/issues/1278)),
+  so a run that leaves Safari checks that its page is the same one.
+- **Every page a run opens in Safari on a phone stays as a tab.** The run
+  closes its own tabs by their titles afterwards and leaves the others; the
+  tab overview also holds the switch to Private Browsing, which a careless tap
+  turns on.
 
 ## Desktop
 
