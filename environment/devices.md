@@ -42,6 +42,16 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   a phone, leave it idle with the screen on.
 - Vendors' own system apps can come to the front over the browser and pause
   the page; check that the page is in front and visible before a series.
+- **A browser in the background may stop answering.** A Galaxy S24 freezes
+  Chrome once it leaves the front: its DevTools socket still accepts a
+  connection but answers nothing, so a script that attaches to it waits until
+  its timeout. A script brings the browser to the front before it connects.
+- **A run that restarts the browser checks the tabs of others.** After a
+  series that restarted Chrome with `am force-stop` before every
+  configuration, one tab that another session had left open on the phone was
+  gone. Such a run lists the open tabs by address before it starts and
+  compares the list after it; a lost tab is opened again at the same address
+  and reported.
 - A long run's output overruns logcat's default buffer of 256 KiB; enlarge
   it before the run (`adb logcat -G 16M`).
 - An app's WebView renders in a separate sandboxed process that belongs to
@@ -53,7 +63,9 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   a bucket of frames whose length is unknown. Read the GPU memory, the clocks
   and per-frame timestamps directly. framestats keeps only the latest frames:
   once its ring is full, every statistic taken from it, the median included,
-  covers only the end of the run.
+  covers only the end of the run. On a Galaxy S24 the memory report gives no
+  total for Chrome's renderer, a native-only sandboxed process, unless asked
+  with `dumpsys meminfo --local <pid>`; a renderer read as 0 MB was not read.
 - **The system takes a swipe that starts near the edge.** In gesture navigation
   a swipe inward from the side is Back, and the page sees it cancelled; a
   press held before it moves stays with the page. Whatever a finger drags keeps
