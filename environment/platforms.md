@@ -58,6 +58,13 @@ updates the project does not control.
 - **WebGPU fails quietly.** A shader that does not compile gives an invalid
   pipeline whose dispatches do nothing, so the output stays zero instead of an
   error; limits differ by platform, and a model has to fit the lowest of them.
+- **A float may become either neighbouring byte.** A shader's float stored
+  in an 8-bit texture or drawn to the canvas may round up or down within the
+  API's tolerance, and GPUs choose differently: a desktop GPU on D3D12 and the
+  Adreno GPUs turned the same values into neighbouring bytes, so a picture
+  drawn the same way differed on a fiftieth of its pixels. A picture that must
+  be the same on every device rounds to byte levels in its own shader:
+  [#1309](https://github.com/musetric/musetric/pull/1309).
 - **The runtime shapes memory and responsiveness.** How much GPU memory a
   model holds is set by onnxruntime-web's allocation plan more than by the
   size of its weights, and a long queue of GPU work freezes a phone's screen:
