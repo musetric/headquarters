@@ -60,8 +60,9 @@ code ([design.md](practices/design.md#domain-driven-design)).
   platform's WebView.
 - **The host** (`packages/server`) owns the data and the processing, being
   the one part that outlives a reload, a crash or a closed app: the SQLite
-  database, the files of the songs, decoding and encoding audio with its own
-  code and no external program, the processing queue, mixdown and export. It
+  database, the files of the songs, decoding and encoding audio with
+  `musetric-dsp` and no external program, the processing queue, mixdown and
+  export. It
   keeps the checkpoint of a step and resumes from it: it plans the units of
   transcription and hands the executor one at a time, while separation plans
   and folds its units in the executor, which sends the host each unit's
@@ -70,6 +71,12 @@ code ([design.md](practices/design.md#domain-driven-design)).
   It serves the interface on
   the device's loopback address; data moves over HTTP, commands and progress
   over a WebSocket.
+- **The audio code** (`packages/dsp`) decodes, resamples, encodes, measures
+  loudness and peaks, and changes tempo and key. It is one Rust crate,
+  `musetric-dsp`: the host links it natively, and the pages and the site take
+  the same crate built to WebAssembly as `@musetric/dsp`, so that an algorithm
+  has one implementation wherever it runs
+  ([musetric/musetric#1300](https://github.com/musetric/musetric/issues/1300)).
 - **The interface** (`packages/frontend`, with `packages/engine` and
   `packages/audio`) plays, draws and records in the WebView.
 - **The executor** (`packages/ai`) is a hidden page of the app that connects
@@ -212,6 +219,6 @@ and it waits on three things:
   Musetric's packages are published to npm as libraries of algorithms and
   inference, without the DOM, and the site builds its own pages on them; the
   first is `@musetric/ai`, which carries the code of the packages it runs on,
-  so that they are not published one by one. No
-  Rust runs in the browser, so what the host does for a step and the site
-  needs is done in TypeScript in the package.
+  so that they are not published one by one. What the host does for a model
+  step and the site needs is done in TypeScript in that package, and audio
+  itself runs the Rust of `@musetric/dsp`.

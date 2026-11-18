@@ -207,6 +207,25 @@ const checks = [
   },
   { profile: 'core', name: 'osv-scanner', check: binaryCheck('osv-scanner', 'OSV_SCANNER_VERSION') },
   {
+    profile: 'core',
+    name: 'wasm-bindgen',
+    check: () => {
+      const pin = readPin(
+        join(product, 'packages', 'server', 'Cargo.lock'),
+        /name = "wasm-bindgen"\r?\nversion = "([^"]+)"/,
+      );
+      if (pin === undefined) {
+        return warn('musetric is not cloned, so the wasm-bindgen it locks is unknown');
+      }
+      const result = run('wasm-bindgen', ['--version']);
+      if (!result.ok) {
+        return fail(`wasm-bindgen is not on PATH: cargo install wasm-bindgen-cli --version ${pin} --locked`);
+      }
+      const version = result.firstLine.split(' ').pop();
+      return version === pin ? pass(result.firstLine) : fail(`wasm-bindgen ${version}, musetric locks ${pin}`);
+    },
+  },
+  {
     profile: 'lab',
     name: 'uv',
     check: () => {
