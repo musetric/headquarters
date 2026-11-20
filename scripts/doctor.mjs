@@ -193,6 +193,19 @@ const checks = [
   },
   {
     profile: 'core',
+    name: 'clang for WebAssembly',
+    check: () => {
+      const targets = run('clang', ['-print-targets']);
+      if (!targets.ok) {
+        return fail('clang is missing: musetric compiles libopus to WebAssembly with it');
+      }
+      return /\bwasm32\b/.test(targets.out)
+        ? pass(run('clang', ['--version']).firstLine)
+        : fail('this clang has no WebAssembly target, like the one of Xcode: install LLVM');
+    },
+  },
+  {
+    profile: 'core',
     name: 'browser',
     check: () => {
       const found = (browserPaths[process.platform] ?? []).find((path) => existsSync(path));
@@ -261,7 +274,7 @@ const checks = [
         : fail('must point to the same NDK as NDK_HOME: CMake finds the NDK through it'),
   },
   { profile: 'android', name: 'adb', check: commandCheck('adb', ['version']) },
-  { profile: 'android', name: 'ninja', check: commandCheck('ninja', ['--version']) },
+  { profile: isWindows ? 'core' : 'android', name: 'ninja', check: commandCheck('ninja', ['--version']) },
   { profile: 'models', name: 'git lfs', check: commandCheck('git', ['lfs', 'version']) },
   {
     profile: 'core',
