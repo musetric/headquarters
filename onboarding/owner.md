@@ -43,6 +43,7 @@ Ask the owner, and repeat the answers in the final report:
 | Node and pnpm | core | Node from musetric's `.node-version`, pnpm from `packageManager` through corepack; Node 25 and later ship without corepack, which is installed at the version musetric's `.github/actions/setupPnpm` installs |
 | Rust through rustup | core | each package's `rust-toolchain.toml` installs its toolchain on the first `cargo` command |
 | C and C++ build tools with CMake | core | the server compiles libopus; musetric's readme |
+| clang with the WebAssembly target, and Ninja on Windows | core | `@musetric/dsp` compiles libopus to WebAssembly; `musetric/packages/dsp/readme.md` |
 | Chrome, Edge or Chromium | core | the server runs the models in it; musetric's readme |
 | jscpd, editorconfig-checker and osv-scanner | core | standalone binaries on `PATH`, at the versions musetric's `.github/actions/baseQuality` installs |
 | uv | lab | the version `required-version` pins in lab's `pyproject.toml`; uv brings the Python `requires-python` pins |
