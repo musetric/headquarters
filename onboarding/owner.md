@@ -46,6 +46,7 @@ Ask the owner, and repeat the answers in the final report:
 | clang with the WebAssembly target, and Ninja on Windows | core | `@musetric/dsp` compiles libopus to WebAssembly; `musetric/packages/dsp/readme.md` |
 | Chrome, Edge or Chromium | core | the server runs the models in it; musetric's readme |
 | jscpd, editorconfig-checker and osv-scanner | core | standalone binaries on `PATH`, at the versions musetric's `.github/actions/baseQuality` installs |
+| cargo-about | core | standalone binary on `PATH`, at the version musetric's `.github/actions/rustQuality` installs; it writes the notices of the crates |
 | uv | lab | the version `required-version` pins in lab's `pyproject.toml`; uv brings the Python `requires-python` pins |
 | NVIDIA GPU with its driver | lab | **Owner** installs the driver if it is missing |
 | Android SDK, NDK, JDK 21, Ninja | android | `musetric/packages/app/readme.md` § Toolchain; **Owner** installs the SDK and the NDK if the agent cannot |
