@@ -52,9 +52,10 @@ const rustPins = [
 ];
 
 const baseQuality = join(product, '.github', 'actions', 'baseQuality', 'action.yml');
+const rustQuality = join(product, '.github', 'actions', 'rustQuality', 'action.yml');
 
-const binaryCheck = (command, variable) => () => {
-  const pin = readPin(baseQuality, new RegExp(`${variable}: *v?([^ ]+)$`, 'm'));
+const binaryCheck = (command, variable, action = baseQuality) => () => {
+  const pin = readPin(action, new RegExp(`${variable}: *v?([^ ]+)$`, 'm'));
   if (pin === undefined) {
     return warn('musetric is not cloned, so the version its CI pins is unknown');
   }
@@ -219,6 +220,7 @@ const checks = [
     check: binaryCheck('editorconfig-checker', 'EDITORCONFIG_CHECKER_VERSION'),
   },
   { profile: 'core', name: 'osv-scanner', check: binaryCheck('osv-scanner', 'OSV_SCANNER_VERSION') },
+  { profile: 'core', name: 'cargo-about', check: binaryCheck('cargo-about', 'CARGO_ABOUT_VERSION', rustQuality) },
   {
     profile: 'core',
     name: 'wasm-bindgen',
