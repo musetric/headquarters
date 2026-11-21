@@ -180,33 +180,6 @@ const checks = [
   },
   {
     profile: 'core',
-    name: 'cmake',
-    check: () => {
-      const result = run('cmake', ['--version']);
-      if (result.ok) {
-        return pass(result.firstLine);
-      }
-      const bundled = isWindows && vsBuildTools();
-      return bundled
-        ? warn(`not on PATH; the Build Tools ship it in ${join(bundled, 'Common7', 'IDE', 'CommonExtensions', 'Microsoft', 'CMake', 'CMake', 'bin')}`)
-        : fail('cmake is missing: the server compiles libopus with it');
-    },
-  },
-  {
-    profile: 'core',
-    name: 'clang for WebAssembly',
-    check: () => {
-      const targets = run('clang', ['-print-targets']);
-      if (!targets.ok) {
-        return fail('clang is missing: musetric compiles libopus to WebAssembly with it');
-      }
-      return /\bwasm32\b/.test(targets.out)
-        ? pass(run('clang', ['--version']).firstLine)
-        : fail('this clang has no WebAssembly target, like the one of Xcode: install LLVM');
-    },
-  },
-  {
-    profile: 'core',
     name: 'browser',
     check: () => {
       const found = (browserPaths[process.platform] ?? []).find((path) => existsSync(path));
@@ -273,10 +246,9 @@ const checks = [
     check: () =>
       process.env.ANDROID_NDK_HOME === process.env.NDK_HOME && process.env.NDK_HOME !== undefined
         ? pass('same as NDK_HOME')
-        : fail('must point to the same NDK as NDK_HOME: CMake finds the NDK through it'),
+        : fail('must point to the same NDK as NDK_HOME'),
   },
   { profile: 'android', name: 'adb', check: commandCheck('adb', ['version']) },
-  { profile: isWindows ? 'core' : 'android', name: 'ninja', check: commandCheck('ninja', ['--version']) },
   { profile: 'models', name: 'git lfs', check: commandCheck('git', ['lfs', 'version']) },
   {
     profile: 'core',
