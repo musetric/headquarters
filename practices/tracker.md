@@ -74,6 +74,15 @@ comment before it is posted.
   own. The issue's body keeps the task and the state of the run, a table of
   checks by devices that links each check's comment. A comment that gathers
   a whole run grows past reading, and every new device rewrites all of it.
+- **A clearer thought rewrites its text.** In an issue where only the owner
+  and the organization's agents have written, a sharper understanding, a
+  corrected claim or a better word replaces the text it improves, in the body
+  or in the comment that owns it, instead of following it with a comment that
+  corrects it: the issue holds the thought as it now stands, short and whole,
+  not the story of how it got clearer, so that nobody later rereads long texts
+  and their corrections. Once anyone else has written in the issue, what they
+  read and answered stays, and a change comes as a new comment. For numbers
+  [public-texts.md](public-texts.md) asks the same in every issue.
 - **Every issue about the speed, freezes or memory of inference is a
   sub-issue of #946.**
 
