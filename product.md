@@ -38,12 +38,16 @@ code ([design.md](practices/design.md#domain-driven-design)).
   recording without its weaker tries. Playing a range of the song, once or in
   a cycle, belongs to the player and serves more than the loop.
 - **Key, tempo and octave**: the key moves by semitones, up to six up or
-  down, and by an octave up or down. The octave does not shift the sound,
+  down, and by an octave up or down. The octave does not shift the song,
   since every way tried to shift a whole mix by an octave distorted it: it
   moves the singer's line in the picture and in the comparison, so that a
   user can sing an octave away and still see whether they hit the notes. Only
-  the lead voice is concerned; the backing and the instrumental never move by
-  an octave.
+  the lead voice is concerned. On request, the singer's voice and the user's
+  takes are heard in the user's octave: the lead stem is pitch-shifted with
+  its formants kept, which sounds processed
+  ([musetric/musetric#1041](https://github.com/musetric/musetric/pull/1041),
+  [#1042](https://github.com/musetric/musetric/issues/1042)). The backing and
+  the instrumental never move by an octave.
 - **Notes**: the view that compares a take with the singer's real pitch line
   in cents, not rounded to the semitone. The line is split into notes, so
   that the gestures at their edges, such as a scoop, an overshoot, a fall or
