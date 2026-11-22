@@ -176,5 +176,10 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
 - **Playwright's Firefox gets WebGPU only with a window** on Windows. Without
   one it reports WebGPU disabled by the blocklist and finds no adapter, even
   with `gfx.webgpu.ignore-blocklist`; with a window and that preference it
-  finds one. Firefox leaves `adapter.info` empty, so the GPU it took shows
-  only in the driver's list of processes, such as `nvidia-smi`.
+  finds one. Which GPU that is, Firefox does not say: `adapter.info` is empty,
+  and it has no launch switch like Chromium's. On a laptop it took the discrete
+  GPU, on a desktop the integrated one whatever its preferences said. A run
+  therefore reads the GPU from the GPU memory of Firefox's processes per
+  adapter, Windows' `GPU Process Memory` counters, while a buffer of known
+  size is allocated, and stops on the integrated GPU
+  ([resources.md](../practices/resources.md#use-what-is-there-in-proportion)).
