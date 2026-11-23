@@ -76,11 +76,14 @@ code ([design.md](practices/design.md#domain-driven-design)).
   the device's loopback address; data moves over HTTP, commands and progress
   over a WebSocket.
 - **The audio code** (`packages/dsp`) decodes, resamples, encodes, measures
-  loudness and peaks, and changes tempo and key. It is one Rust crate,
-  `musetric-dsp`: the host links it natively, and the pages and the site take
-  the same crate built to WebAssembly as `@musetric/dsp`, so that an algorithm
-  has one implementation wherever it runs
-  ([musetric/musetric#1300](https://github.com/musetric/musetric/issues/1300)).
+  loudness and peaks, changes tempo and key, and renders a song from its stems
+  and takes: the player runs the renderer for every quantum and the host for
+  an export, so that the export holds what the player plays
+  ([musetric/musetric#1363](https://github.com/musetric/musetric/issues/1363)).
+  It is one Rust crate, `musetric-dsp`: the host links it natively, and the
+  pages and the site take the same crate built to WebAssembly as
+  `@musetric/dsp`, so that an algorithm has one implementation wherever it
+  runs ([musetric/musetric#1300](https://github.com/musetric/musetric/issues/1300)).
 - **The interface** (`packages/frontend`, with `packages/engine` and
   `packages/audio`) plays, draws and records in the WebView.
 - **The executor** (`packages/ai`) is a hidden page of the app that connects
