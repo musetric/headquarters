@@ -31,6 +31,17 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   visibly changes, or by provoking it with a value it must refuse.
 - **A log line counts for a run only when it is tied to that run**, by the
   run's own identifier: other pages and earlier runs write into the same log.
+- **One device heard at a time.** While a device records through its
+  microphone, for a calibration, a take or a sound check, no other device in
+  hearing range plays: not a player check on another phone, not the
+  calibration of another run, not the computer. The other device's clicks and
+  music enter the take and the calibration, and a recording made beside them
+  is taken again. Runs that only play, such as a count of underruns, wait or
+  go while nothing records.
+- **A microphone run reads the audio endpoints first**: the default output
+  and input, their volume and mute. Headphones in a laptop's jack take the
+  output, and a muted speaker leaves a calibration that hears nothing. The run
+  sets what it needs and returns them afterwards.
 
 ## Android phones
 
@@ -54,6 +65,15 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   and reported.
 - A long run's output overruns logcat's default buffer of 256 KiB; enlarge
   it before the run (`adb logcat -G 16M`).
+- **`adb forward --remove-all` removes the forwards of every attached phone**,
+  not only of the one `-s` or `ANDROID_SERIAL` names. With two phones, a stand
+  that cleans up that way cuts the other phone's DevTools connection in the
+  middle of its run; each phone gets local ports of its own, and a stand
+  removes only its own forwards, by port.
+- **Android's WebView has no `SharedWorker`**, where Chrome on the same phone
+  has one. A page that touches it unconditionally, such as the test page of
+  `wasm-bindgen-test-runner`, stops there before it starts; a stand that runs
+  such a page in the WebView defines a stub before the page loads.
 - An app's WebView renders in a separate sandboxed process that belongs to
   the WebView package, not to the app: a process list filtered by the app's
   package misses it, and the app's memory is the sum of both processes.
@@ -147,3 +167,19 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   `adapter.info` show which GPU a page got before it computes.
 - Several WebViews of one app that share a data folder must start with the
   same browser arguments, or the later ones fail to start.
+- **A WebView2 profile of its own per run.** Every build of the Windows app
+  opens the same WebView2 profile, `%LOCALAPPDATA%\com.musetric.client\EBWebView`,
+  since they share the app's identifier, and an older build run after a newer
+  one there does not show the player. A stand sets `WEBVIEW2_USER_DATA_FOLDER`
+  to a folder of its own for each run: the shared profile stays untouched, and
+  the versions alternate in any order.
+- **Playwright's Firefox gets WebGPU only with a window** on Windows. Without
+  one it reports WebGPU disabled by the blocklist and finds no adapter, even
+  with `gfx.webgpu.ignore-blocklist`; with a window and that preference it
+  finds one. Which GPU that is, Firefox does not say: `adapter.info` is empty,
+  and it has no launch switch like Chromium's. On a laptop it took the discrete
+  GPU, on a desktop the integrated one whatever its preferences said. A run
+  therefore reads the GPU from the GPU memory of Firefox's processes per
+  adapter, Windows' `GPU Process Memory` counters, while a buffer of known
+  size is allocated, and stops on the integrated GPU
+  ([resources.md](../practices/resources.md#use-what-is-there-in-proportion)).

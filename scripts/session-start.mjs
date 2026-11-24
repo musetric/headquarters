@@ -1,6 +1,6 @@
 import { spawnSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
+import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const headquarters = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -31,13 +31,22 @@ const describeHeadquarters = () => {
     : `${line}; up to date with origin/main`;
 };
 
+const cloned = workspace.repositories.filter((repository) => existsSync(join(root, repository.path, '.git')));
+
+const worktrees = cloned.flatMap((repository) =>
+  git(join(root, repository.path), ['worktree', 'list', '--porcelain'])
+    .out.split('\n')
+    .filter((line) => line.startsWith('worktree '))
+    .map((line) => relative(root, resolve(line.slice('worktree '.length))).replaceAll('\\', '/'))
+    .filter((path) => path !== repository.path),
+);
+
 const lines = [
   'The Musetric workspace at the start of this session:',
   `- ${describeHeadquarters()}`,
-  ...workspace.repositories
-    .filter((repository) => repository.path !== 'headquarters' && existsSync(join(root, repository.path, '.git')))
-    .map((repository) => `- ${describe(repository.path)}`),
-  'Other sessions may work in these folders too: check before switching a branch or touching uncommitted files.',
+  ...cloned.filter((repository) => repository.path !== 'headquarters').map((repository) => `- ${describe(repository.path)}`),
+  ...worktrees.map((path) => `- ${describe(path)}`),
+  "Work happens in worktrees, as headquarters/practices/git.md says. A checkout off main or with changes, and every worktree listed, is someone's work in progress: leave it as it is.",
 ];
 if (process.argv.includes('--instructions')) {
   const instructions = join(headquarters, 'AGENTS.md');
