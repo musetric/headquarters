@@ -17,6 +17,12 @@ These rules apply to all of it.
   or a published text is edited, the owner sees the exact final text and
   approves it; a summary or a local draft is not enough. GitHub keeps the
   edit history, and its notifications have already sent the first version.
+  Where the owner has given a standing permission for texts of that kind in
+  the organization's own repositories and tracker
+  ([working-with-the-owner.md](working-with-the-owner.md)), a text gets the
+  same checks, is posted, and its link goes into the report, where the owner
+  may still have it rewritten. Texts that wait for approval are shown
+  together, each whole, not one per message.
 - **Checked before it is shown**: every number against its source (a
   journal, the stand's code, the git history, an issue), every wording for
   precision (what was measured, on which device, at which version), and every
@@ -54,10 +60,12 @@ These rules apply to all of it.
 - **Nobody's own machines, orders, prices or accounts.** A public text names
   what the work needs, such as the hardware a training requires, never what
   a person owns, buys or pays.
-- **A report to another project's tracker is a public text too**, such as
-  one to Chromium or onnxruntime: it is written only when the owner asks for
-  it ([code.md](code.md)), the owner approves and files it, and our issue of
-  the defect links it.
+- **Outside the organization, every text needs its own yes.** An issue, a
+  comment, a pull request or a review in a repository or a tracker of another
+  project, such as Chromium or onnxruntime, is written only when the owner
+  asks for it ([code.md](code.md)), shown whole, and posted only after the
+  owner approves that very text; no standing permission covers it. Our issue
+  of the defect links it.
 
 ## Material
 

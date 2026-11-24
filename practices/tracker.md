@@ -1,8 +1,8 @@
 # The tracker
 
 How issues of `musetric/musetric` are kept. Every text here is public, so
-[public-texts.md](public-texts.md) applies, and the owner sees each issue and
-comment before it is posted.
+[public-texts.md](public-texts.md) applies, including when the owner sees an
+issue or a comment before it is posted.
 
 ## Forms, types, labels and fields
 

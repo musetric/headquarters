@@ -24,7 +24,7 @@ Then:
    why it exists.
 2. **Check the neighbours.** If the new text contradicts what is written
    elsewhere, resolve that first; one fact has one home.
-3. **Publish it**: a pull request for a repository, or the exact text of an
-   issue or a comment shown to the owner before it is posted.
+3. **Publish it**: a pull request for a repository, or an issue or a comment
+   as `headquarters/practices/public-texts.md` says.
 4. **Drop the private copy.** Once it is merged, an agent's memory keeps at
    most a pointer to it.
