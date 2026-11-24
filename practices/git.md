@@ -2,12 +2,20 @@
 
 ## Branches
 
-- **Never commit to `main`.** Create the branch before the first edit, not
-  before the commit: after `git pull` on `main`, the next command is
-  `git switch -c <branch> --no-track`. A commit made on `main` by mistake
-  moves away with `git switch -c <branch>` and `git branch -f main origin/main`.
-  *Enforced:* the `main rule` ruleset of every repository takes changes to
-  `main` only through pull requests.
+- **Work happens in a worktree, never in the repository's own checkout.**
+  The checkout that `scripts/clone.mjs` made stays on a clean `main` and is
+  only pulled. Every piece of work gets a worktree of its own from the fresh
+  `origin/main`, in `worktrees/<repository>/<branch>` of the workspace root,
+  made before the first edit: after `git fetch origin` in the checkout,
+  `git worktree add --no-track -b <branch> <path> origin/main`. Once its pull
+  request is merged, `git worktree remove <path>` and `git branch -D <branch>`
+  remove both. No session then switches a branch under another, and the files
+  of two pieces of work never mix.
+- **Never commit to `main`.** A commit made on `main` by mistake moves away
+  with `git switch -c <branch>` and `git branch -f main origin/main`; the
+  checkout returns with `git switch main`, and the work goes on in a worktree
+  of that branch. *Enforced:* the `main rule` ruleset of every repository
+  takes changes to `main` only through pull requests.
 - **A branch `X` tracks `origin/X` or nothing.** A new branch has no upstream
   until its first push, `git push -u origin X:X`, and never tracks
   `origin/main`. `scripts/clone.mjs` sets `branch.autoSetupMerge simple` in
@@ -15,10 +23,6 @@
   `scripts/doctor.mjs` reports a clone without it. Before a push,
   `git for-each-ref --format='%(refname:short) -> %(upstream:short)' refs/heads`
   shows no other pairing.
-- **No worktrees unless the owner asks.** Switch branches in the repository's
-  own checkout. When another session's branch is checked out there, ask that
-  session before switching, switch back when done, and tell it what changed:
-  a silent switch changes the code it builds and measures.
 - **Nothing stray in a product repository**: no uncommitted or untracked
   files, not even ignored ones such as benches, probes, copies of the server's
   storage or model variants. Experiments live outside the product
@@ -46,9 +50,11 @@
 
 ## Pull requests
 
-- **Agents push, open pull requests and publish only when the owner asks.**
-  Until then, work ends with a local branch and a commit, reported by name
-  and hash. The same holds for model revisions on Hugging Face.
+- **Agents push, open pull requests and publish only when the owner asks**,
+  or when a standing permission covers it
+  ([working-with-the-owner.md](working-with-the-owner.md)). Until then, work
+  ends with a local branch and a commit, reported by name and hash. The same
+  holds for model revisions on Hugging Face.
 - **One pull request per piece of work until it is merged.** Follow-ups go to
   the same branch, and its description is rewritten; a second pull request is
   never stacked on an open one. Before pushing to a pull request's branch,
