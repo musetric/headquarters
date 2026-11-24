@@ -45,3 +45,12 @@ such as the style of its language and its scripts, stay in its `AGENTS.md`.
   on how a library constructs or owns an object, the test uses the real
   library: a mock that returned its argument once hid a `Tensor` created
   without `new`.
+- **A check of what the user sees or hears acts as the user.** A test or a
+  measurement of the interface drives the running app the way a person does:
+  a tap, a drag, a flick, a key or a media button goes in as an input event to
+  the real view, and the check reads what that view draws and what the output
+  plays. A call into the engine in place of the gesture, or a mocked view,
+  proves only what lies below the gesture: `measure:cursor` once kept every
+  number of the cursor right while the spectrogram, dragged during playback,
+  stopped following the finger
+  ([musetric/musetric#1414](https://github.com/musetric/musetric/issues/1414)).
