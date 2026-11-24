@@ -10,7 +10,10 @@ principle, never by an exception to it.
   and it behaves the same on every platform, on every device and in every
   place the product runs. A second path for one platform, one device or one
   case is a second product to keep, and it drifts from the first. A defect
-  of one platform is fixed in the one way, not routed around it.
+  of one platform is fixed in the one way, not routed around it. Where only
+  a platform's own access reaches the device, such as the microphone, each
+  platform keeps a thin adapter that hands the same contract to the one way,
+  and nothing after the contract differs.
 - **Nothing of the user's is lost.** What the user made survives every
   change they make and every interruption: a reload, a crash, a closed app.
   Finished work is kept, and interrupted work resumes where it stopped.
