@@ -149,7 +149,8 @@ moves it
 ## Loops, tempo and the screen
 
 - **A loop's turn** wraps the cursor to the loop's start with no step back and
-  nothing shown past its end
+  nothing shown past its end, and the sound crosses from the loop's end to its
+  start over 31 ms, at equal power, as the owner chose by ear
   ([#1279](https://github.com/musetric/musetric/issues/1279)).
 - **A new tempo** changes the cursor's speed when the new tempo is heard, with
   no jump; a new key never cuts the sound.
