@@ -1,6 +1,6 @@
 import { spawnSync } from 'node:child_process';
 import { existsSync, readdirSync, readFileSync, realpathSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
+import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const headquarters = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -32,11 +32,19 @@ const pass = (detail) => ({ level: 'ok', detail });
 const warn = (detail) => ({ level: 'warn', detail });
 const fail = (detail) => ({ level: 'fail', detail });
 
-const readPin = (path, pattern) => {
-  if (!existsSync(path)) {
-    return undefined;
+const readCommitted = (path) => {
+  const shown = spawnSync('git', ['show', `origin/main:./${basename(path)}`], {
+    cwd: dirname(path),
+    encoding: 'utf8',
+  });
+  if (shown.status === 0) {
+    return shown.stdout;
   }
-  const match = readFileSync(path, 'utf8').match(pattern);
+  return existsSync(path) ? readFileSync(path, 'utf8') : undefined;
+};
+
+const readPin = (path, pattern) => {
+  const match = readCommitted(path)?.match(pattern);
   return match ? match[1] : undefined;
 };
 
