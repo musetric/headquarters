@@ -1,7 +1,7 @@
 # The player and its cursor
 
 How the song's position is shown and moved: the cursor, every view that
-follows the song, and every gesture that moves it. What this page states is
+follows the song, and every gesture of the project page. What this page states is
 required of the code ([about.md](about.md#where-the-truth-is)); a change to
 the cursor, to playback, to a gesture or to a view that follows the song
 starts here. The details and the measurements are in the issues it links,
@@ -42,8 +42,7 @@ above all epic
 ## Input comes before playback
 
 Any input of the user has a higher priority than playback. A finger and the
-mouse are one input: what a press, a drag or a tap of one does on a view, the
-other does too.
+mouse do on each view what this section states, and nothing more.
 
 - **A press on a control stays in the control.** A button, a menu or a switch
   that lies over a view, such as the recording picker, the lanes of the
@@ -70,8 +69,9 @@ other does too.
 
 ### The spectrogram only moves
 
-In Notes and in Spectrum alike, the song's moment is the one under the cursor
-line, and only moving the picture moves it
+In Notes and in Spectrum alike, and for a finger and the mouse alike, the
+song's moment is the one under the cursor line, and only moving the picture
+moves it
 ([#1421](https://github.com/musetric/musetric/issues/1421)).
 
 - **A drag moves the picture**: along time it moves the song under the line,
@@ -90,23 +90,35 @@ line, and only moving the picture moves it
   the user sets where the song's moment sits, and the picture does not move
   while the line is dragged
   ([#1014](https://github.com/musetric/musetric/issues/1014)).
-- **In a loop**, while its range is set, a drag inside the loop moves the
-  loop, and a drag of an edge moves that edge, at least 1 s from the other,
-  and plays a second at it; a tap seeks nowhere here either. While a try is
-  sung, the picture moves only within the loop
+- **In a loop** the picture moves only within the loop. An edge of the loop is
+  a control: a drag of it moves the edge, at least 1 s from the other,
+  scrolls the view when it nears the side of the screen, and plays a second
+  at the edge when let go
   ([#1051](https://github.com/musetric/musetric/issues/1051)).
 
-### The other views seek where they are pressed
+### The tracks and the progress bar: the mouse clicks, a finger moves
 
-- **The tracks**: a press of the mouse seeks to the moment under it, and a
-  drag follows the pointer. A finger tap seeks to the moment under it, and a
-  finger drag scrubs, the width of the lanes standing for the whole song.
-- **The progress bar**: a press seeks to the moment under it, and a drag
-  follows it.
-- **The lyrics** scroll freely and come back to the moment heard shortly
-  after the last touch. A tap on a word is a command: it seeks to just before
-  the word and holds nothing. A drag over words sets a loop over them; a
-  finger starts it with a still press of 350 ms.
+- **The mouse seeks where it clicks**, and with its button held a drag
+  follows the pointer.
+- **A finger only moves the song**: a drag moves it, the width of the lanes
+  or of the bar standing for the whole song, and a tap seeks nowhere.
+
+### The lyrics
+
+- **They scroll freely** and come back to the moment heard shortly after the
+  last touch.
+- **A tap on a word is a command**: it seeks to just before the word and
+  holds nothing. While a loop's range is set, a tap on a word outside the loop
+  moves the loop to that word's line.
+- **A drag over words sets a loop over them**; a finger starts it with a still
+  press of 350 ms.
+
+### The volume of a track
+
+- **Only a drag changes it**, in the mixer and on the tracks, by a finger and
+  the mouse alike, and a tap changes nothing. The volume moves twice as fast
+  as the drag, at the same rate along the whole bar, so a drag over half the
+  bar takes it from silence to full.
 
 ## Seeks and waits
 
