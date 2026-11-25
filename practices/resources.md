@@ -105,10 +105,12 @@ every resource is shared with other people and agents.
   `deps/<owner>/<repository>` of the workspace root, the path of its URL, and
   nowhere else: not in `tmp/`, not in a task's folder. Before cloning, look
   there; a clone that exists is updated with `git pull` and used, so one
-  project is downloaded once. It stays a clean clone of its project, with no
-  changes or commits of ours ([code.md](code.md) says when another project is
-  changed at all), so the next task can use it as it is. `deps/` shows at a
-  glance which other projects the work leans on.
+  project is downloaded once. Its own checkout stays a clean clone of its
+  project, with no changes or commits of ours, so the next task can use it as
+  it is; a change made for a test or a research goes to a worktree of the
+  clone in the work's folder ([code.md](code.md) says when a patch may enter
+  a repository). `deps/` shows at a glance which other projects the work
+  leans on.
 - **The environment is not the work.** Toolchains and runtimes such as
   Python, uv, Node.js and pnpm, package caches such as those of npm and pip,
   drivers, and the settings of the system and of the agents live wherever the
