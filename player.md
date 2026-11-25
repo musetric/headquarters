@@ -41,33 +41,72 @@ above all epic
 
 ## Input comes before playback
 
-Any input of the user has a higher priority than playback.
+Any input of the user has a higher priority than playback. A finger and the
+mouse are one input: what a press, a drag or a tap of one does on a view, the
+other does too.
 
-- **A finger on a view stops the song where it is**: on the spectrogram, the
-  tracks, the progress bar or the cursor line, from the touch on, with no
-  drag needed. The user stops to think, holds, and moves the song where they
-  want. The sound already in the output does not hold the picture back: the
-  views follow the finger at once
+- **A press on a control stays in the control.** A button, a menu or a switch
+  that lies over a view, such as the recording picker, the lanes of the
+  spectrum, Chords and Loop, takes the press whole: the view under it neither
+  stops the song, nor moves, nor seeks
+  ([#1421](https://github.com/musetric/musetric/issues/1421)).
+- **A press on a view stops the song where it is**: on the spectrogram, the
+  tracks, the progress bar or the cursor line, from the touch on, with no drag
+  needed. The user stops to think, holds, and moves the song where they want.
+  The sound already in the output does not hold the picture back: the views
+  follow the press at once
   ([#1323](https://github.com/musetric/musetric/issues/1323)).
-- **While a finger holds or drags, every view shows the moment under the
-  finger at once**, the picture included, and nothing sounds. A flick goes on
-  with inertia in silence. When the finger lets go, or the inertia stops, the
-  song seeks once and plays on from the moment shown
+- **While a press holds or drags, every view shows the moment under it at
+  once**, the picture included, and nothing sounds. A flick goes on with
+  inertia in silence. When the press lets go, or the inertia stops, the song
+  seeks once and plays on from the moment shown
   ([#1414](https://github.com/musetric/musetric/issues/1414)).
-- **A tap seeks, on every view**: on the spectrogram to the moment under the
-  tap, on the tracks, the progress bar, the lyrics and inside a loop.
-- **Zoom by fingers is input like any other**: a pinch stops the song and
-  zooms around the fingers. **Zoom by the wheel is a command**, with no
-  duration: it only zooms, around the cursor, and the song neither stops nor
-  seeks.
-- **The cursor line stays where the user leaves it.** Dragging the line itself
-  places it on the screen, so that the user sets where the song's moment sits;
-  the picture does not move while the line is dragged
-  ([#1014](https://github.com/musetric/musetric/issues/1014)).
+- **A command acts once and holds nothing**: a key, the wheel or a button.
+  Space plays and stops, and the arrows seek 5 s back or ahead.
 - **During a take** the user may still hold, drag and seek: the take records
   nothing while held, and a new run of it starts at the release; a seek drops
   a loop's try in progress
   ([#1034](https://github.com/musetric/musetric/issues/1034)).
+
+### The spectrogram only moves
+
+In Notes and in Spectrum alike, the song's moment is the one under the cursor
+line, and only moving the picture moves it
+([#1421](https://github.com/musetric/musetric/issues/1421)).
+
+- **A drag moves the picture**: along time it moves the song under the line,
+  across it moves the pitches, and a flick goes on with inertia.
+- **A tap or a click seeks nowhere.** It stops the song while it presses, and
+  the song plays on from where it stood.
+- **A pinch zooms**: time around the cursor line, so the moment under the line
+  stays, and pitch around the fingers. With the mouse, a drag with Shift
+  zooms.
+- **The wheel is a command**: Shift and the wheel zoom time around the cursor
+  line, Ctrl and the wheel zoom pitch around the pointer, and the song neither
+  stops nor seeks.
+- **The cursor line stays where the user leaves it.** The mouse takes it at
+  once and a finger after a still press of 350 ms; a finger that moves before
+  that drags the picture. Dragging the line places it on the screen, so that
+  the user sets where the song's moment sits, and the picture does not move
+  while the line is dragged
+  ([#1014](https://github.com/musetric/musetric/issues/1014)).
+- **In a loop**, while its range is set, a drag inside the loop moves the
+  loop, and a drag of an edge moves that edge, at least 1 s from the other,
+  and plays a second at it; a tap seeks nowhere here either. While a try is
+  sung, the picture moves only within the loop
+  ([#1051](https://github.com/musetric/musetric/issues/1051)).
+
+### The other views seek where they are pressed
+
+- **The tracks**: a press of the mouse seeks to the moment under it, and a
+  drag follows the pointer. A finger tap seeks to the moment under it, and a
+  finger drag scrubs, the width of the lanes standing for the whole song.
+- **The progress bar**: a press seeks to the moment under it, and a drag
+  follows it.
+- **The lyrics** scroll freely and come back to the moment heard shortly
+  after the last touch. A tap on a word is a command: it seeks to just before
+  the word and holds nothing. A drag over words sets a loop over them; a
+  finger starts it with a still press of 350 ms.
 
 ## Seeks and waits
 
