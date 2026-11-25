@@ -112,6 +112,18 @@ const checks = [
   { profile: 'core', name: 'github cli', check: commandCheck('gh', ['--version']) },
   {
     profile: 'core',
+    name: 'git long paths',
+    check: () => {
+      if (process.platform !== 'win32') {
+        return pass('not needed outside Windows');
+      }
+      return run('git', ['config', '--global', '--get', 'core.longpaths'], root).out === 'true'
+        ? pass('core.longpaths is true')
+        : fail('run git config --global core.longpaths true');
+    },
+  },
+  {
+    profile: 'core',
     name: 'node',
     check: () => {
       if (nodePin === undefined) {

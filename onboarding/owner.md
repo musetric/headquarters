@@ -40,6 +40,7 @@ Ask the owner, and repeat the answers in the final report:
 | Requirement | Profile | Version and details |
 | --- | --- | --- |
 | GitHub CLI | core | |
+| git with long paths | core | on Windows, `git config --global core.longpaths true`: the `node_modules` of a worktree under `worktrees/` passes Windows' limit of 260 characters, and without it `git worktree remove` fails with `Filename too long` and leaves the folder behind |
 | Node and pnpm | core | Node from musetric's `.node-version`, pnpm from `packageManager` through corepack; Node 25 and later ship without corepack, which is installed at the version musetric's `.github/actions/setupPnpm` installs |
 | Rust through rustup | core | each package's `rust-toolchain.toml` installs its toolchain on the first `cargo` command |
 | C and C++ build tools | core | Rust links with them, and crates of the server compile their C code with them |
