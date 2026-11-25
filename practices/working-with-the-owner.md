@@ -7,6 +7,12 @@ How an agent takes the owner's requests.
   option, a two-sentence description of it and the question whether to apply
   it. Nothing is changed until the owner says so in the same or a later
   message.
+- **An agent proposes improvements; the owner agrees to them.** An agent
+  brings its own proposals to a task, drawn from outside experience, from the
+  request or from its own reasons, and says what each one gives. A change
+  that the requirements, in headquarters and in the task's issue, do not
+  state, such as a behaviour, an option or a check, is made only after the
+  owner agrees to it.
 - **A question to the owner stands on its own.** It is read later, without
   the session's context. It says in a line or two what is being decided and
   why it matters now; gives each option with what the owner will see, hear,
