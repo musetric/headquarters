@@ -38,6 +38,12 @@ above all epic
 - **No command is lost.** A Play, a Stop or a Record pressed while another
   command prepares runs after it, in order; a Stop while a take arms cancels
   the take ([#1371](https://github.com/musetric/musetric/issues/1371)).
+- **After a failure of the audio thread** the player stands at the same
+  position, and a notice over the page, which the user can close, says so;
+  nothing plays by itself. Play or Record brings the sound back and hides the
+  notice: first by restarting only the audio thread, and by building the whole
+  output again only where that fails. A take in progress at the failure is
+  kept ([#1365](https://github.com/musetric/musetric/issues/1365)).
 
 ## Input comes before playback
 
