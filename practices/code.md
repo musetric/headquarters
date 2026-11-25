@@ -43,11 +43,16 @@ such as the style of its language and its scripts, stay in its `AGENTS.md`.
   `readme.md` and `license.md`, except the names tools look for, such as
   `AGENTS.md`, `CLAUDE.md` and `SKILL.md`. Headquarters checks it in
   `scripts/check.mjs`; *not enforced yet* in the other repositories.
-- **Tests follow complexity and importance.** The effort put into tests
-  matches how hard the code is and how much depends on it: an algorithm such
-  as the FFT, the spectrogram or a step of signal processing has unit tests
-  and a benchmark. Code that moves fields from one shape to another, and what
-  the type system already guarantees, has none.
+- **A test in a repository guards a huge risk or a very hard implementation,
+  and nothing else**: a complex algorithm, such as the FFT, the spectrogram or
+  a step of signal processing; a part whose error loses or corrupts the user's
+  data, such as a migration of stored data; or a very hard domain, such as a
+  data race between the audio thread and the page. There is no test of a lint
+  rule, of a simple function, of the glue between modules, of how an interface
+  is wired, or of what the type system already guarantees. A check an agent
+  writes to see its own change work stays outside the repository and is never
+  committed: such tests do not make the product stable, and every line of
+  them is code to keep.
 - **A mock does not test the boundary it replaces.** Where the code depends
   on how a library constructs or owns an object, the test uses the real
   library: a mock that returned its argument once hid a `Tensor` created
