@@ -105,8 +105,17 @@ moves it
 
 ### The lyrics
 
-- **They scroll freely** and come back to the moment heard shortly after the
-  last touch.
+- **The line sung stands in the middle.** The lyrics bring the active line to
+  the middle of their view, by whole lines, when it is below the middle or
+  above the top edge, and leave it where it is while it is in the upper half,
+  as after a seek back, until it reaches the middle.
+- **They move only with the song and the user's seeks**: when a new line
+  becomes active while the song plays or records, and at once at every seek
+  the user makes. With the song stopped and no seek, nothing moves them.
+- **A scroll by the user sets them free for 5 s.** For 5 s after the user's
+  last scroll they stay where the user left them, except at a seek the user
+  makes; then, while the song plays or records, they come back to the active
+  line.
 - **A tap on a word is a command**: it seeks to just before the word and
   holds nothing. While a loop's range is set, a tap on a word outside the loop
   moves the loop to that word's line.
