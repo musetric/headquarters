@@ -45,6 +45,9 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
 
 ## Android phones
 
+- Musetric goes on a phone by
+  [the app's commands](https://github.com/musetric/musetric/blob/main/packages/app/readme.md#commands):
+  `pnpm build:android`, then `pnpm start:android <serial> --install`.
 - A phone attached over USB opens pages served by the computer through
   `adb reverse`, so a page on the phone reaches the computer's server as
   `localhost`.
