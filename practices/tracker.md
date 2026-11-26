@@ -10,6 +10,10 @@ issue or a comment before it is posted.
   the organization have issues turned off: a defect or a task of lab,
   headquarters, landing or a model repository is an issue here, and a PR in
   another repository closes it with `Fixes musetric/musetric#N`.
+- **Only a PR that closes an issue puts its number after a closing word.**
+  GitHub closes the issue at the merge wherever close, fix or resolve, in
+  any form, stands before its number in the PR's body, even in "does not
+  close #N"; a PR that only works on an issue names it as `Part of #N`.
 - **Every issue uses a form** from `.github/ISSUE_TEMPLATE` of
   `musetric/musetric`: blank issues are disabled, and a workflow flags an
   issue without a type. Read the form on `origin/main` before writing; an
