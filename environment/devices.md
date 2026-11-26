@@ -103,6 +103,14 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   driven to 4 for an experiment. Record the status before, during and after,
   and whether it was read at all: a page outside the app has no thermal
   bridge, and a missing status is not 0.
+- **Android's WebView keeps the AudioContext running while another app holds
+  the audio focus**, for an alarm or another app's sound; only the app's own
+  bridge hears the loss, as a pause
+  ([#1453](https://github.com/musetric/musetric/pull/1453)).
+- **A timer set by intent brings the Clock to the front.** On the OnePlus 9RT
+  `am start -a android.intent.action.SET_TIMER` with `SKIP_UI` still shows the
+  Clock's screen for a moment, which ends a take in progress; a run that
+  checks a take under an alarm sets the timer before Record.
 
 ## Apple devices
 
