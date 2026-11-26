@@ -44,6 +44,10 @@ above all epic
   notice: first by restarting only the audio thread, and by building the whole
   output again only where that fails. A take in progress at the failure is
   kept ([#1365](https://github.com/musetric/musetric/issues/1365)).
+- **When the system takes the sound**, for a call, an alarm or another app,
+  the player stops where the sound stopped and keeps a take in progress; when
+  the system gives the sound back, nothing plays by itself until Play or
+  Record ([#1452](https://github.com/musetric/musetric/issues/1452)).
 
 ## Input comes before playback
 
