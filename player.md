@@ -148,6 +148,8 @@ moves it
 
 ## Loops, tempo and the screen
 
+- **Opening a loop** over a line sets the song to the loop's start, as the
+  owner intends.
 - **A loop's turn** wraps the cursor to the loop's start with no step back and
   nothing shown past its end, and the sound crosses from the loop's end to its
   start over 31 ms, at equal power, as the owner chose by ear
