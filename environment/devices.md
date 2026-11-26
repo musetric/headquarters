@@ -111,6 +111,14 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   `am start -a android.intent.action.SET_TIMER` with `SKIP_UI` still shows the
   Clock's screen for a moment, which ends a take in progress; a run that
   checks a take under an alarm sets the timer before Record.
+- **An install can wait on Play Protect.** On the OnePlus 9RT, `adb install -r`
+  of a measure build can stop on Google Play Protect's "Send app for a
+  security check?" until someone answers it, with the phone sitting idle
+  meanwhile; a script that installs answers "Don't send" and logs it.
+- **The Galaxy shows no view tree to `dumpsys`.** On the Galaxy S24 Ultra,
+  `dumpsys activity top` lists the activities but no view tree, so a script
+  reads the WebView's place on the screen from the bounds of
+  `android.webkit.WebView` in `uiautomator dump`.
 
 ## Apple devices
 
