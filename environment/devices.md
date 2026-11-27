@@ -38,6 +38,10 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   music enter the take and the calibration, and a recording made beside them
   is taken again. Runs that only play, such as a count of underruns, wait or
   go while nothing records.
+- **The app plays nothing aloud unless the check needs real sound.** A run
+  that does not measure what is heard sets every track of the app to volume 0
+  and checks that before it plays; a check of the heard sound, such as a
+  calibration, a take or `measure:sound`, plays aloud.
 - **A microphone run reads the audio endpoints first**: the default output
   and input, their volume and mute. Headphones in a laptop's jack take the
   output, and a muted speaker leaves a calibration that hears nothing. The run
