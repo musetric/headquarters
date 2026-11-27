@@ -39,9 +39,12 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   is taken again. Runs that only play, such as a count of underruns, wait or
   go while nothing records.
 - **The app plays nothing aloud unless the check needs real sound.** A run
-  that does not measure what is heard sets every track of the app to volume 0
-  and checks that before it plays; a check of the heard sound, such as a
-  calibration, a take or `measure:sound`, plays aloud.
+  that does not measure what is heard mutes the app's output and checks that
+  before every Play and take, as the silent commands of
+  [`@musetric/measure`](https://github.com/musetric/musetric/blob/main/packages/measure/readme.md#commands)
+  do themselves; a check of the heard sound, such as a calibration, the take
+  of `measure:timing` or `measure:sound`, plays aloud, and a calibration runs
+  only when asked for.
 - **A microphone run reads the audio endpoints first**: the default output
   and input, their volume and mute. Headphones in a laptop's jack take the
   output, and a muted speaker leaves a calibration that hears nothing. The run
