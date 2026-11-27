@@ -84,8 +84,9 @@ code ([design.md](practices/design.md#domain-driven-design)).
   pages and the site take the same crate built to WebAssembly as
   `@musetric/dsp`, so that an algorithm has one implementation wherever it
   runs ([musetric/musetric#1300](https://github.com/musetric/musetric/issues/1300)).
-- **The interface** (`packages/frontend`, with `packages/engine` and
-  `packages/audio`) plays, draws and records in the WebView.
+- **The interface** (`packages/frontend`, with `packages/engine`,
+  `packages/transport` and `packages/audio`) plays, draws and records in the
+  WebView.
 - **The executor** (`packages/ai`) is a hidden page of the app that connects
   to the host by itself, so that a reload of the interface neither drops the
   running step nor loads its model again. Every model runs in it, through
