@@ -56,8 +56,7 @@ says.
 Sessions start in the workspace root: only there does the agents'
 configuration of [agents](agents) apply, which `clone.mjs` puts into the root
 as [agents/layout.json](agents/layout.json) lays out, for Claude Code, Codex
-and OpenCode. Its session-start hook reports how the repositories stand, and
-its skills `finish` and `learn` close a task and keep what it taught.
+and OpenCode. Its skills `finish` and `learn` close a task and keep what it taught.
 
 ## Rules for this repository
 
