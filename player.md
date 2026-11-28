@@ -53,6 +53,14 @@ above all epic
   the player stops where the sound stopped and keeps a take in progress; when
   the system gives the sound back, nothing plays by itself until Play or
   Record ([#1452](https://github.com/musetric/musetric/issues/1452)).
+- **When the connection to the host is lost** while the app is on screen, a
+  notice shows at once, and Play, Space and Record stay off until it is back,
+  though playing needs nothing from the connection; at 10 s without it,
+  playback and a take stop, and the host keeps what the take holds. When the
+  connection comes back, a short notice says so and Play and Record work
+  again. A drop while the app is in the background shows nothing and stops
+  nothing ([#1437](https://github.com/musetric/musetric/pull/1437),
+  [#1488](https://github.com/musetric/musetric/issues/1488)).
 
 ## Input comes before playback
 
