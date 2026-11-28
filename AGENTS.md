@@ -58,12 +58,6 @@ configuration of [agents](agents) apply, which `clone.mjs` puts into the root
 as [agents/layout.json](agents/layout.json) lays out, for Claude Code, Codex
 and OpenCode. Its skills `finish` and `learn` close a task and keep what it taught.
 
-**Session start:** At the beginning of every session in the workspace root, run:
-```bash
-node headquarters/scripts/session-start.mjs
-```
-This reports the git status of all repositories in the workspace.
-
 ## Rules for this repository
 
 - It is public: no secrets, and nothing that
