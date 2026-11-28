@@ -60,10 +60,18 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   a phone, leave it idle with the screen on.
 - Vendors' own system apps can come to the front over the browser and pause
   the page; check that the page is in front and visible before a series.
-- **A browser in the background may stop answering.** A Galaxy S24 freezes
-  Chrome once it leaves the front: its DevTools socket still accepts a
-  connection but answers nothing, so a script that attaches to it waits until
-  its timeout. A script brings the browser to the front before it connects.
+- **A browser or the app in the background may stop answering.** A Galaxy
+  S24 freezes Chrome once it leaves the front, and the app as well: Chrome's
+  DevTools socket still accepts a connection but answers nothing, and neither
+  the app's DevTools nor its host's port answers, so a script that attaches
+  waits until its timeout, and what only the page knows, such as whether a
+  song still processes, is read once the app is back in front. A script brings
+  the browser or the app to the front before it connects.
+- **The front app is the `topResumedActivity` line.**
+  `dumpsys activity activities` prints no `mResumedActivity` on the OnePlus
+  9RT's Android 14 or on the Galaxy S24 Ultra's Android 17, so a check that
+  looks for it finds nothing; a script reads `topResumedActivity`, and stops
+  when it finds no line rather than taking that for a free screen.
 - **A run that restarts the browser checks the tabs of others.** After a
   series that restarted Chrome with `am force-stop` before every
   configuration, one tab that another session had left open on the phone was
@@ -123,6 +131,14 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   `dumpsys activity top` lists the activities but no view tree, so a script
   reads the WebView's place on the screen from the bounds of
   `android.webkit.WebView` in `uiautomator dump`.
+- **Android builds run one at a time.** The tauri crate builds its Android
+  library inside the shared Cargo registry, so two `pnpm build:android` at
+  once, even from different worktrees, write the same files: one of them lost
+  its `aar-metadata.properties` and failed. A build starts once no other runs.
+- **Git Bash rewrites a phone's paths.** It turns an argument that starts with
+  `/`, such as `/sdcard/Download` given to `adb shell` or `adb pull`, into a
+  Windows path. `MSYS_NO_PATHCONV=1` keeps the path but breaks `pnpm`, so it
+  goes on the `adb` command alone, not into the shell's environment.
 
 ## Apple devices
 
@@ -216,3 +232,11 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   adapter, Windows' `GPU Process Memory` counters, while a buffer of known
   size is allocated, and stops on the integrated GPU
   ([resources.md](../practices/resources.md#use-what-is-there-in-proportion)).
+- **A hidden Chrome page loses audio time.** While its window is minimized
+  and nothing plays, desktop Chrome's AudioContext clock fell 3.5 s behind
+  the page's clock in 10 s and 21 s in 60 s
+  ([#1474](https://github.com/musetric/musetric/pull/1474)), so a measurement
+  keeps its window in front unless the hiding is what it measures. Chrome also
+  takes a window that other windows cover for hidden: a run on a shared
+  computer starts it with `--disable-features=CalculateNativeWinOcclusion`, so
+  that other windows do not hide its page, while minimizing still does.
