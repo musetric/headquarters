@@ -22,6 +22,7 @@ map; the knowledge is in the pages it points to.
 | [about.md](about.md) | adding anything to headquarters; it says why it exists and where the truth is |
 | [principles.md](principles.md) | changing how the product behaves: what holds for every part of it |
 | [product.md](product.md) | any work on the product: its concepts and their names, how it is built, where it runs, where it stands and where it goes |
+| [player.md](player.md) | changing the cursor, playback, a gesture or any view that follows the song |
 | [practices/resources.md](practices/resources.md) | any task: what the environment has, what the task needs, how to share it, where its files go |
 | [practices/git.md](practices/git.md) | a branch, a commit, a push or a pull request |
 | [practices/public-texts.md](practices/public-texts.md) | anything that becomes public |
