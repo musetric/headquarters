@@ -215,6 +215,16 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   one there does not show the player. A stand sets `WEBVIEW2_USER_DATA_FOLDER`
   to a folder of its own for each run: the shared profile stays untouched, and
   the versions alternate in any order.
+- **A profile of its own has no calibration.** The app keeps the calibration
+  of each pair of devices in the page's local storage, inside the WebView2
+  profile, so a run on a fresh profile counts only the delay the output
+  reports, without what a calibration measures: on a laptop's built-in
+  speakers 49 ms against the 165 ms of its calibration. A check whose result
+  depends on the output's delay, such as the cursor around Stop and Play
+  ([#1463](https://github.com/musetric/musetric/issues/1463)), calibrates in
+  that run or sets in the engine the delay a calibration of that setup
+  measured, and says which
+  ([resources.md](../practices/resources.md#data-on-the-devices)).
 - **Playwright's Firefox gets WebGPU only with a window** on Windows. Without
   one it reports WebGPU disabled by the blocklist and finds no adapter, even
   with `gfx.webgpu.ignore-blocklist`; with a window and that preference it
