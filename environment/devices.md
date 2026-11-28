@@ -39,9 +39,19 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   is taken again. Runs that only play, such as a count of underruns, wait or
   go while nothing records.
 - **The app plays nothing aloud unless the check needs real sound.** A run
-  that does not measure what is heard sets every track of the app to volume 0
-  and checks that before it plays; a check of the heard sound, such as a
-  calibration, a take or `measure:sound`, plays aloud.
+  that does not measure what is heard mutes the app's output and checks that
+  before every Play and take, as the silent commands of
+  [`@musetric/measure`](https://github.com/musetric/musetric/blob/main/packages/measure/readme.md#commands)
+  do themselves; a check of the heard sound, such as a calibration, the take
+  of `measure:timing` or `measure:sound`, plays aloud, and a calibration runs
+  only when asked for.
+- **A muted output must not be exact zeros.** WebKit marks a gain of 0 silent
+  and counts the page as not playing, which moved a Play's line on the iPhone
+  by 5 to 9 ms after a rest, and Chromium moves an output of 30 s of zeros to
+  a timer-driven sink, whose clock is not the device's. A muted run therefore
+  mutes with a gain just above zero, -120 dB, and leaves the tracks' own
+  volumes as they are, so that the output never holds exact zeros
+  ([#1490](https://github.com/musetric/musetric/pull/1490)).
 - **A microphone run reads the audio endpoints first**: the default output
   and input, their volume and mute. Headphones in a laptop's jack take the
   output, and a muted speaker leaves a calibration that hears nothing. The run
@@ -139,6 +149,20 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   `/`, such as `/sdcard/Download` given to `adb shell` or `adb pull`, into a
   Windows path. `MSYS_NO_PATHCONV=1` keeps the path but breaks `pnpm`, so it
   goes on the `adb` command alone, not into the shell's environment.
+- **Only some phones freeze the app whole.** With the song stopped and no
+  Play since the project opened, the OnePlus 9RT freezes the app's process,
+  its host and its WebView 26 to 37 s after Home; the Galaxy S24 Ultra freezes
+  the page but not the process within 60 s. A Play keeps the process out of
+  the freezer through the app's media service until the project closes, so a
+  check of a frozen return reloads the project before Home and reads
+  `frozen 1` in the app's `cgroup.events`; Samsung's own freezer is under
+  `/dev/freezer` ([#1489](https://github.com/musetric/musetric/pull/1489)).
+- **The Galaxy takes no tap for about 600 ms after a flick**, while the
+  flick's inertia runs about 1.1 s, so a check that taps during the inertia
+  waits 650 ms after the lift.
+- **The Galaxy's tools answer differently:** `uiautomator dump` exits with 137
+  after it has written the dump, and `dumpsys media_session` prints the state
+  as `state=PLAYING(3)`.
 
 ## Apple devices
 
@@ -193,6 +217,10 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   closes its own tabs by their titles afterwards and leaves the others; the
   tab overview also holds the switch to Private Browsing, which a careless tap
   turns on.
+- **The Mac's Now Playing card is read from WebKit's log.** On macOS 26.6.2 a
+  tool without Apple's entitlement got no Now Playing data from MediaRemote,
+  and its commands did nothing, so a check reads WebKit's
+  `updateNowPlayingInfo` lines in the Mac's log for what the card is handed.
 
 ## Desktop
 
@@ -218,9 +246,9 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   reports, without what a calibration measures: on a laptop's built-in
   speakers 49 ms against the 165 ms of its calibration. A check whose result
   depends on the output's delay, such as the cursor around Stop and Play
-  ([#1463](https://github.com/musetric/musetric/issues/1463)), calibrates in
-  that run or sets in the engine the delay a calibration of that setup
-  measured, and says which
+  ([#1463](https://github.com/musetric/musetric/issues/1463)), sets in the
+  engine the delay a calibration of that setup measured and says so; a
+  calibration plays aloud, so it runs only when the check needs it
   ([resources.md](../practices/resources.md#data-on-the-devices)).
 - **Playwright's Firefox gets WebGPU only with a window** on Windows. Without
   one it reports WebGPU disabled by the blocklist and finds no adapter, even
@@ -240,3 +268,6 @@ for each task, as [practices/resources.md](../practices/resources.md) says.
   takes a window that other windows cover for hidden: a run on a shared
   computer starts it with `--disable-features=CalculateNativeWinOcclusion`, so
   that other windows do not hide its page, while minimizing still does.
+- **A heavy build slows Chrome's audio clock.** While Android builds held the
+  CPU at 100 %, desktop Chrome's AudioContext ran at about 0.67 of real time,
+  so a timing run waits until no build runs.
