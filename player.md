@@ -17,6 +17,11 @@ above all epic
   for reading differs, such as the time to the second
   ([#1059](https://github.com/musetric/musetric/issues/1059),
   [#1369](https://github.com/musetric/musetric/issues/1369)).
+- **A frame behind in a fast swipe is accepted.** The spectrogram's worker
+  spends more than a screen frame on the GPU, so in a fast swipe of the
+  progress bar its picture may reach the screen one frame after the ruler; in
+  normal playback that frame is about 8 ms of song and cannot be seen
+  ([#1426](https://github.com/musetric/musetric/issues/1426)).
 - **Sound and picture stay in sync.** The output's delay, on Bluetooth up to
   about 0.4 s, cannot be changed, so the picture waits for the sound instead
   of running ahead of it. After a calibration the cursor is within 5 ms of
