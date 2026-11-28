@@ -12,14 +12,24 @@ How the product's neural networks are chosen, replaced and published.
   they start from and the data they learn from, not the code that trained
   them. A student distilled from a model keeps that model's licence, learns
   only from openly licensed audio, and lists the tracks it learned from.
+- **Separation is learned from scratch.** A separation model of Musetric
+  starts from random weights and learns from mixes the work builds from
+  openly licensed sounds recorded apart: voices, instrumentals, effects and
+  noise mixed by us, so that every target stem is known by construction and
+  is a stem as [product.md](../product.md#concepts) means it. No other
+  party's separation model is its start, its teacher or the source of its
+  targets, since what such a model learned from is unknown.
 - **Shape first, training second.** A new model's shape is exported and
   timed on the devices before it is trained; only a shape that fits the time
   and the memory budget is trained.
 - **A replacement must not lose quality.** A faster model replaces the
   current one only when both checks pass: it is not worse by ear, and its
-  accuracy against real references is close to the current one's. For vocal
-  separation that is the vocals SDR on the MUSDB18-HQ test set within 1 dB;
-  for transcription, the word error rate and the share of lost lines on the
+  accuracy against real references is close to the current one's. For
+  separation that is the SDR of each stem within 1 dB on held-out built mixes
+  and on openly licensed songs whose parts were recorded apart; MUSDB18-HQ is
+  reported beside them but decides nothing, since on part of its tracks its
+  vocals hold a cough and its other stems hold backing vocals; for
+  transcription, the word error rate and the share of lost lines on the
   open corpus of songs of
   [musetric/musetric#1129](https://github.com/musetric/musetric/issues/1129).
   Speed targets are ideals, approached model by model with a measurement

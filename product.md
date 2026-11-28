@@ -230,3 +230,11 @@ and it waits on three things:
   so that they are not published one by one. What the host does for a model
   step and the site needs is done in TypeScript in that package, and audio
   itself runs the Rust of `@musetric/dsp`.
+- **Separation of its own**: Musetric's separation models are to be learned
+  from scratch, on mixes the work builds from openly licensed sounds recorded
+  apart, so that every stem of a training or test mix is known exactly and is
+  a stem as Musetric means it, and the weights owe nothing to models whose
+  training data is unknown. The owner's ear on real songs decides, not a
+  public benchmark; the student of Duality and KARA 2 stays in the product
+  until a model learned this way wins by ear
+  ([practices/models.md](practices/models.md)).
